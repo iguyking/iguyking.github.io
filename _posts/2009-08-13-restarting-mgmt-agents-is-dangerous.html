@@ -1,0 +1,37 @@
+---
+layout: post
+status: publish
+published: true
+title: Restarting Mgmt Agents is dangerous
+author:
+  display_name: iguy
+  login: iguy
+  email: iguy@ionsphere.org
+  url: ''
+author_login: iguy
+author_email: iguy@ionsphere.org
+wordpress_id: 184
+wordpress_url: http://itsjustanotherlayer.com/?p=184
+date: !binary |-
+  MjAwOS0wOC0xMyAxNTozNDozNiAtMDUwMA==
+date_gmt: !binary |-
+  MjAwOS0wOC0xMyAxNTozNDozNiAtMDUwMA==
+categories:
+- VMware
+tags:
+- hostd
+- mgmt agents
+- vimsh
+- VMware
+comments: []
+---
+<p>Once again I'm reminded that going in and doing <em><strong>&#47;etc&#47;init.d&#47;mgmt-vmware restart<&#47;strong><&#47;em> and then <em><strong>&#47;etc&#47;init.d&#47;vmware-vpxa restart<&#47;strong><&#47;em> is fairly dangerous and should only be done as a LAST resort.</p>
+<p>A co-worker was removing old NFS mounts and replacing them with new ones.&nbsp;&nbsp; So same named NFS mount was being used.&nbsp;&nbsp; He did an <em><strong>esxcfg-nas -d<&#47;strong><&#47;em> and then an <em><strong>esxcfg-nas -a<&#47;strong><&#47;em> and per our instructions, restart the mgmt agents so VirtualCenter would see them properly.&nbsp;&nbsp; In doing this with U4 plus a month of patches, VirtualCenter lost connectivity with the host agent with a vim.fault.NotAuthenticated.</p>
+<p><a rel="attachment wp-att-186" href="http:&#47;&#47;itsjustanotherlayer.com&#47;2009&#47;08&#47;restarting-mgmt-agents-is-dangerous&#47;vim-fault-notauthenitcated&#47;"><img class="alignleft size-full wp-image-186" title="vim.fault.NotAuthenitcated" src="http:&#47;&#47;itsjustanotherlayer.com&#47;wp-content&#47;uploads&#47;2009&#47;08&#47;vim.fault_.NotAuthenitcated.png" alt="vim.fault.NotAuthenitcated" width="648" height="70" &#47;><&#47;a></p>
+<p>The fix is to disconnect and reconnect as you can't put these systems into Maintenance Mode since VMotion doesn't work.&nbsp;&nbsp;&nbsp; Together we figured out a nicer way to do the mount point cleanup.</p>
+<ul>
+<li><em>esxcfg-nas -d <mountpoint><&#47;em><&#47;li>
+<li><em>esxcfg-nas -a <mountpoint> ...<&#47;em><&#47;li>
+<li><em>vimsh -n -e "internalsvc&#47;refresh_datastores"<&#47;em><&#47;li>
+<li><em>vimsh -n -e "hostsvc&#47;datastore&#47;refresh <mountpoint>"<&#47;em><&#47;li><br />
+<&#47;ul></p>

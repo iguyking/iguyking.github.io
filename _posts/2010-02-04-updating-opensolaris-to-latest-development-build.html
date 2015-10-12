@@ -1,0 +1,32 @@
+---
+layout: post
+status: publish
+published: true
+title: Updating Opensolaris to latest development build
+author:
+  display_name: iguy
+  login: iguy
+  email: iguy@ionsphere.org
+  url: ''
+author_login: iguy
+author_email: iguy@ionsphere.org
+wordpress_id: 349
+wordpress_url: http://itsjustanotherlayer.com/?p=349
+date: !binary |-
+  MjAxMC0wMi0wNCAxNTozOTo0NyAtMDYwMA==
+date_gmt: !binary |-
+  MjAxMC0wMi0wNCAyMTozOTo0NyAtMDYwMA==
+categories:
+- OpenSolaris
+tags:
+- OpenSolaris
+comments: []
+---
+<p>To be able to update from a post Opensolaris 2008.11 release to the latest development build use the following steps:</p>
+<pre language="bash">
+# pkg set-authority -O http:&#47;&#47;dev.opensolaris.org&#47;dev development<br />
+# pkg refresh<br />
+# pkg image-update -v<br />
+<&#47;pre></p>
+<p>I have finally found the correct website for the most up to date instructions:</p>
+<p><a href="http:&#47;&#47;pkg.opensolaris.org&#47;dev&#47;en&#47;index.shtml" target="_self">http:&#47;&#47;pkg.opensolaris.org&#47;dev&#47;en&#47;index.shtml<&#47;a></p>

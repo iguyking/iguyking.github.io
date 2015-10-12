@@ -1,0 +1,140 @@
+---
+layout: post
+status: publish
+published: true
+title: vSphere 5 Licensing - Enterprise Viewpoint
+author:
+  display_name: iguy
+  login: iguy
+  email: iguy@ionsphere.org
+  url: ''
+author_login: iguy
+author_email: iguy@ionsphere.org
+wordpress_id: 578
+wordpress_url: http://itsjustanotherlayer.com/?p=578
+date: !binary |-
+  MjAxMS0wNy0xOSAyMDozMzozOSAtMDUwMA==
+date_gmt: !binary |-
+  MjAxMS0wNy0yMCAwMTozMzozOSAtMDUwMA==
+categories:
+- VMware
+tags: []
+comments:
+- id: 137
+  author: Chris Sommers
+  author_email: csommers@systemsup.co.uk
+  author_url: ''
+  date: !binary |-
+    MjAxMS0wNy0yMCAwMTo0MDo1OCAtMDUwMA==
+  date_gmt: !binary |-
+    MjAxMS0wNy0yMCAwNjo0MDo1OCAtMDUwMA==
+  content: Don't forget that it's likely that you'd be able to put the 576GB surplus
+    from Exchange towards reducing the 960GB deficit. It would still mean extra vRAM
+    needed, of course, but "only" 384GB = $27960 at the prices you mentioned.
+- id: 138
+  author: Doug Davis
+  author_email: dougdavis22@googlemail.com
+  author_url: ''
+  date: !binary |-
+    MjAxMS0wNy0yMCAwMzoxOTo1MiAtMDUwMA==
+  date_gmt: !binary |-
+    MjAxMS0wNy0yMCAwODoxOTo1MiAtMDUwMA==
+  content: Couldn't agree more with this post - it's exactly the situation I am in
+    today.  Our existing estate will be just fine if I upgrade to vSphere 5 across
+    the board.  The problem will lie in future when we want to attract the bigger,
+    Tier 1-type VMs that need 48-64GB+ of RAM per VM - it will ultimately place a
+    question mark over virtualising those applications.  I'd like to see a vRAM increment
+    that you could purchase to save having to waste CPU licenses.
+- id: 139
+  author: iguy
+  author_email: iguy@ionsphere.org
+  author_url: http://www.itsjustanotherlayer.com
+  date: !binary |-
+    MjAxMS0wNy0yMCAxMjoxNzoyNiAtMDUwMA==
+  date_gmt: !binary |-
+    MjAxMS0wNy0yMCAxNzoxNzoyNiAtMDUwMA==
+  content: ! "Chris:  Your assuming I have that bit of surplus to move around in the
+    budget numbers and the environments.   Folks are eager to find ways to get to
+    have their physicals and they throw things like this out every chance they get.
+    \ This comes into all budget&#47;project discussions.  The fact that the Autonomy
+    effort needs more is just a single application in the Tier 1 space.  I'm going
+    to easily state that most new VMs that I'm getting are 48G minimum if not larger,
+    say 64G.   The low amount of vRAM per Enterprise+ or the in-ability to purchase
+    some vRAM only expansions at a reduced rate means it is an additional $72 per
+    G of RAM.   That's non-trivial increase in price after a couple applications of
+    this scale.  \n\nI'm not saying good or bad.   Just something to keep in mind
+    as we go forward with this style licensing."
+- id: 140
+  author: ufriends
+  author_email: ufriends.forever@gmail.com
+  author_url: http://ufriends.wordpress.com
+  date: !binary |-
+    MjAxMS0wNy0yMSAxMTozMDoxMCAtMDUwMA==
+  date_gmt: !binary |-
+    MjAxMS0wNy0yMSAxNjozMDoxMCAtMDUwMA==
+  content: Big systems which we are talking about = More CPU + More RAM. What about
+    the environments where they need less CPU count and more memory ? To fulfill the
+    memory licensing they will need to buy extra licenses and waste money on processors
+    which they dont need; since licensing is tied with processor and memory.
+- id: 141
+  author: Welcome to vSphere-land! &raquo; vSphere 5 Links
+  author_email: ''
+  author_url: http://vsphere-land.com/vsphere-links/vsphere-5-links.html
+  date: !binary |-
+    MjAxMS0wNy0yMiAwMDozMDoyMCAtMDUwMA==
+  date_gmt: !binary |-
+    MjAxMS0wNy0yMiAwNTozMDoyMCAtMDUwMA==
+  content: ! '[...] that bad at all (Gabe&#8217;s Virtual World) #vTax FUD real life
+    example (Hans DeLeenheer) vSphere 5 Licensing - Enterprise Viewpoint (It&#8217;s
+    Just Another Layer) VMware vSphere 5 licensing explained (Ivo Beerens) vSphere
+    5 [...]'
+---
+<p>Every since "Raising The Bar" <a href="http:&#47;&#47;www.vmware.com&#47;company&#47;news&#47;releases&#47;vmw-cloud-infrastructure-071211.html">announcement <&#47;a>of vSphere 5 and its associated changes, the blogosphere has been running rampant about <a href="http:&#47;&#47;www.vmware.com&#47;files&#47;pdf&#47;vsphere_pricing.pdf">Licensing <&#47;a>both <a href="http:&#47;&#47;vtexan.com&#47;2011&#47;07&#47;15&#47;vmware-is-not-evil-my-opinion-on-their-new-licensing-model&#47;">for <&#47;a><a href="http:&#47;&#47;jasonnash.wordpress.com&#47;2011&#47;07&#47;17&#47;vsphere-5-licensing-are-we-overreacting&#47;">and <&#47;a>against.&nbsp;&nbsp; Some of the blog postings I see make some good points like<a href="http:&#47;&#47;jasonnash.wordpress.com&#47;2011&#47;07&#47;17&#47;vsphere-5-licensing-are-we-overreacting&#47;"> CPU core count is no longer a metric to care about<&#47;a> with VMware. There's opinions on every side of the fence on this topic.&nbsp;&nbsp; The one thing I haven't seen is a discussion around companies that have already hit the 80+% virtualized space. &nbsp; How does this licensing change affect them now that they are going after big hitters and larger systems such as SharePoint 2010, Exchange 2010 and tools like Autonomy or Lync?</p>
+<p>I've been running the numbers of my environment and the initial numbers look good for the current time.</p>
+<pre>Counting physical cpu's and vRAM in your environment....<br />
+======<br />
+pCpu Count: 364<br />
+vRAM (GB):&nbsp; 7104<br />
+======<br />
+Resulting license options:</p>
+<p>Edition&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Entitlement&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Licenses&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;<br />
+-------&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; -----------&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; --------&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;<br />
+[...]Standard&nbsp;&nbsp; 1 pCpu + 24 GB vRAM&nbsp;&nbsp; 364 with 1632 GB vRAM overhead&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;<br />
+Enterprise&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 1 pCpu + 32 GB vRAM&nbsp;&nbsp; 364 with 4544 GB vRAM overhead&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;<br />
+Enterprise Plus 1 pCpu + 48 GB vRAM&nbsp;&nbsp; 364 with 10368 GB vRAM overhead<&#47;pre><br />
+Let's cover the assumptions going forward into this post.</p>
+<ul>
+<li>Every socket that runs ESXi must have a corresponding license even if you don't need the vRAM<&#47;li>
+<li>vRAM is only counted as allocated for Powered On VMs<&#47;li><br />
+<&#47;ul><br />
+Through much work, my environment has hit close to 87% virtualized for x86 workloads. We have eliminated all the low hanging fruit of 1 or 2 vCPU and <8G of RAM machines.&nbsp; The new systems coming in on average are 4-8 vCPU and 16-32G of RAM minimum as they are bigger efforts and larger projects in general.&nbsp; In one case they were seriously debating putting the project on hold to wait for vSphere 5 and the 12+ vCPU sizing.</p>
+<p>That being said, I'll cover some numbers in just a large discussion point view.&nbsp; If there's interest I'll look at going into each of these unique projects in more detail in later blog posts.</p>
+<h2>Exchange 2010<&#47;h2><br />
+This environment is looking at deploying 14 hosts total with 66 VMs spread across multiple campuses.</p>
+<ul>
+<li>14 Hosts with 256G of pRAM and 4 sockets each.<&#47;li>
+<li>Each VM is allocated 32G of vRAM.<&#47;li>
+<li>Host Clusters are setup at a 4+1 HA configuration.<&#47;li>
+<li>Dedicated Host Cluster for this application deploy.<&#47;li><br />
+<&#47;ul><br />
+This sets up this situation...</p>
+<p style="padding-left: 30px;">14 Hosts with 4 sockets each = 56 sockets of Enterprise+<br />
+56 sockets of Enterprise+ * 48G of vRAM per Enterprise+ = 2,688G of vRAM available<&#47;p></p>
+<p style="padding-left: 30px;">66 VMs at 32G of vRAM each = 2,112G of vRAM needed<&#47;p><br />
+The results of this means that the environment has a surplus of 576G of vRAM to share out.&nbsp; No difference in pricing between deploying on vSphere 4 or vSphere 5.</p>
+<h2>Autonomy<&#47;h2><br />
+This environment is looking at deploying 10 hosts total with 60 VMs.</p>
+<ul>
+<li>10 Hosts with 384G of pRAM and 4 sockets each.<&#47;li>
+<li>Each VM is allocated 48G of vRAM.<&#47;li>
+<li>Host Clusters are setup at a 4+1 HA configuration.<&#47;li>
+<li>Dedicated Host Cluster for this application deploy.<&#47;li><br />
+<&#47;ul><br />
+This sets up this situation...</p>
+<p style="padding-left: 30px;">10 Hosts with 4 sockets each = 40 sockets of Enterprise+<br />
+40 sockets of Enterprise+ * 48G of vRAM per Enterprise+ = 1,920G of vRAM available<&#47;p></p>
+<p style="padding-left: 30px;">60 VMs at 48G of vRAM each = 2,880G of vRAM needed<&#47;p><br />
+The results of this means that the environment has a deficit of 960G of vRAM.&nbsp; This is the same as needing to purchase 20 more licenses of Enterprise+ to make up the vRAM difference.&nbsp;&nbsp; At the list price of $3,495 (before discount) it will add $69,900 unless the environment can make up this difference.</p>
+<p>This project is a hard sell to be virtual and this additional $70k would have pushed the project to go physical as it would have ultimately been cheaper in the initial capital costs.</p>
+<h2>Summary<&#47;h2><br />
+Depending on the project and how much older hardware is available in the environment today, vRAM isn't something to fret about today.&nbsp; In the future this will offer up some challenges to justify making something that should run just fine as a virtual into a VM.&nbsp; OS instances only get larger as we go into Tier 1 type of applications.&nbsp;&nbsp; VMware needs to weigh getting a tad bit more revenue over having ideal case studies like this environment available of over 90% virtual.&nbsp; They can address this by raising up the vRAM on the high end licenses to 64G+ of vRAM, allow me to buy vRAM increments or make an ELA be reasonably priced enough to keep the physical-lovers at bay.&nbsp;&nbsp; If VMware is happy with companies just going to 80% then they are there.&nbsp;&nbsp; If they want to get to the Tier 1, business stopping, critical applications in the larger corporations, they need to consider how to not have the vRAM be a detriment to internal discussions.</p>

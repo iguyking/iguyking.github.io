@@ -1,0 +1,101 @@
+---
+layout: post
+status: publish
+published: true
+title: EA3196 - Virtualizing BlackBerry Enterprise on VMware
+author:
+  display_name: iguy
+  login: iguy
+  email: iguy@ionsphere.org
+  url: ''
+author_login: iguy
+author_email: iguy@ionsphere.org
+wordpress_id: 262
+wordpress_url: http://itsjustanotherlayer.com/?p=262
+date: !binary |-
+  MjAwOS0wOS0wMyAxNzowNTozMyAtMDUwMA==
+date_gmt: !binary |-
+  MjAwOS0wOS0wMyAxNzowNTozMyAtMDUwMA==
+categories:
+- VMware
+tags:
+- BES
+- VMware
+- vmworld
+comments:
+- id: 79
+  author: VMworld 2009 (San Francisco) &#8211; Linkage &raquo; Yellow Bricks
+  author_email: ''
+  author_url: http://www.yellow-bricks.com/2009/09/07/vmworld-2009-san-francisco-linkage/
+  date: !binary |-
+    MjAwOS0wOS0wNyAyMDowMjoxMCAtMDUwMA==
+  date_gmt: !binary |-
+    MjAwOS0wOS0wNyAyMDowMjoxMCAtMDUwMA==
+  content: ! '[...] iGuy &#8211; EA3196 &ndash; Virtualizing BlackBerry Enterprise
+    on VMware [...]'
+- id: 80
+  author: Welcome to vSphere-land! &raquo; Session Links
+  author_email: ''
+  author_url: http://vsphere-land.com/vmworld-2009/session-links.html
+  date: !binary |-
+    MjAwOS0wOS0xMCAxNjozNTowNiAtMDUwMA==
+  date_gmt: !binary |-
+    MjAwOS0wOS0xMCAxNjozNTowNiAtMDUwMA==
+  content: ! '[...] Benchmarking and Comparisons (VM Junkie) VMworld 2009: Day 2:
+    PowerShell Session (RTFM Education) EA3196 - Virtualizing BlackBerry Enterprise
+    on VMware (It&#8217;s Just Another Layer)    Author: esiebert7625 Categories:
+    VMworld 2009 Tags: Sessions, VMworld 2009       Comments are [...]'
+- id: 81
+  author: bodydetoxtechy
+  author_email: any477@yahoo.com
+  author_url: http://www.bodydetoxdiet.net
+  date: !binary |-
+    MjAwOS0xMC0wNCAxMTo0NToyNCAtMDUwMA==
+  date_gmt: !binary |-
+    MjAwOS0xMC0wNCAxMTo0NToyNCAtMDUwMA==
+  content: i really love the cool features of Blackberry. my hubby and i both have
+    Blakberries and we use it all the time to communicate.
+- id: 82
+  author: Conway
+  author_email: seashore@gmail.com
+  author_url: http://itsjustanotherlayer.com/2009/09/ea3196-virtualizing-blackberry-enterprise-on-vmware/?&amp;
+  date: !binary |-
+    MjAxMS0wOS0xMiAyMDowOToxOCAtMDUwMA==
+  date_gmt: !binary |-
+    MjAxMS0wOS0xMyAwMTowOToxOCAtMDUwMA==
+  content: What is up, nice website. I enjoy your layout. I ended cosmetic school
+    and also begin my personal weblog. Thanks for the amazing posting!
+- id: 83
+  author: Chadwick
+  author_email: fifth@gmail.com
+  author_url: http://itsjustanotherlayer.com/2009/09/ea3196-virtualizing-blackberry-enterprise-on-vmware/?&amp;
+  date: !binary |-
+    MjAxMS0wOS0xNSAwMToyNToyMyAtMDUwMA==
+  date_gmt: !binary |-
+    MjAxMS0wOS0xNSAwNjoyNToyMyAtMDUwMA==
+  content: I like this weblog and now have saved as a favorite it. I am going to look
+    for learn in additional details on my holiday
+- id: 9948
+  author: vBrainstorm.com &#8211; VMworld 2009 San Francisco, Day 4, PM Edition
+  author_email: ''
+  author_url: http://vbrainstorm.com/vmworld-2009-san-francisco-day-4-pm-edition/
+  date: !binary |-
+    MjAxNS0wMi0wNiAxOToyMDozMiAtMDYwMA==
+  date_gmt: !binary |-
+    MjAxNS0wMi0wNyAwMToyMDozMiAtMDYwMA==
+  content: ! '[&#8230;] http:&#47;&#47;itsjustanotherlayer.com : EA3196 &ndash; Virtualizing
+    BlackBerry Enterprise on VMware [&#8230;]'
+---
+<p>Once again.. another session I didn't sign up with and zero issues getting into.&nbsp;</p>
+<p>To start off RIM &amp; VMware have been working together for 2 years and it is officially supported on VMware.&nbsp;&nbsp; Together RIM &amp; VMware have done many numerous and successful engagements running BES on VMware.&nbsp; The interesting thing is RIM runs their own BES on VMware for over 3 years now.&nbsp;</p>
+<p>Today BES best practice is no more than 1k users per server and they are not very multi-core friendly.&nbsp;&nbsp; It is not cluster aware or have any HA built in.&nbsp;&nbsp; The new 5.0 version of BES is coming with some HA availability via replication at the application layer.&nbsp;&nbsp; One thing that has been seen in various engagements is if you put the BES servers on the same VMware Hosts as virtualized Exchange, there are noticable performance improvements.&nbsp;</p>
+<p>The support options for BES do clearly state that they support on VMware ESX.&nbsp;&nbsp;</p>
+<p>One of the big reasons to virtualize BES is that since it can not use multi-cores effectively the big 32 core boxes today are only able to use a fraction.&nbsp; By virtualizing BES can get significant consolidation.&nbsp;&nbsp; Then when doing the virtualization BES gets all the advantages of running virtual such as Test&#47;Dev deployments and server consolidation and HA etc.&nbsp;&nbsp; Things that are well known and talked about already.&nbsp;&nbsp;</p>
+<p>BES encourages template use to do rapid deployments.&nbsp;&nbsp; The gotcha is just what your company policies and rules are and can potentially save quite a bit of time.&nbsp;&nbsp; This presentation is really trying to show how to use VMware&#47;Virtualization with BES for change management improvements, server maintenance, HA, component failures and other base vSphere technologies.&nbsp;&nbsp; VMware is looking towards using Fault Tolerance for their own BES servers.&nbsp;</p>
+<p>BES is often not considered Tier 1 for DR events.&nbsp;&nbsp; Even though email is often the biggest thing needed to start working after a DR event to start communications.&nbsp;&nbsp; The reason is generally been seen due to the complexity and cost of DR.&nbsp;</p>
+<p>The performance testing with the Alliance Team from VMware has been successfully done numerous times for the past&nbsp;couple of years.&nbsp;&nbsp; They have done testing at both RIM &amp; VMware offices.&nbsp;&nbsp; The main goal of these efforts was to generate white papers and a reference architectures that are known to work.&nbsp;&nbsp; The testing was to use Exchange LoadGen &amp; PERK load driver (BES testing driver).&nbsp; Part of this is how to scale outwith more VMs&nbsp; as the scale up is known.&nbsp;</p>
+<p>The hardware was 8 cpus, Intel E5450 3Ghz, 16 G RAM and FAS3020 Netapp on vSphere 4 &amp; BES 4.1.6.&nbsp; The 2k user test with 2 Exchange systems the results were 23% CPU utilization on 2 vCPU BES VMs.&nbsp;&nbsp; Latency numbers was under 10 ms.&nbsp;&nbsp; Nothing majorly wrong seen in the testing metrics.&nbsp;&nbsp; Going from ESX 3.5 to vSphere 4 was a 10-15% CPU reduction in the same workload tests.&nbsp;&nbsp; Adding in Hardware Assist for Memory saw what looks like another 3-5% reducting in CPU usage.&nbsp;&nbsp; In their high load testing when doing VMotion there is a small hiccup of about 10% increase in CPU utilization during the cut over period of the VMotion.&nbsp;&nbsp; This is well within the capacity available on the host and in the Guest OS.&nbsp;</p>
+<p>Their recommendation is to do no more than 2k users on a 2vCPU VM.&nbsp; If you need more then add more VMs.&nbsp;&nbsp; Scales and performs well in this scale out architecture.&nbsp;&nbsp; Be sure you give the storage the number of spindles needed.&nbsp;&nbsp; The standard statement when talking about virtualization management.&nbsp;&nbsp;</p>
+<p>&nbsp;The presenter then went into a couple of reference architecture designs.&nbsp; Small Business &amp; Enterprise with a couple different varieties.&nbsp;</p>
+<p>BES @ VMware.&nbsp;&nbsp; 3 physical locations, 6,500 Exchange users.&nbsp;&nbsp; 1k of them have 5G mailboxes and the default for the rest are 2G.&nbsp;&nbsp; BES has become pretty common.&nbsp;&nbsp; They run Exchange 2007 &amp; Windows 2003 for AD &amp; the Guest OS.&nbsp;&nbsp; Looks fairly straight forward.&nbsp;</p>
+<p>4 prod BES VMS, 1 STandby BES VM, 1 Attachment BES VM and 1 BES dedicated Database VM.&nbsp;&nbsp; Done on 7 physical servers and 40 additional VM workloads on this cluster.</p>

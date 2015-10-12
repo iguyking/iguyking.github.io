@@ -1,0 +1,39 @@
+---
+layout: post
+status: publish
+published: true
+title: OpenSolaris 2008.11 & NFS (security?)
+author:
+  display_name: iguy
+  login: iguy
+  email: iguy@ionsphere.org
+  url: ''
+author_login: iguy
+author_email: iguy@ionsphere.org
+wordpress_id: 101
+wordpress_url: http://itsjustanotherlayer.com/?p=101
+date: !binary |-
+  MjAwOS0wMi0wNCAwMzo1NDo1NSAtMDYwMA==
+date_gmt: !binary |-
+  MjAwOS0wMi0wNCAwMzo1NDo1NSAtMDYwMA==
+categories:
+- OpenSolaris
+- VMware
+tags:
+- nfs
+- OpenSolaris
+comments:
+- id: 28
+  author: Kristian Vilmann
+  author_email: kvi@atea.dk
+  author_url: http://www.atea.dk
+  date: !binary |-
+    MjAwOS0wNC0wMyAxOToyMDoyMCAtMDUwMA==
+  date_gmt: !binary |-
+    MjAwOS0wNC0wMyAxOToyMDoyMCAtMDUwMA==
+  content: Adding the ESX-server to &#47;etc&#47;hosts just might do the trick if
+    it isn't in DNS.
+---
+<p>A quick note here after the past 4 hours of fighting with NFS on OpenSolaris 2008.11.   If you are attempting to do an mount and get a Permission Denied from either Linux or ESX the solution is rather easy.</p>
+<p>Make sure that the IP address that you are connecting with has a reverse DNS entry with a hostname.   </p>
+<p>That's it.   4 hours and that's the gotcha.   If you don't have a reverse DNS you'll never get the mount to work.</p>

@@ -1,0 +1,211 @@
+---
+layout: post
+status: publish
+published: true
+title: So how important is LiveMigration&#47;VMotion now?
+author:
+  display_name: iguy
+  login: iguy
+  email: iguy@ionsphere.org
+  url: ''
+author_login: iguy
+author_email: iguy@ionsphere.org
+wordpress_id: 27
+wordpress_url: http://itsjustanotherlayer.com/?p=27
+date: !binary |-
+  MjAwOC0xMC0yOCAwMzozNzozOCAtMDUwMA==
+date_gmt: !binary |-
+  MjAwOC0xMC0yOCAwMzozNzozOCAtMDUwMA==
+categories:
+- Server Virtualization
+tags:
+- hyper-v
+- VMware
+comments:
+- id: 8
+  author: Stu Fox
+  author_email: stufox@microsoft.com
+  author_url: http://blogs.technet.com/stufox
+  date: !binary |-
+    MjAwOC0xMS0wNSAyMjoyMTowOSAtMDYwMA==
+  date_gmt: !binary |-
+    MjAwOC0xMS0wNSAyMjoyMTowOSAtMDYwMA==
+  content: ! 'So why would you have people doing that work?  Wouldn''t you have an
+    automated software distribution system taking care of this for you (e.g. System
+    Center Configuration Manager)?  You just script the process, scheduling &amp;
+    maintenance windows take care of when it happens.  And then you have Operations
+    Manager monitoring and alerting, and sending you a text message should a node&#47;patch
+    fail.  That''s what management is all about.
+
+
+    And if you''re going to do Vmotion during the day, what''s your failback position
+    should a node fail during the patch?  Have you been through change control and
+    had a move of your machines approved for daytime?  Remember, it only has to go
+    wrong once for you to look bad.
+
+
+    Even though Hyper-V v2 has live migration, I''m still a fan of change control
+    &amp; outage windows, regardless of your hypervisor.  I don''t like the possibility
+    of things affecting my users during their working hours.
+
+
+    Cheers
+
+
+    Stu
+
+    Disclaimer: I work for Microsoft NZ.'
+- id: 9
+  author: Iguy
+  author_email: iguy@ionsphere.org
+  author_url: ''
+  date: !binary |-
+    MjAwOC0xMS0wNiAwODowMDoyMiAtMDYwMA==
+  date_gmt: !binary |-
+    MjAwOC0xMS0wNiAwODowMDoyMiAtMDYwMA==
+  content: ! "It's all a question of what technology do you believe in and have experiences
+    with and know the failure points in functionality.  \n\nMy fail-back is that VMware's
+    infrastructure is much more advanced than just \"VMotion\".   You setup a cluster
+    of 10 hosts.   As such you take one host out of production using maintenance mode,
+    update it in that cluster, check the host out and then return it back into service.
+    \ If it fails you skip it and keep going.  A typical well designed cluster can
+    handle at least one failure if not two with no impact to the performance level
+    of the cluster. \n\nIn a perfect world every company would have a perfect deployment
+    system.   Something to help automate the patch deployment.  I personally have
+    had less than ideal experiences using SCMM to deploy patches so I'd use something
+    else.   Though the idea is the same."
+- id: 10
+  author: Malaysia VMware Communities
+  author_email: malaysiavm@gmail.com
+  author_url: http://www.malaysiavm.com
+  date: !binary |-
+    MjAwOC0xMS0wNiAxNTo1Mzo0MiAtMDYwMA==
+  date_gmt: !binary |-
+    MjAwOC0xMS0wNiAxNTo1Mzo0MiAtMDYwMA==
+  content: Live migration is very very important features for me and my team. I used
+    to vmotion anytime I like.
+- id: 11
+  author: Mike DiPetrillo
+  author_email: mikedatl@mac.com
+  author_url: http://www.mikedipetrillo.com
+  date: !binary |-
+    MjAwOC0xMS0wOCAxMzowNDoxNiAtMDYwMA==
+  date_gmt: !binary |-
+    MjAwOC0xMS0wOCAxMzowNDoxNiAtMDYwMA==
+  content: ! 'Stu,
+
+
+    Change control is important in an enterprise. I used to work for several large
+    banks and if something came in that was marked emergency then we''d have an emergency
+    change control meeting, get the change approved, and schedule a window. Now companies
+    can make that window happen during the day. Not only does this get things patched
+    sooner&#47;faster (after all this is emergency) it also saves the company money
+    from not having to pay overtime. Should something go wrong you have your full,
+    normal working staff there to take care of it. If you''re doing the auto patch
+    thing at night you have a few problems:
+
+
+    1) You need to spend time scripting the whole process and then finding some node
+    to test the script on. What happens if the process can''t be scripted?
+
+
+    2) When something goes wrong you now have to wait until the appropriate people
+    can be notified, wake up, get some coffee, drive to the office, and finally fix
+    the problem.
+
+
+    VMotion is about freedom and flexibility. It goes beyond just patches. What happens
+    if 100 more people start hitting my app and it needs to move to another host?
+    Do you take downtime to move it with Quick Migration? People are using it a lot
+    at this point. Do you just say sorry, you guys get bad performance until change
+    control approves a move tonight or this weekend? Or do you move it with VMotion
+    and fix the issue right away? Same thing with the storage side and Storage VMotion.
+
+
+    I''m really sorry that Microsoft is the *only* virtualization vendor that hasn''t
+    figured out the simple task of live migration or VMotion. Every other vendor on
+    the planet has it today. Perhaps once you all get it you''ll realize what a true
+    liberator it is for customers and change your mind on its usefulness.
+
+
+    P.S. I work for VMware, but you already know that, Stu.'
+- id: 12
+  author: Stu Fox
+  author_email: stufox@microsoft.com
+  author_url: http://blogs.technet.com/stufox
+  date: !binary |-
+    MjAwOC0xMS0xNyAwMDowOTowNiAtMDYwMA==
+  date_gmt: !binary |-
+    MjAwOC0xMS0xNyAwMDowOTowNiAtMDYwMA==
+  content: ! 'Mike
+
+
+    I never said live migration isn''t useful - I think it''s a powerful technology
+    and I can''t wait for us to have it as well.  I just said that it''s not always
+    as straightforward as it sounds.  I think you''re also well aware that Microsoft
+    has figured it out (the demos are out there of R2).
+
+
+    Yeah, auto patching isn''t without potential issues, but neither is live migration.  If
+    you''ve got an IT shop mature enough to have Vmotion as part of it''s standard
+    processes that, then you''ve probably got an IT shop that is mature enough to
+    auto patch and alert as well.  Remember that live migration doesn''t help you
+    when your application fails - so if you''ve got a business critical application
+    you''ve likely got other measures in place to ensure availability (Clustering&#47;load
+    balancing&#47;really expensive synchronisations).  You still have to deal with
+    the same issues when patching those as well.
+
+
+    As always, I enjoy the dialog!
+
+
+    Cheers
+
+
+    Stu'
+- id: 13
+  author: Vikash Kumar Roy
+  author_email: vikash.roy@gmail.com
+  author_url: http://vikashkumarroy.blogspot.com
+  date: !binary |-
+    MjAwOS0wMS0wNiAxMzowNDowNyAtMDYwMA==
+  date_gmt: !binary |-
+    MjAwOS0wMS0wNiAxMzowNDowNyAtMDYwMA==
+  content: ! "I read Stu comments on my VMware blog and seems like he is only aware
+    of MS virtualization and its capability. FYI I have used both and I have no doubts
+    to admit that VMWare is very matured in its virtualization technologies. Take
+    any component of virtualization and you can yourself find its result.\nMy View
+    : If you really want to compare apple to orange you need to taste both and then
+    judge which one you like most  \nI am neither MS employee nor VMWare employee
+    but just a devotee of VMWare"
+---
+<p>One of Microsoft's big marketing statements I've heard several times is that LiveMigration wasn't that important since clients don't change when they do work on hardware even with LiveMigration.&nbsp;&nbsp; I'll cover why this in depth on why this is a flawed thought for an enterprise company in a future blog entry.</p>
+<p>Along comes a critical use case this past week.&nbsp; <a href="http:&#47;&#47;www.microsoft.com&#47;technet&#47;security&#47;Bulletin&#47;MS08-067.mspx" target="_blank">MS08-67<&#47;a> came out and threw most companies I know of into some serious chaos while they rolled this patch out ASAP.&nbsp; Now this one does impact any Windows OS including Server Core.&nbsp;&nbsp; Anyone that would be using Hyper-V would obviously be affected right now.&nbsp;&nbsp;&nbsp; Let's walk through trying to deploy this for 120 Hyper-V hosts with Quick Migration (which causes a service interruption) as fast as humanly possible with business buy-off to do this ASAP outside of Maintenance Zones.&nbsp; Lets assume we are talking about a patch that ONLY affect Virtualization Hosts (I know I know.. not realistic with Hyper-V, bear with me).</p>
+<h3>Hyper-V Scenario with Quick Migration:<&#47;h3><br />
+Assumptions to setup:</p>
+<ul>
+<li>Standard business Day is 6am to 10pm. &nbsp;&nbsp; So with the business units agreement we can do this patch from 10pm to 6am every day which is 8 hours of work.<&#47;li>
+<li>Applying the patch takes 30 mins including reboot and checkout time.&nbsp; Need to apply to both the primary and secondary Host since any real enterprise has HA setup and configured since its "Defined as Free by Microsoft" right?<&#47;li>
+<li>Each Hyper-V Host has 20 Servers on it and there is 120 Host Pairs.<&#47;li>
+<li>There's a fail over host available for each of these 120 Hosts (Let's not talk about amazingly wasted resources.&nbsp; This is being generous to Microsoft here and we fail over only once each cluster.)<&#47;li>
+<li>Each Host takes about 30 mins to "Quick Migrate" all 20 Server Virtual Machines and one person can do 4 hosts at a time without incurring other unplanned outages.<&#47;li>
+<li>All Hands on Deck for part of our team and some folks are awake during normal work hours for support.&nbsp; Lets say reasonably 6 people are working on this.<&#47;li><br />
+<&#47;ul><br />
+6 people * 4 Hosts per person per hour gives us roughly 24 hosts and their fail-over pair getting updated each hour and a half.&nbsp;&nbsp; 240 hosts divided by 24 gives us 10 hours to do all these migrations at a rush with a staggered patch start time by about 7 mins for each server.&nbsp; Also each person is perfect in their execution.&nbsp; That's not unreasonable considering connect time to console and login times.</p>
+<p>This doesn't take into account the issues with the business units that are dependent on your services:</p>
+<ul>
+<li>Apps that don't work right with a Quick Migration and don't check out right<&#47;li>
+<li>Hit to your team's morale.<&#47;li>
+<li>Hit to your team's reputation for using this Virtualization Solution.<&#47;li>
+<li>People aren't perfect and make mistakes, patches don't always apply right.<&#47;li><br />
+<&#47;ul></p>
+<h3>VMware Scenario with DRS &amp; VMotion:<&#47;h3></p>
+<ul>
+<li>Put the Host that needs the patch into Maintenance Mode.&nbsp;&nbsp; If the cluster is large enough do two at the same time.<&#47;li>
+<li>Apply the patch to the Host and reboot it.<&#47;li>
+<li>Check the Host out and Release it for usage.&nbsp; Take it out of Maintenance Mode.<&#47;li>
+<li>Repeat until every Host is finished.<&#47;li><br />
+<&#47;ul><br />
+I have been able to do a full rushed patch deployment like this in my environment with an average of 30 Servers per Host in about 6 hours by myself.</p>
+<p>We would start this patch application immediately upon notification since VMotion does not cause a network outage or service interruption.&nbsp;&nbsp; The window of potential infection is incredibly small at this point as I don't wait for a maintenance zone and start the update immediately on the Hosts.</p>
+<p>So the question for a real enterprise how much is this worth?&nbsp;&nbsp; For me its pretty obviously worth it.&nbsp;&nbsp; No downtime.&nbsp;&nbsp; No service impact.&nbsp;&nbsp; Just a continiously available service for my clients who don't have to care about the latest patch.</p>

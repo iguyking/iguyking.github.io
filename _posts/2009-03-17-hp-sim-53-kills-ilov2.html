@@ -1,0 +1,129 @@
+---
+layout: post
+status: publish
+published: true
+title: HP SIM 5.3 kills iLOv2
+author:
+  display_name: iguy
+  login: iguy
+  email: iguy@ionsphere.org
+  url: ''
+author_login: iguy
+author_email: iguy@ionsphere.org
+wordpress_id: 114
+wordpress_url: http://itsjustanotherlayer.com/?p=114
+date: !binary |-
+  MjAwOS0wMy0xNyAxOTo0MTozNSAtMDUwMA==
+date_gmt: !binary |-
+  MjAwOS0wMy0xNyAxOTo0MTozNSAtMDUwMA==
+categories:
+- Uncategorized
+tags:
+- hardware
+- ilo
+- sim
+comments:
+- id: 32
+  author: justpaul
+  author_email: justpaul@gmail.com
+  author_url: http://twitter.com/justpaul
+  date: !binary |-
+    MjAwOS0wMy0xOCAxNjoyMDowNCAtMDUwMA==
+  date_gmt: !binary |-
+    MjAwOS0wMy0xOCAxNjoyMDowNCAtMDUwMA==
+  content: I agree 100%. HP needs a reset button for iLO. I've had issues as well
+    where iLO is locked and no way to fix it but to take down the OS. If anyone from
+    HP is reading this, *please* get it in the enhancement request queue.
+- id: 33
+  author: Vikash Kumar Roy
+  author_email: Vikash.roy@gmail.com
+  author_url: http://vikashkumarroy.blogspot.com
+  date: !binary |-
+    MjAwOS0wMy0yMyAxMzoxMjoyMiAtMDUwMA==
+  date_gmt: !binary |-
+    MjAwOS0wMy0yMyAxMzoxMjoyMiAtMDUwMA==
+  content: ! "We have implemented HP SIM 5.3 for monitoring our HP hardware and we
+    are facing unique problem which is supposed to be known bug from HP. Problem is
+    HP SIM lose its connectivity with SQL database. IRTC forum also says that it is
+    known issue. We are currently working with L3 to find out root cause. \nLet us
+    know if you if you are aware of it.\n\nThanks,\nVikash"
+- id: 34
+  author: iguy
+  author_email: iguy@ionsphere.org
+  author_url: http://www.itsjustanotherlayer.com
+  date: !binary |-
+    MjAwOS0wMy0yMyAxNjowMTozNCAtMDUwMA==
+  date_gmt: !binary |-
+    MjAwOS0wMy0yMyAxNjowMTozNCAtMDUwMA==
+  content: Nope.. good question.  I'm still trying to keep 5.3 up and running for
+    more than 24 hours at a pop.
+- id: 35
+  author: mm
+  author_email: mohammadi.41@gmail.com
+  author_url: ''
+  date: !binary |-
+    MjAwOS0wNi0yMiAwNTowNTo0NyAtMDUwMA==
+  date_gmt: !binary |-
+    MjAwOS0wNi0yMiAwNTowNTo0NyAtMDUwMA==
+  content: please describe application and usage of ilo.what is difference between
+    ilo and SIM.
+- id: 36
+  author: Thomas Vuylsteke
+  author_email: thomas.vuylsteke@gmail.com
+  author_url: ''
+  date: !binary |-
+    MjAwOS0wOS0wOCAyMDo0ODo0OCAtMDUwMA==
+  date_gmt: !binary |-
+    MjAwOS0wOS0wOCAyMDo0ODo0OCAtMDUwMA==
+  content: ! 'Did the hotfix solved this issue?
+
+
+    Kind regards,
+
+    Thomas'
+- id: 37
+  author: iguy
+  author_email: iguy@ionsphere.org
+  author_url: http://www.itsjustanotherlayer.com
+  date: !binary |-
+    MjAwOS0wOS0wOSAxNzo0MjozMCAtMDUwMA==
+  date_gmt: !binary |-
+    MjAwOS0wOS0wOSAxNzo0MjozMCAtMDUwMA==
+  content: The hotfix did resolve this issue.
+- id: 38
+  author: IT by Mitch &raquo; Blog Archive &raquo; HP SIM 5.3 killed my iLO&#8230;wtf?
+  author_email: ''
+  author_url: http://www.mitchellenright.com/?p=84
+  date: !binary |-
+    MjAwOS0wOS0xMSAwNjoxNzo0NyAtMDUwMA==
+  date_gmt: !binary |-
+    MjAwOS0wOS0xMSAwNjoxNzo0NyAtMDUwMA==
+  content: ! '[...] sure what that&#8217;s all about, but there&#8217;s a blog here
+    that points towards&nbsp;installing a hotfix for SIM and advises a firmware update
+    for iLO, but [...]'
+---
+<p>Recently at the request of our vendor (HP), I went and had HP Systems Insight Manager updated to 5.3 about 3 weeks.&nbsp; Now this isn't "bleeding edge" and so I didn't feel it was a big deal to jump up to it already.&nbsp;&nbsp; Well over the past 3 weeks I've been getting this new alert coming from our SIM system and I just figured "Oh.. something new" and didn't fret about it too much.</p>
+<blockquote>
+<p >Event Name: (SNMP) Remote Insight&#47; Integrated LightsOut Interface Error (9006)<&#47;p></p>
+<p >URL: https:&#47;&#47;HPSIM:2381&#47;<&#47;p></p>
+<p >Event originator: HPSIM<&#47;p></p>
+<p >Event Severity: Major<&#47;p></p>
+<p >Event received: 12-Mar-2009, 17:31:02<&#47;p></p>
+<p >Event description: Remote Insight&#47; Integrated Lights-Out Interface Error.<span> <&#47;span>The host OS has detected an error in the Remote Insight&#47; Integrated Lights-Out interface.<span> <&#47;span>The firmware is not responding.<&#47;p><br />
+<&#47;blockquote></p>
+<p class="MsoPlainText">As you can tell from my lazy comments, this became a pretty big deal as iLO was completely toasty on these boxes where SIM was generating this alert.&nbsp; I contacted HP and it was a pretty entertaining exchange.<&#47;p></p>
+<blockquote>
+<p class="MsoPlainText"><&#47;p></p>
+<p class="MsoPlainText"><em>HP Support: <&#47;em> Are you running HP SIM 5.3?<&#47;p></p>
+<p class="MsoPlainText"><em>Me: <&#47;em>Yes<&#47;p></p>
+<p class="MsoPlainText"><em>HP Support: <&#47;em>Do you have iLO version 1.60 or 1.61?<&#47;p></p>
+<p class="MsoPlainText"><em>Me: <&#47;em>Beats me.&nbsp; The iLOs are not responding so I have zero way to tell.<&#47;p></p>
+<p class="MsoPlainText"><em>HP Support: <&#47;em>I think I know your problem.<&#47;p></p>
+<p class="MsoPlainText"><em>Me: <&#47;em> <Silence for a minute.>&nbsp; Well don't leave me hanging here.<&#47;p></p>
+<p class="MsoPlainText"><em>HP Support:<&#47;em> I'm reading an email alert that came through while we were talking.&nbsp;&nbsp; There's a <a title="HP SIM 5.3 HotFix" href="http:&#47;&#47;h18013.www1.hp.com&#47;products&#47;servers&#47;management&#47;hpsim&#47;dl_windows.html" target="_blank">hotfix for HP SIM 5.3<&#47;a> and a recommendation to go up to firmware 1.70 for the iLO.<&#47;p></p>
+<p class="MsoPlainText"><em>Me: <&#47;em> Oh great.&nbsp; *sigh*<&#47;p><br />
+<&#47;blockquote></p>
+<p class="MsoPlainText"><&#47;p></p>
+<p class="MsoPlainText">So now I get to physically pull power cords to fix iLOs everywhere.&nbsp; (Yes this means an OS reboot too.)<&#47;p></p>
+<p class="MsoPlainText"><&#47;p></p>
+<p class="MsoPlainText">* Hey HP.&nbsp; Put a button onto the servers to "reboot the iLO".<&#47;p></p>

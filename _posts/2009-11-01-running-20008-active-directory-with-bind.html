@@ -1,0 +1,125 @@
+---
+layout: post
+status: publish
+published: true
+title: Running 20008 Active Directory with Bind
+author:
+  display_name: iguy
+  login: iguy
+  email: iguy@ionsphere.org
+  url: ''
+author_login: iguy
+author_email: iguy@ionsphere.org
+wordpress_id: 314
+wordpress_url: http://itsjustanotherlayer.com/?p=314
+date: !binary |-
+  MjAwOS0xMS0wMSAwMzozODowNyAtMDYwMA==
+date_gmt: !binary |-
+  MjAwOS0xMS0wMSAwMzozODowNyAtMDYwMA==
+categories:
+- VMware
+tags:
+- ActiveDirectory
+- Bind
+- home
+- Windows2008
+comments:
+- id: 91
+  author: Bruno
+  author_email: bruno.postiau@champ.aero
+  author_url: ''
+  date: !binary |-
+    MjAwOS0xMi0xMCAxMzoyNzoxMCAtMDYwMA==
+  date_gmt: !binary |-
+    MjAwOS0xMi0xMCAxMzoyNzoxMCAtMDYwMA==
+  content: ! 'Hi
+
+    We''ve been using Bind and AD for several years now by allowing automatic updates
+    only for DCS. Since we also use third party Dns management tool, we just added
+    the contents of c:winntsystem32confignetlogon.dns to the automatically loaded
+    dns list of the tool. This file contains all what your dc is trying to publish
+    to Dns.
+
+    brgds'
+- id: 92
+  author: Akuma
+  author_email: lol@lmao.com
+  author_url: ''
+  date: !binary |-
+    MjAxMS0wNC0yOCAxMjowOTozNiAtMDUwMA==
+  date_gmt: !binary |-
+    MjAxMS0wNC0yOCAxNzowOTozNiAtMDUwMA==
+  content: ! 'Those UID are needed, without them, the Bind DNS will deny the DC to
+    write necesary updates and there won''t be LDAP connectivity.
+
+
+    Cheers,
+
+    Akuma.'
+---
+<p>One of the fun things about running stuff at home, once you have something working remotely well you sure don't want to change it.&nbsp;&nbsp; As such I have setup Bind 9 with DHCP and it works pretty good with a bunch of scripts I have to handle various dynamic adding and removing from my running system.&nbsp; Every system in this house works off of this base, very stable system.&nbsp; This works pretty well and there in comes the issue.&nbsp;&nbsp;&nbsp;&nbsp; I am attempting to bring up an Active Directory Domain for testing a variety of products and as is typical MS, as long as you give all your money to MS, everything works great.&nbsp;&nbsp; The minute you step out of that paradigm the documentation and functionality tends to falter a bit.</p>
+<p>In order to setup Windows 2008 Active Directory domain, the system basically expects you to use MS DNS&#47;DHCP services.&nbsp;&nbsp; I have no desire to tear down a perfectly functional environment and make it work now with MS DNS.&nbsp;&nbsp; After a significant amount of digging I found some good webpages on how to setup Bind to work with AD.&nbsp;&nbsp; None of them worked right though.</p>
+<ul>
+<li><a title="Bind and Active Directory" href="http:&#47;&#47;blog.master-zone.net&#47;bind-and-active-directory" target="_blank">Bind and Active Directory<&#47;a> - didn't work.&nbsp;&nbsp; I simply couldn't get the Windows box to talk to bind for some reason<&#47;li>
+<li><a title="Bind and R2 Active Directory" href="http:&#47;&#47;social.technet.microsoft.com&#47;Forums&#47;en-US&#47;winserverDS&#47;thread&#47;ba8cef9f-b214-4f9e-8151-458ae834b906" target="_blank">Bind DNS and Active Directory R2<&#47;a> - I kept getting these errors.&nbsp;&nbsp; No luck down this path.<&#47;li>
+<li><a title="DNS Bind Delegation" href="http:&#47;&#47;social.technet.microsoft.com&#47;Forums&#47;en-US&#47;winserverNIS&#47;thread&#47;4598b95d-d692-4057-8e61-d38c7907f206&#47;" target="_blank">DNS Bind Delegation<&#47;a> - This isn't ideal as now I have to change a significant amount of configuration for DNS searching to work right.&nbsp; Not the route I want to go down.<&#47;li><br />
+<&#47;ul><br />
+So plan D at this point was reading some of the docs on Active Directory and DNS on technet and then turning up named logging and watching for what the future DC was asking for.&nbsp;&nbsp; Create the domain without passing the network tests and then just run <em>dcdiag &#47;test:DNS<&#47;em> a couple dozen times added in each entry as you need to.&nbsp; Add this into<em> &#47;etc&#47;named.conf <&#47;em>and then run <em>service named restart.<&#47;em></p>
+<blockquote><p>logging {</p>
+<p>category "default" { "debug"; };<br />
+category "general" { "debug"; };<br />
+category "database" { "debug"; };<br />
+category "security" { "debug"; };<br />
+category "config" { "debug"; };<br />
+category "resolver" { "debug"; };<br />
+category "xfer-in" { "debug"; };<br />
+category "xfer-out" { "debug"; };<br />
+category "notify" { "debug"; };<br />
+category "client" { "debug"; };<br />
+category "unmatched" { "debug"; };<br />
+category "network" { "debug"; };<br />
+category "update" { "debug"; };<br />
+category "queries" { "debug"; };<br />
+category "dispatch" { "debug"; };<br />
+category "dnssec" { "debug"; };<br />
+category "lame-servers" { "debug"; };<br />
+channel "debug" {<br />
+file "&#47;tmp&#47;namedebug" versions 2 size 50m;<br />
+print-time yes;<br />
+print-category yes;<br />
+};<&#47;blockquote><br />
+After watching this log file and trying to promote a machine to a DC a couple dozen times and testing this, I found the following DNS entries in your zone are needed.</p>
+<p>If my DC is going to have a DNS name of DC.home.here.org with an IP of 192.168.1.4 and the domain is HOME, then these are the entries needed.</p>
+<blockquote><p>home.here.org&nbsp;&nbsp;&nbsp;&nbsp; A&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 192.168.1.4<br />
+DC.home.here.org&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; A&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 192.168.1.4<br />
+UID #1 - the subkey in HKLMSoftwareMicrosoftCryptographyAutoEnrollmentAEDirectoryCache<br />
+UID #2 - I don't know where this comes from.&nbsp; I think it is something Domain related.&nbsp; It isn't in the registry.<br />
+(These UID based DNS entries might not be needed - not sure)</p>
+<p>$ORIGIN _msdcs.home.here.org.<br />
+(UID #1 - might not be needed)&nbsp; CNAME DC.home.here.org.</p>
+<p>$ORIGIN _tcp.Default-First-Site-Name._sites.dc._msdcs.home.here.org.<br />
+_kerberos&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; SRV 0 0 88 DC.home.here.org.<br />
+_ldap&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; SRV 0 0 389 DC.home.here.org.</p>
+<p>$ORIGIN _tcp.dc._msdcs.home.here.org.<br />
+_kerberos&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; SRV 0 0 88 DC.home.here.org.<br />
+_ldap&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; SRV 0 0 389 DC.home.here.org.</p>
+<p>$ORIGIN _msdcs.home.here.org.<br />
+_ldap._tcp.(UID#2 - might not be needed).domains SRV 0 0 389 DC.home.here.org.<br />
+gc&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; A&nbsp;&nbsp; 192.168.1.4</p>
+<p>$ORIGIN gc._msdcs.home.here.org.<br />
+_ldap._tcp.Default-First-Site-Name._sites SRV 0 0 389 DC.home.here.org.<br />
+_ldap._tcp&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; SRV 0 0 389 DC.home.here.org.</p>
+<p>$ORIGIN _msdcs.home.here.org.<br />
+_ldap._tcp.pdc&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; SRV 0 0 389 DC.home.here.org.</p>
+<p>$ORIGIN _tcp.Default-First-Site-Name._sites.home.here.org.<br />
+_gc&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; SRV 0 0 3268 DC.home.here.org.<br />
+_kerberos&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; SRV 0 0 88 DC.home.here.org.<br />
+_ldap&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; SRV 0 0 389 DC.home.here.org.</p>
+<p>$ORIGIN _tcp.home.here.org.<br />
+_kerberos&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; SRV 0 0 88 DC.home.here.org.<br />
+_kpasswd&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; SRV 0 0 464 DC.home.here.org.<br />
+_ldap&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; SRV 0 0 389 DC.home.here.org.</p>
+<p>$ORIGIN home.here.org.<br />
+_kerberos._udp&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; SRV 0 0 88 DC<br />
+DC&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; A&nbsp;&nbsp; 192.168.1.4<&#47;blockquote><br />
+Enter all these and then try creating your domain again.&nbsp;&nbsp; This got me up and running.&nbsp;&nbsp; It would be nice in the spirit of openness to give me an option from dcdiag to dump all the DNS entries the system is looking for and testing.</p>

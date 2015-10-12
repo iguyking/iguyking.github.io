@@ -1,0 +1,43 @@
+---
+layout: post
+status: publish
+published: true
+title: Windows 10 Build 9926 Sysprep Fails
+author:
+  display_name: iguy
+  login: iguy
+  email: iguy@ionsphere.org
+  url: ''
+author_login: iguy
+author_email: iguy@ionsphere.org
+wordpress_id: 737
+wordpress_url: http://itsjustanotherlayer.com/?p=737
+date: !binary |-
+  MjAxNS0wMy0xNiAxNjo0NDozNSAtMDUwMA==
+date_gmt: !binary |-
+  MjAxNS0wMy0xNiAyMTo0NDozNSAtMDUwMA==
+categories:
+- Server Virtualization
+tags:
+- private cloud
+- templates
+comments: []
+---
+<p>I've been working on getting Windows 10 available in our private cloud as blueprint and kept having the deploy fail when trying to sysprep it. When logging in directly to the system and running sysprep, we see this error.</p>
+<p><a href="http:&#47;&#47;itsjustanotherlayer.com&#47;wp-content&#47;uploads&#47;2015&#47;03&#47;Windows10_sysprep_failure.png"><img class="alignleft size-medium wp-image-739" src="http:&#47;&#47;itsjustanotherlayer.com&#47;wp-content&#47;uploads&#47;2015&#47;03&#47;Windows10_sysprep_failure-300x119.png" alt="Setup Error message" width="300" height="119" &#47;><&#47;a></p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>When digging further we find in the C:\Windows\System32\Sysprep\Panther\setuperr.log this text.</p>
+<p style="padding-left: 30px;"><code>SYSPRP Package Microsoft.Getstarted_1.5.22.1_x64_8wekyb3d8bbwe was installed for a user, but not provisioned<br />
+SYSPRP Failed to remove apps for the current user<br />
+<&#47;code><&#47;p><br />
+This is caused by Windows App Store installing things while the template is online and connected to the network.</p>
+<p><strong>Resolution<&#47;strong></p>
+<p>Two solutions I've found so far</p>
+<ol>
+<li>When installing the OS, have it disconnected from the network.<&#47;li>
+<li>Clean up the template if that doesn't work by running the commands
+<pre lang="Powershell" line="1">get-appxpackage -name *packagename* | remove-appxpackage<&#47;pre><br />
+<&#47;li><br />
+<&#47;ol></p>

@@ -1,0 +1,84 @@
+---
+layout: post
+status: publish
+published: true
+title: HP BL495c - Virtualization Blade?
+author:
+  display_name: iguy
+  login: iguy
+  email: iguy@ionsphere.org
+  url: ''
+author_login: iguy
+author_email: iguy@ionsphere.org
+wordpress_id: 21
+wordpress_url: http://itsjustanotherlayer.com/?p=21
+date: !binary |-
+  MjAwOC0xMC0xNSAwMjo0NzowMiAtMDUwMA==
+date_gmt: !binary |-
+  MjAwOC0xMC0xNSAwMjo0NzowMiAtMDUwMA==
+categories:
+- Server Virtualization
+tags:
+- hardware
+- Server Virtualization
+comments:
+- id: 4
+  author: Ceri Davies
+  author_email: ceri@submonkey.net
+  author_url: http://typo.submonkey.net
+  date: !binary |-
+    MjAwOC0xMC0yNSAxMDoyMToyOCAtMDUwMA==
+  date_gmt: !binary |-
+    MjAwOC0xMC0yNSAxMDoyMToyOCAtMDUwMA==
+  content: How is that better than Sun's x6450 blade (http:&#47;&#47;www.sun.com&#47;servers&#47;blades&#47;x6450&#47;)
+    which will take up to four six-core Xeons, has 24 DIMM slots allowing for 192GB
+    of RAM and also manages to make it on to the supported list?
+- id: 5
+  author: Jerry Hamilton
+  author_email: jrh77172@gmail.com
+  author_url: ''
+  date: !binary |-
+    MjAwOC0xMC0yOCAwMzozMDozNiAtMDUwMA==
+  date_gmt: !binary |-
+    MjAwOC0xMC0yOCAwMzozMDozNiAtMDUwMA==
+  content: I'm not sold on the half-height blade concept either.  Keep in mind the
+    chassis has a split mid-plane.  So what happens if the upper or lower half of
+    the mid-plane fails (and yes it can happen).  If 8 blades go down that's 80+ VMs
+    failing instantly.
+- id: 6
+  author: Gary
+  author_email: hotone_ten@yahoo.com
+  author_url: ''
+  date: !binary |-
+    MjAwOC0xMS0wMyAxMjo0MDozMiAtMDYwMA==
+  date_gmt: !binary |-
+    MjAwOC0xMS0wMyAxMjo0MDozMiAtMDYwMA==
+  content: ! "VMware ESX drivers for the BL495c can be found in the following support
+    page:\n\nhttp:&#47;&#47;h20000.www2.hp.com&#47;bizsupport&#47;TechSupport&#47;DriverDownload.jsp?prodNameId=3621782&amp;lang=en&amp;cc=us&amp;taskId=135&amp;prodClassId=-1&amp;prodTypeId=3709945&amp;prodSeriesId=3621769\n\nI
+    am not an expert in virtualization, and hope that you can provide an opinion:
+    what is the advantage of using the BL495c over say the BL460c in VMware environments?
+    \ \n\nOn one of our projects, we are looking to manage disparate development,
+    testing and staging environments and applications where the hardware and software
+    configurations change over time."
+- id: 7
+  author: Ken
+  author_email: ken@henault.org
+  author_url: ''
+  date: !binary |-
+    MjAwOS0wMS0wOCAxMzoyNjozNyAtMDYwMA==
+  date_gmt: !binary |-
+    MjAwOS0wMS0wOCAxMzoyNjozNyAtMDYwMA==
+  content: ! "The BL495c is now supported by VMware and the 10Gb Virtual Connect module
+    is available.  There was never a 10Gb pass thru.\n\nhttp:&#47;&#47;www.vmware.com&#47;resources&#47;compatibility&#47;search.php?action=search&amp;deviceCategory=server&amp;productId=1&amp;keyBasic=bl495c&amp;maxDisplayRows=50&amp;key=&amp;release%5B%5D=-1&amp;datePosted=-1&amp;stepping=&amp;nsockets=&amp;ncores=&amp;max_mem=\n\nhttp:&#47;&#47;www.vmware.com&#47;resources&#47;compatibility&#47;search.php?action=search&amp;deviceCategory=io&amp;productId=1&amp;keyBasic=NC532m&amp;maxDisplayRows=50&amp;key=NC523m&amp;release%5B%5D=-1&amp;datePosted=-1&amp;vid=&amp;did=&amp;svid=&amp;ssid=\n\nThe
+    BL495c is a much denser package than the Sun&rsquo;s x6450.  It has 2 major advantages
+    over the BL460c; twice the memory, and Flex-10 NICs.  The onboard Flex-10 NICs
+    can be configured as up to 8 NICs with only 2 VC modules. \n\nhttp:&#47;&#47;h18000.www1.hp.com&#47;products&#47;blades&#47;components&#47;ethernet&#47;10-10gb-f&#47;benefits.html?jumpid=reg_R1002_USEN"
+---
+<p>HP finally came out with the official information on the heavy duty blade for use in VMware environments.&nbsp;&nbsp; This blade for the c-Chassis is the <a title="BL495c Marketing Page" href="http:&#47;&#47;h18004.www1.hp.com&#47;products&#47;servers&#47;proliant-bl&#47;c-class&#47;495c-g5&#47;index.html" target="_blank">BL495c<&#47;a> which has 16 slots for Memory DIMMs and two AMD Opteron processors.&nbsp;&nbsp; Its the official Virtualization Blade.</p>
+<p>There's just a couple of gotchas here coming from someone that would like to use them:</p>
+<ul>
+<li>It comes with <a href="http:&#47;&#47;h18004.www1.hp.com&#47;products&#47;quickspecs&#47;13140_div&#47;13140_div.html" target="_blank">2 10Gb builtin ethernet<&#47;a> connections.&nbsp; There's no interconnect module right now that can use this other than the pass thru.&nbsp;&nbsp; Well if your going to use an interconnect pass thru the whole purpose of blades for being able to reduce cabling and simplify management.&nbsp; You might as well just use rack mounts as they give you more flexiblity and control and your just buying what you need.<&#47;li>
+<li>It has the option of coming with <a href="http:&#47;&#47;h18004.www1.hp.com&#47;products&#47;quickspecs&#47;13140_div&#47;13140_div.html#Storage" target="_blank">SSD drives<&#47;a>.&nbsp;&nbsp; If your doing serious virtualization the last thing you need in a physical instance is anything that ties you to that physical instance.&nbsp;&nbsp; The SSD is a short term solution and I don't care if its faster (that's the big deal with SSD Drives - faster). &nbsp; The future for serious virtualization solutions is zero ties to the hardware all served out from a central system.&nbsp; Personally I think PXE is going to be the answer to this issue.<&#47;li>
+<li> There's no support listed for VMware ESX in the <a href="http:&#47;&#47;h20000.www2.hp.com&#47;bizsupport&#47;TechSupport&#47;DriverDownload.jsp?prodNameId=3813532&amp;lang=en&amp;cc=us&amp;prodTypeId=15351&amp;prodSeriesId=3782978&amp;taskId=135" target="_blank">support pages<&#47;a>.&nbsp; I thought HP was a huge VMware Partner?&nbsp; Easily the single largest Server Virtualization Vendor in the business and you don't support it though you have Marketing statements like "the world's first virtualization blade"?<&#47;li><br />
+<&#47;ul><br />
+I think the HP BL495c has the potential to be a fantastic product to use since this is a half height blade so you can get 16 blades in 10U of rack space.&nbsp; There's just a couple of gotchas right now.</p>

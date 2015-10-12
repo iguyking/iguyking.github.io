@@ -1,0 +1,94 @@
+---
+layout: post
+status: publish
+published: true
+title: LoadTesting takes a turn with Server Virtualization
+author:
+  display_name: iguy
+  login: iguy
+  email: iguy@ionsphere.org
+  url: ''
+author_login: iguy
+author_email: iguy@ionsphere.org
+wordpress_id: 149
+wordpress_url: http://itsjustanotherlayer.com/?p=149
+date: !binary |-
+  MjAwOS0wNS0xOSAwMzo1Mzo0NyAtMDUwMA==
+date_gmt: !binary |-
+  MjAwOS0wNS0xOSAwMzo1Mzo0NyAtMDUwMA==
+categories:
+- Server Virtualization
+tags:
+- analysis
+- performance
+comments:
+- id: 40
+  author: Paras
+  author_email: paras.chopra@rediffmail.com
+  author_url: ''
+  date: !binary |-
+    MjAwOS0wNS0yOCAyMjoyMjozMSAtMDUwMA==
+  date_gmt: !binary |-
+    MjAwOS0wNS0yOCAyMjoyMjozMSAtMDUwMA==
+  content: Interesting Stuff, would be interested in knowing, what metrics were used
+    to determince... application isn't using the 4CPU as effeciently as 2CPU.
+- id: 41
+  author: iguy
+  author_email: iguy@ionsphere.org
+  author_url: http://www.itsjustanotherlayer.com
+  date: !binary |-
+    MjAwOS0wNi0wMSAxOTowNzoyMyAtMDUwMA==
+  date_gmt: !binary |-
+    MjAwOS0wNi0wMSAxOTowNzoyMyAtMDUwMA==
+  content: The main one is watching each individual CPU over time graph in the Guest
+    OS and if it doesn't consistently stay "close", then you know that the applications
+    on the box aren't threading or utilizing the extra CPUs effectively.   An example
+    would be two of the 4 CPUs go to 20% and one goes to 10% over a processing run.
+    The last one goes to 35%.   This system will likely run faster on a 2 CPU system
+    instead of the current 4.
+- id: 42
+  author: Vikash Kumar Roy
+  author_email: Vikash.roy@gmail.com
+  author_url: http://vikashkumarroy.blogspot.com/
+  date: !binary |-
+    MjAwOS0wNi0wMyAxMzozMToyNSAtMDUwMA==
+  date_gmt: !binary |-
+    MjAwOS0wNi0wMyAxMzozMToyNSAtMDUwMA==
+  content: Most of the satiation which I came across is when you run single threaded
+    application run on vSMP and performance degrade. It becomes very hard to make
+    customer understand that &ldquo;Please reduce CPU and performance will improve&rdquo;.
+    Their general mind set is that if we add more CPU&#47;RAM performance increases.  I
+    usually play the same mind game to convince business or application owner to reduce
+    CPU. Usually I approach them with intention to prove that application is not multithreaded
+    . For that if I have to approach even software vendor I do it.
+- id: 43
+  author: Anaxander
+  author_email: anaxander@gmail.com
+  author_url: ''
+  date: !binary |-
+    MjAwOS0wNi0wOSAxNjozMDozOSAtMDUwMA==
+  date_gmt: !binary |-
+    MjAwOS0wNi0wOSAxNjozMDozOSAtMDUwMA==
+  content: ! 'When monitoring CPU usage, are you using the vCenter performance counters
+    or running perfmon inside the Guest OS? I like the vCenter counters but the per-CPU
+    usage stats are only real-time.
+
+
+    What is your methodology for determining over-allocated memory? Memory size versus
+    Guest Memory % used?'
+---
+<p>Just recently I had an interesting conversation with one of my clients.&nbsp; In this internal consult with her, she comes to me and says of our VMware Solutions that there is a</p>
+<p style="padding-left: 30px;">"potential issue with 4 vCPUs and scheduling"<&#47;p></p>
+<p>I looked at her and was a bit confused.&nbsp;&nbsp; I told her</p>
+<p style="padding-left: 30px;">"No.. there isn't a scheduling issue for 4 vCPUs in our environment."<&#47;p></p>
+<p>The response was</p>
+<p style="padding-left: 30px;">"Well in our last consult effort, the solution was changing the system down to 2 vCPUs instead of using 4 vCPUs."<&#47;p></p>
+<p>Ah ha.&nbsp;&nbsp; I understand now.&nbsp; The light bulb suddenly came on.</p>
+<p>One of the big benefits in Server Virtualization is the idea that we can make some rather "drastic" (by legacy mentality) changes to a Machine&#47;OS instance that you couldn't or didn't want to do in a physical system.</p>
+<ol>
+<li>Ask yourself, When was the last time I went and pulled out Processors from a physical system in load testing?&nbsp;&nbsp; I'll bet you a beer at VMworld that you haven't done that in years if ever.<&#47;li>
+<li>Now when's the last time you changed a Virtual Machine from a 4 vCPU to a 2 vCPU system to try to improve performance of a given OS instance.&nbsp;&nbsp; I'll bet a beer again that you have done this in the last 60 days.<&#47;li><br />
+<&#47;ol><br />
+It is so easy for us to make those changes we don't think of the appearance of how it looks to our end clients.&nbsp;&nbsp; As in my recent discussion, they assumed that this was due to VMware ESX not being able to schedule multiple CPUs well.&nbsp; This may have been due to poor wording on my part or a leap of logic by my internal clients. &nbsp; In reality it is more likely, after I've gone back and started digging into some of the metrics collected at that time, that the application itself doesn't work as efficiently with 4 vCPUs as it does with 2 vCPUs.</p>
+<p>Also it is very easy and a lazy &#47; simple approach for us as IT folks to just assume that since I've got two sockets quad core in a physical that the load testing that we've done is going to be the fastest application performance we can get.&nbsp;&nbsp; The reality of the situation is that unless we do some tests covering changing the hardware around we really have no idea that if I got a single core, single socket my application may run (WAY) faster.&nbsp;&nbsp; We just don't know.</p>
+<p>If your serious about IT and doing things <strong>R<&#47;strong>ight and <strong>C<&#47;strong>orrect for your company and yourself, you have to be honest with what your looking at (metrics and performance) and what it really means to yourself (flexibility) and to your clients (appearance).&nbsp;&nbsp; I know I've had a fantastic ephinany and that will help me be a better IT person now.</p>

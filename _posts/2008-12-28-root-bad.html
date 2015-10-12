@@ -1,0 +1,106 @@
+---
+layout: post
+status: publish
+published: true
+title: root == Bad
+author:
+  display_name: iguy
+  login: iguy
+  email: iguy@ionsphere.org
+  url: ''
+author_login: iguy
+author_email: iguy@ionsphere.org
+wordpress_id: 51
+wordpress_url: http://itsjustanotherlayer.com/?p=51
+date: !binary |-
+  MjAwOC0xMi0yOCAwMzoyMDoxMCAtMDYwMA==
+date_gmt: !binary |-
+  MjAwOC0xMi0yOCAwMzoyMDoxMCAtMDYwMA==
+categories:
+- VMware
+tags:
+- root
+- VMware
+comments:
+- id: 24
+  author: Jason Boche
+  author_email: jason@boche.net
+  author_url: http://www.boche.net/blog/
+  date: !binary |-
+    MjAwOC0xMi0yOCAwMzo1NzowNSAtMDYwMA==
+  date_gmt: !binary |-
+    MjAwOC0xMi0yOCAwMzo1NzowNSAtMDYwMA==
+  content: You obviously work in the trenches.  In the real world.  Like me.
+- id: 25
+  author: Cody
+  author_email: bunchc@professionalvmware.com
+  author_url: http://professionalvmware.com
+  date: !binary |-
+    MjAwOC0xMi0yOCAwNDozMToyMiAtMDYwMA==
+  date_gmt: !binary |-
+    MjAwOC0xMi0yOCAwNDozMToyMiAtMDYwMA==
+  content: ! 'One point of contention:
+
+
+    "Anyone that immediately says these are trivial never has had to maintain this
+    for thousands of accounts from the top down to the actual account.  It might be
+    simple to do though when you start adding this to every procedure you have, it
+    adds up.
+
+
+    Now why would you need another root account?  I&rsquo;m doing everything I can
+    to get rid of all usage of it.  sudo does 99.99% of everything I need to do with
+    root level privileges in ESX."
+
+
+    If you are already sshing, into thousands of ESX servers to do maintenance, then
+    the benefit&#47;non-benefit of having this is moot, and your management&#47;design
+    should likely be revisited.
+
+
+    That said, in this case, it''s just one of those things available to you.  Logging
+    into ESX and doing "sudo rm -rf &#47;" isn''t smart either, but it can be done.'
+- id: 26
+  author: Vishnu Mohan
+  author_email: vmohan@vmware.com
+  author_url: ''
+  date: !binary |-
+    MjAwOC0xMi0yOCAxNDo0NjoyNCAtMDYwMA==
+  date_gmt: !binary |-
+    MjAwOC0xMi0yOCAxNDo0NjoyNCAtMDYwMA==
+  content: You technically don't need a root account on the ESX host to add it to
+    VirtualCenter. A user account with the correct privileges would suffice.
+- id: 27
+  author: iguy
+  author_email: iguy@ionsphere.org
+  author_url: http://www.itsjustanotherlayer.com
+  date: !binary |-
+    MjAwOC0xMi0yOCAyMDozNDo0NSAtMDYwMA==
+  date_gmt: !binary |-
+    MjAwOC0xMi0yOCAyMDozNDo0NSAtMDYwMA==
+  content: ! "@Cody:  I don't follow you quite clearly Cody.   I ssh into around a
+    hundred ESX Hosts currently using a home grown framework for management and auditing
+    for this environment.  So these actions aren't manual.  The key is I'm not sshing
+    into everyone of these machines with the root account.  Instead each engineer
+    uses their own credentials and as such this is well audited as who did what when.
+    \ Can I prevent someone from running \"sudo rm -rf\"?  No.   Can I figure out
+    who did it?  Yes.   If they were using root or some other shared account could
+    I figure out who did it?  Not unless they admit to it.   \n\nThere is a point
+    where you have to have some faith or trust in the individuals that have the power.
+    \ The best you can do realistically is to limit who have that level of power as
+    much as reasonable while balancing the age old debate of security where you can't
+    do anything versus flexibility to get your job done.\n\n@Vishnu:  What privileges
+    do you need?  I'll have to look into this again and try it."
+---
+<p>I've been reading a <a href="http:&#47;&#47;professionalvmware.com&#47;2008&#47;12&#47;10&#47;those-roots-run-deep-create-a-second-root-account-on-esx&#47;" target="_blank">bunch<&#47;a> of <a href="http:&#47;&#47;lonesysadmin.net&#47;2008&#47;12&#47;23&#47;why-would-you-want-a-second-superuser&#47;" target="_blank">posts<&#47;a> that have been covering the idea of "making another root account".&nbsp;&nbsp; I read this <a href="http:&#47;&#47;kb.vmware.com&#47;kb&#47;1005278" target="_blank">KB article<&#47;a> from VMware when it first came out and said "how dumb, no thanks".&nbsp;&nbsp; I didn't realize it would cause such a stir.</p>
+<p>When I design new systems and deploy new applications and processes at my work, a large part of the discussion in my mind is how much support work will this new procedure cause.&nbsp;&nbsp; Initial deployment is typically all a project planner thinks about.&nbsp; That is a small cost in the overall picture from my experience.</p>
+<p>Adding an additional root level account introduces the following support issues:</p>
+<ul>
+<li>An account that has to be audited<&#47;li>
+<li>An account that has to have a regular password update which means tracking that password<&#47;li>
+<li>An account that needs to have the password distributed to various individuals<&#47;li>
+<li>An attack vector that must be considered or contained<&#47;li><br />
+<&#47;ul><br />
+Anyone that immediately says these are trivial never has had to maintain this for thousands of accounts from the top down to the actual account.&nbsp; It might be simple to do though when you start adding this to every procedure you have, it adds up.</p>
+<p>Now why would you need another root account?&nbsp; I'm doing everything I can to get rid of all usage of it.&nbsp; sudo does 99.99% of everything I need to do with root level privileges in ESX.&nbsp;&nbsp; If I could add a host into VirtualCenter using a user account instead of root I'd be happy to disable logins using <em>root<&#47;em>.&nbsp; There is only one situation I can think of that I need root for and if the host is that screwed up, I'll most likely be rebooting it anyways.</p>
+<p>Not much use for root honestly.&nbsp; Fight the power.&nbsp;&nbsp; As a fellow blogger says so elegantly, "Just cause you can doesn't mean you should".</p>

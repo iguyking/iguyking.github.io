@@ -1,0 +1,114 @@
+---
+layout: post
+status: publish
+published: true
+title: BCA1360 - Global Enterprise virtualizing Exchange 2010
+author:
+  display_name: iguy
+  login: iguy
+  email: iguy@ionsphere.org
+  url: ''
+author_login: iguy
+author_email: iguy@ionsphere.org
+wordpress_id: 635
+wordpress_url: http://itsjustanotherlayer.com/?p=635
+date: !binary |-
+  MjAxMS0wOC0zMSAxMToyODoyOSAtMDUwMA==
+date_gmt: !binary |-
+  MjAxMS0wOC0zMSAxNjoyODoyOSAtMDUwMA==
+categories:
+- VMware
+tags:
+- exchange
+- vmworld
+comments: []
+---
+<p>Exchange 2010 can be virtualized and this session covers how they did it.</p>
+<p>Some of the design points that need to be covered are:</p>
+<ul>
+<li>DAS vs SAN<&#47;li>
+<li>Scale up or Scale out<&#47;li><br />
+<&#47;ul><br />
+The choices made here are arbitrary and dependent on how you manage your datacenter and what you like&#47;don't like.</p>
+<p>Their layout is:</p>
+<ul>
+<li>4 datacenters, 2 DCs in US &amp; 2 in Europe<&#47;li><br />
+<&#47;ul></p>
+<ul>
+<li>If they have a DC failure, can run around 25% reduced capacity<&#47;li>
+<li>3 Hosts per datacenter<&#47;li><br />
+<&#47;ul></p>
+<ul>
+<li>2 Hosts are active, 1 failover<&#47;li>
+<li>SAN backend with 1TB 7k rpm SATA disks<&#47;li><br />
+<&#47;ul><br />
+How did they do it?</p>
+<ol>
+<li>Virtuals are manually balanced across the hosts per role<&#47;li>
+<li>DRS set to level 1 - don't VMotion naturally<&#47;li>
+<li>No Reservations<&#47;li>
+<li>Dedicated Farm versus using the general farm<&#47;li>
+<ul>
+<li>Exchange, all roles, all support systems etc<&#47;li><br />
+<&#47;ul><br />
+<&#47;ol><br />
+The Exchange 2010 Role layout is defined per OS instance, minimal sharing here.</p>
+<p><strong>CAS Role<&#47;strong></p>
+<ul>
+<li>4 G, 2 vCPUs<&#47;li>
+<li>VMDK based<&#47;li><br />
+<&#47;ul><br />
+<strong>Hub Role<&#47;strong></p>
+<ul>
+<li>4G , 4 vCPUs<&#47;li>
+<li>VMDK based<&#47;li><br />
+<&#47;ul><br />
+MBX Role</p>
+<ul>
+<li>2000 mailboxes per server<&#47;li>
+<li>6 vCPU<&#47;li>
+<li>36G of RAM<&#47;li>
+<li>3 NIC (MAPI, Backup &amp; Replication)<&#47;li>
+<li>VMDK for OS &amp; Pagefile<&#47;li>
+<li>RDM for Log &amp; DB disks<&#47;li>
+<li>For the 1TB LUN sizes use the 8MB block size format<&#47;li><br />
+<&#47;ul><br />
+SAN configuration</p>
+<ul>
+<li>EMC Clarion CX4, 1TB 7200rpm SAT disk<&#47;li>
+<li>RAID 6<&#47;li>
+<li>Datastores in 8MB<&#47;li>
+<li>Presented as 500GB and 1TB<&#47;li>
+<li>OS, Pagefiles, &amp; Misc Storage are VMDK<&#47;li>
+<li>Logfile &amp; Databases are RDM<&#47;li><br />
+<&#47;ul><br />
+LoadGen Physical versus Virtual</p>
+<p>They ran some testing with VMware Assistance and the performance numbers were significantly under where Microsoft states are required.&nbsp; In most cases significantly under.</p>
+<p>Lessons Learned:</p>
+<p>Backups and disk contention as things grew did start to become an issue as load was added.&nbsp;&nbsp; Symptoms would be dropped connections.&nbsp; Moved the backups to the passive copies instead.&nbsp; This addressed much of the concerns.</p>
+<p>When doing the migrations, take breaks in between each batch of migrations to iron out any issues.&nbsp;&nbsp; Found problems like pocket of users had unique issues and needed to have time to iron out the gotchas.</p>
+<p>Database sizes introduce issues around backup, replication etc.&nbsp;&nbsp; Make sure you can manage them for the demands for your environment.</p>
+<p>Some interesting discussions is that Hyper-Threading is not supported for production.&nbsp;&nbsp; It complicates performance discussions by Microsoft.&nbsp; VMware can do either so be sure to follow the Microsoft standards at the VM level.</p>
+<p>Memory is a big question.&nbsp; Basically set</p>
+<p>Storage.. the main points are make sure you have appropriate IOP capability behind the scenes.&nbsp; The other is if setting up VMDK files, should eagerZeroThick the VMDKs.&nbsp;&nbsp; If you check the box for enabling FT during creatio, this will eagerZeroThick is automatically.&nbsp; Otherwise this should be done when the machine is powered off and run VMKFSTOOLS from the command line.</p>
+<p>16 months later...</p>
+<ul>
+<li>Success doing VMotions and DAG failovers<&#47;li>
+<li>Backups are running lights out<&#47;li>
+<li>Will add more hosts to expand the environment<&#47;li>
+<li>Pain Points:<&#47;li><br />
+<&#47;ul>
+<ul>
+<li>Service Desk new process adoptions<&#47;li>
+<li>Integration with legacy tools in house.<&#47;li><br />
+<&#47;ul></p>
+<p>After all is said and done this has done quite a bit for the company.</p>
+<ol>
+<li>Datacenter savings<&#47;li>
+<li>TCO is down and has been passed on to the business<&#47;li>
+<li>much greater flexibility<&#47;li>
+<li>Scale out or Scale up very quickly<&#47;li>
+<li>Lower Administrative overhead so far<&#47;li>
+<li>More options for disaster recovery and scenarios<&#47;li><br />
+<&#47;ol><br />
+Exchange 2010 is possible.</p>

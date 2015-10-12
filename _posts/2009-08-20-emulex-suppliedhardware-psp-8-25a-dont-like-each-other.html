@@ -1,0 +1,45 @@
+---
+layout: post
+status: publish
+published: true
+title: Emulex Supplied Hardware & HP PSP 8.25A don't like each other
+author:
+  display_name: iguy
+  login: iguy
+  email: iguy@ionsphere.org
+  url: ''
+author_login: iguy
+author_email: iguy@ionsphere.org
+wordpress_id: 200
+wordpress_url: http://itsjustanotherlayer.com/?p=200
+date: !binary |-
+  MjAwOS0wOC0yMCAyMDozNjozNyAtMDUwMA==
+date_gmt: !binary |-
+  MjAwOS0wOC0yMCAyMDozNjozNyAtMDUwMA==
+categories:
+- VMware
+tags:
+- drivers
+- emulex
+- hp
+- psp
+- windows
+comments:
+- id: 48
+  author: Louis Gray (Emulex)
+  author_email: louis.gray-n@emulex.com
+  author_url: http://www.emulex.com/
+  date: !binary |-
+    MjAwOS0wOC0yNCAxODo1ODo0NiAtMDUwMA==
+  date_gmt: !binary |-
+    MjAwOS0wOC0yNCAxODo1ODo0NiAtMDUwMA==
+  content: Just wanted to follow up from the Emulex side and let you know we're looking
+    internally to see if this is as simple as a qualification issue (for example,
+    testing through 8.25, but not 8.25a yet), or if there is a bug, either with our
+    equipment or that of HP. I expect we'll get a definitive answer very soon (probably
+    today), but wanted to make sure you knew we saw your post and will solve this
+    very quickly.
+---
+<p>In one of the environments I work in, we use Emulex drivers on all Windows systems.&nbsp;&nbsp; Along with that we use HP hardware.&nbsp;&nbsp;&nbsp; HP provides this nice Proliant Support Pack (PSP) that makes things really nice and bundled together.&nbsp;&nbsp; Along with that one can configure the PSP release around some parameters such as "Don't Install the Qlogic drivers" or "Configure these mgmt agents with this as their master management server to send traps to" and so forth.&nbsp;&nbsp;</p>
+<p>In the past we would configure the HP enhanced drivers "Do Not Install".&nbsp;&nbsp; As these drivers don't work real well with non-HP Emulex devices.&nbsp;&nbsp;</p>
+<p>Today I found out that you can not configure the Emulex Drivers in the PSP 8.25A release.&nbsp;&nbsp; If you are using the Emulex supplied HBAs and are running the HP PSP pack, don't use 8.25A.</p>

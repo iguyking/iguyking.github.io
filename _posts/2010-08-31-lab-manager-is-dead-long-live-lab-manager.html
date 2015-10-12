@@ -1,0 +1,117 @@
+---
+layout: post
+status: publish
+published: true
+title: Lab Manager is dead.. Long Live Lab Manager
+author:
+  display_name: iguy
+  login: iguy
+  email: iguy@ionsphere.org
+  url: ''
+author_login: iguy
+author_email: iguy@ionsphere.org
+wordpress_id: 485
+wordpress_url: http://itsjustanotherlayer.com/?p=485
+date: !binary |-
+  MjAxMC0wOC0zMSAxMDoxMzowMSAtMDUwMA==
+date_gmt: !binary |-
+  MjAxMC0wOC0zMSAxNToxMzowMSAtMDUwMA==
+categories:
+- VMware
+tags:
+- vCloud
+- VMware
+- vmworld
+comments:
+- id: 123
+  author: ! 'Virtual Intelligence Briefing &raquo; VMworld 2010 Resources: Day 2'
+  author_email: ''
+  author_url: http://www.vibriefing.com/2010/08/vmworld-2010-resources-day-2/
+  date: !binary |-
+    MjAxMC0wOC0zMSAxODoxMTo1OSAtMDUwMA==
+  date_gmt: !binary |-
+    MjAxMC0wOC0zMSAyMzoxMTo1OSAtMDUwMA==
+  content: ! '[...] Lab Manager is dead.. Long Live Lab Manager It&#8217;s just another
+    Layer blog: VMware has announced the new product VMware vCloud Director (vCD from
+    now on). Read more> [...]'
+- id: 124
+  author: Jason Burrell
+  author_email: jason.burrell@noetix.com
+  author_url: ''
+  date: !binary |-
+    MjAxMC0wOS0wMiAxNTo0MDoyNCAtMDUwMA==
+  date_gmt: !binary |-
+    MjAxMC0wOS0wMiAyMDo0MDoyNCAtMDUwMA==
+  content: One thing you do not mention is now vCD priced on a per-VM basis and requires
+    enterprise plus making it very expensive compared to Lab Manager.  I can buy a
+    2 cpu license for LM and run 50 machines for the same cost as 25 vm's with vCD.  Also
+    vCD does not support linked clones, a major advantage that Lab Manager has over
+    it.  I know it's dead but there are many environments that will be hurt by vCD
+    until it can come up to feature parity.
+- id: 125
+  author: iguy
+  author_email: iguy@ionsphere.org
+  author_url: http://www.itsjustanotherlayer.com
+  date: !binary |-
+    MjAxMC0wOS0wMyAwMTowNzoxNSAtMDUwMA==
+  date_gmt: !binary |-
+    MjAxMC0wOS0wMyAwNjowNzoxNSAtMDUwMA==
+  content: Correct.  You are talking about a marketing&#47;licensing issue, not a
+    technical issue.   So adding in linked clones, what else is needed?   If that
+    is all I would rather have VMware spend their developer resources on a single
+    product making it better and adding in feature parity to retire Lab Manager than
+    splitting resources between two product lines that duplicate functionality.
+- id: 126
+  author: Maish
+  author_email: maishsk@gmail.com
+  author_url: http://technodrone.blogspot.com
+  date: !binary |-
+    MjAxMC0wOS0wNSAwNzo1Njo0OSAtMDUwMA==
+  date_gmt: !binary |-
+    MjAxMC0wOS0wNSAxMjo1Njo0OSAtMDUwMA==
+  content: ! 'Hi Ian, I am not so sure that Lab Manager is dead. vCD will require
+    Enterprise Plus Licenses for all ESX hosts in the cluster that is part of the
+    Resource pool.
+
+
+    The SMB market will not have the resources &#47; finances available for such a
+    venture.'
+- id: 127
+  author: PhilNZ
+  author_email: pweiss@vmware.com
+  author_url: ''
+  date: !binary |-
+    MjAxMC0wOS0yOSAxNzoyMjo1MCAtMDUwMA==
+  date_gmt: !binary |-
+    MjAxMC0wOS0yOSAyMjoyMjo1MCAtMDUwMA==
+  content: ! "Hi Ian, great blog! A colleague pointed it out to me, as I'm the \"Paul\"
+    from the APAC region, actually it's Phil, but I was the only guy from APAC on
+    the Lab Team, so assume it's me!  As some of your other respondents have pointed
+    out there are still some functional gaps between Lab Manager and vCD, so right
+    now we should choose the right product for the right use case, but with a preference
+    for vCD if it meets all the current requirements.   \n\nI'd just like to correct
+    Maish's post, vCD will actually work with vSphere Standard, but the limitation
+    here is you have to set up all your PortGroups manually first in vSphere before
+    they can be consumed.   In an SMB environment that would be fine (small number
+    of portgroups, relatively static).\n\nWe do strongly recommend Enterprise Plus
+    because of the virtual Distributed Switch which allows vCD to do all the network
+    provisioning dynamically.  \n\nHope that helps, and clarifies things.  As for
+    linked clones... watch this space."
+- id: 128
+  author: VMware Lab Manager vs. VMware Cloud Director | VmugOnline.com
+  author_email: ''
+  author_url: http://www.vmugonline.com/vmware-lab-manager-vs-vmware-cloud-director/
+  date: !binary |-
+    MjAxMS0wMi0wNyAxNToyMTozMyAtMDYwMA==
+  date_gmt: !binary |-
+    MjAxMS0wMi0wNyAyMToyMTozMyAtMDYwMA==
+  content: ! '[...] not be fully committed to its long-term future. (And Jason is
+    not alone; for example; Ian Koenig of itsjustanotherlayer.com has expressed a
+    similar though less detailed opinion on the [...]'
+---
+<p>VMware has announced the new product VMware vCloud Director (vCD from now on).&nbsp;&nbsp; I've read the early blog posts and been in some conversations and know at this point I just can't give it any justice.&nbsp;&nbsp; The short view it is virtualizing a datacenter into software and then managing at that layer.&nbsp; After spending close to 2 hours both taking the vCD install lab (which was fantastic to show you the concepts by the way) and then talking with a brilliant individual from the vCloud Team (Paul from the APAC region), I know I need to chew on vCD a bit longer. &nbsp; Thankfully Yellow-Bricks has done an excellent write-up to give you a short intro to this new product offering.</p>
+<p><a title="VMware vCloud Director (vCD)" href="http:&#47;&#47;www.yellow-bricks.com&#47;2010&#47;08&#47;31&#47;vmware-vcloud-director-vcd&#47;" target="_blank"><strong>VMware vCloud Director (vCD)<&#47;strong><&#47;a></p>
+<p>So go read it and come back. &nbsp;&nbsp; Pretty powerful stuff even at a 1.0.</p>
+<p>If you are familiar with the concepts of organizations, VM Templates, network Fencing and self service that are presented from Lab Manager, you will quickly get about 75% of vCD.&nbsp;&nbsp; The other 25% is coming from Chargeback and vOrchestrator capabilities.&nbsp; The challenge with Lab Manager is being able to run true production out of it.&nbsp;&nbsp; The management is a bit limiting and constrained by size.&nbsp;&nbsp; vCD takes all those concepts and adds a few more and pushes up the scalability to Service Provider size where you need to deal with limits of 4095 VLANs and Petabytes of storage.</p>
+<p>Does this mean that an SMB can't use vCD.&nbsp; I don't believe so.&nbsp;&nbsp; When I look at this I easily see Lab Manager as dead now.&nbsp;&nbsp; Why spend any resources on a less functional, less useful, more limited product when you have something you just need to right size in licensing for someone that needs to use it for a "Lab Manager style Test&#47;Dev" environment?&nbsp;&nbsp; vCD can do everything we do in Lab Manager today along with being able to have production right next to it in the same management interface.</p>
+<p>Lab Manager is Dead.&nbsp;&nbsp; Long Live Lab Manager.</p>

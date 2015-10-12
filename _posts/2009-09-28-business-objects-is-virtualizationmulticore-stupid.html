@@ -1,0 +1,69 @@
+---
+layout: post
+status: publish
+published: true
+title: Business Objects is Virtualization&#47;MultiCore Stupid
+author:
+  display_name: iguy
+  login: iguy
+  email: iguy@ionsphere.org
+  url: ''
+author_login: iguy
+author_email: iguy@ionsphere.org
+wordpress_id: 291
+wordpress_url: http://itsjustanotherlayer.com/?p=291
+date: !binary |-
+  MjAwOS0wOS0yOCAxNDoyOTo0OCAtMDUwMA==
+date_gmt: !binary |-
+  MjAwOS0wOS0yOCAxNDoyOTo0OCAtMDUwMA==
+categories:
+- Server Virtualization
+tags:
+- businessobjects
+- licensing
+- Virtualization
+comments:
+- id: 88
+  author: Andrea
+  author_email: andrea@kattrap.net
+  author_url: ''
+  date: !binary |-
+    MjAwOS0xMC0wNyAwMDoxMzozNCAtMDUwMA==
+  date_gmt: !binary |-
+    MjAwOS0xMC0wNyAwMDoxMzozNCAtMDUwMA==
+  content: Or BO could tell you what they told us. CPU affinity on the VMs to bork
+    the whole DRS&#47;HA VI cluster. No thank you.
+- id: 89
+  author: Bernd
+  author_email: bernd.gerlach-de.campos@sap.com
+  author_url: ''
+  date: !binary |-
+    MjAxMC0wNy0xMyAwNjowNToyMiAtMDUwMA==
+  date_gmt: !binary |-
+    MjAxMC0wNy0xMyAxMTowNToyMiAtMDUwMA==
+  content: I'm a bit surprised to read this. Due to my understanding contracts signed
+    in 2008 and later do have virtualization rights, means in a virtual environment
+    SAP would count virtual CPUs&#47;cores instead of physical. If you have an older
+    contract, you can convert it to get virtualization rights.
+- id: 90
+  author: iguy
+  author_email: iguy@ionsphere.org
+  author_url: http://www.itsjustanotherlayer.com
+  date: !binary |-
+    MjAxMC0wNy0xNyAwNzoxNjoxMyAtMDUwMA==
+  date_gmt: !binary |-
+    MjAxMC0wNy0xNyAxMjoxNjoxMyAtMDUwMA==
+  content: ! "I have an update to this that I will post on.   What we have finally
+    gotten to the root here is to upgrade a contract from the CPU&#47;core count to
+    the virtualization rights by either User based or vCPU style based would cost
+    us 2+x the maintenance fees.   Needless to say that is way over the cost of figuring
+    out a rather ingenious way to stay within our CPU count AND still make them virtual
+    with all the bonuses that come with that.  \n\nI will revise my statement about
+    BO not being entirely virtualization friendly."
+---
+<p>Recently I have been involved in discussions internally on what it will take to get Business Objects onto a Virtual Machine.&nbsp;&nbsp; The main talk has been around potentially removing another equivalent product and moving entirely over to Business Objects.&nbsp;&nbsp; Then we got pricing for Business Objects.&nbsp;&nbsp;</p>
+<p>The standard piece of hardware today is pretty hefty even a small 1&#47;2U system.&nbsp;&nbsp; They come with multiple cores.&nbsp;&nbsp; You have to do a special order to get anything less than a dual&#47;quad core today.&nbsp;&nbsp; An enterprise doesn't order single sockets either.&nbsp;&nbsp; Kinda silly to save $500 when you can have 2x the power and be able to reuse this system in the future for other purposes.&nbsp;&nbsp;</p>
+<p>They price and only price by physical cores in a system and on all systems their software could potentially run on.&nbsp;&nbsp;</p>
+<p>Business Objects is blowing a potential sale since today we only need something like&nbsp;6-8 cores worth of power today and making these systems into VMs is ideal.&nbsp;&nbsp; It isn't like Enterprises are out to "screw" vendors.&nbsp;&nbsp; Yes we all want a deal though Enterprises just want to pay for what they use.&nbsp;&nbsp; If they would just license use of ~8 CPUs (virtual or physical or core) and let us make these VMs they win.&nbsp;&nbsp;</p>
+<p>Even for us to make these physical is a joke.&nbsp;&nbsp;&nbsp; We have to disable cores and sockets to make us legal.&nbsp;&nbsp;</p>
+<p>So.. BO is blowing it.&nbsp;&nbsp; They need to grow up and stop making Mainframe's look cheap with their licensing policies.</p>

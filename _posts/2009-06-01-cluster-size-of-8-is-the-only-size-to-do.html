@@ -1,0 +1,82 @@
+---
+layout: post
+status: publish
+published: true
+title: Cluster size of 8 is the only size to do
+author:
+  display_name: iguy
+  login: iguy
+  email: iguy@ionsphere.org
+  url: ''
+author_login: iguy
+author_email: iguy@ionsphere.org
+wordpress_id: 158
+wordpress_url: http://itsjustanotherlayer.com/?p=158
+date: !binary |-
+  MjAwOS0wNi0wMSAxOTozNDo1OCAtMDUwMA==
+date_gmt: !binary |-
+  MjAwOS0wNi0wMSAxOTozNDo1OCAtMDUwMA==
+categories:
+- Server Virtualization
+- VMware
+tags:
+- cluster
+- maximums
+- vSphere4
+comments:
+- id: 44
+  author: Duncan
+  author_email: duncan@yellow-bricks.com
+  author_url: http://www.yellow-bricks.com
+  date: !binary |-
+    MjAwOS0wNi0wMSAyMDoxNDo0NyAtMDUwMA==
+  date_gmt: !binary |-
+    MjAwOS0wNi0wMSAyMDoxNDo0NyAtMDUwMA==
+  content: http:&#47;&#47;www.yellow-bricks.com&#47;2009&#47;05&#47;25&#47;max-amount-of-vms-per-host&#47;
+- id: 45
+  author: iguy
+  author_email: iguy@ionsphere.org
+  author_url: http://www.itsjustanotherlayer.com
+  date: !binary |-
+    MjAwOS0wNi0wMiAwMzoyNzo1MSAtMDUwMA==
+  date_gmt: !binary |-
+    MjAwOS0wNi0wMiAwMzoyNzo1MSAtMDUwMA==
+  content: Hrm.. didn't quite beat you to this information Duncan.  :)
+- id: 46
+  author: Sean Clark
+  author_email: sean@seanclark.us
+  author_url: http://seanclark.us
+  date: !binary |-
+    MjAxMC0wNS0xOSAxMjo1Mjo1NSAtMDUwMA==
+  date_gmt: !binary |-
+    MjAxMC0wNS0xOSAxNzo1Mjo1NSAtMDUwMA==
+  content: Ian, that all being said.  If you are fine with 40 or less VMs per host,
+    there is nothing wrong with a larger cluster is there?   Generally, I see 8 or
+    less more for storage limitations (# of LUNs) than for arbitrary software limitations
+    of VMware.
+- id: 47
+  author: iguy
+  author_email: iguy@ionsphere.org
+  author_url: http://www.itsjustanotherlayer.com
+  date: !binary |-
+    MjAxMC0wNS0xOSAyMDoyMDo0NCAtMDUwMA==
+  date_gmt: !binary |-
+    MjAxMC0wNS0yMCAwMToyMDo0NCAtMDUwMA==
+  content: ! 'To my knowledge and testing you should be fine going above an 8 host
+    cluster if you don''t mind having 40 or less VMs per host average.   It is all
+    around HA working.   I haven''t had an issue with the # of LUNs per cluster (256
+    max) causing an issue yet.   I have a couple clusters currently with 10 hosts
+    and around 400 VMs in the cluster and about 25 or so LUNs.   So for me to hit
+    the 256 I''m going to have to really pack in the VMs since there is a 32 Host
+    Cluster limit at this time too.'
+---
+<p>For a large organization that has more than 8 VMware Hosts (nodes) one should only make 8 node clusters for the time being according to the vSphere 4 Config Max doc.</p>
+<p><a href="http:&#47;&#47;www.vmware.com&#47;pdf&#47;vsphere4&#47;r40&#47;vsp_40_config_max.pdf">http:&#47;&#47;www.vmware.com&#47;pdf&#47;vsphere4&#47;r40&#47;vsp_40_config_max.pdf<&#47;a></p>
+<p>If you look on page 7 it says "<em>Configurations exceeding 40 VMs per host are limited to cluster size no greater than 8 nodes<&#47;em>".&nbsp;&nbsp;</p>
+<p>What that means is to be supported you have the following chart:</p>
+<p style="padding-left: 30px;">8 Nodes&nbsp;&nbsp;x 100 VMs &#47; Node&nbsp;&nbsp;== 800 VMs per cluster max<&#47;p></p>
+<p style="padding-left: 30px;">9 Nodes x 40 VMs &#47; Node&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;== 360 VMs per cluster max<&#47;p></p>
+<p style="padding-left: 30px;">20 Nodes x 40 VMs&#47; Node&nbsp;&nbsp;&nbsp; == 800 VMs per cluster max<&#47;p></p>
+<p style="padding-left: 30px;">32 Nodes x 40 VMs &#47; Node&nbsp;&nbsp; == 1,280 VMs per clustre max<&#47;p></p>
+<p>Now I might not be too smart here some days though I think the math is pretty obvious.&nbsp; Either I do 4 clusters of 8 nodes to give me 3,200 VMs on 32 boxes or I stick them all into one nice big cluster and get 1,280 VMs out of those 32 boxes.&nbsp;&nbsp; Easy math to me.&nbsp;&nbsp;</p>
+<p>The question I have out of this is, why do you document it this way?&nbsp; That sure is confusing and I could have easily missed that.</p>

@@ -1,0 +1,88 @@
+---
+layout: post
+status: publish
+published: true
+title: ACLs and CIFS under OpenSolaris
+author:
+  display_name: iguy
+  login: iguy
+  email: iguy@ionsphere.org
+  url: ''
+author_login: iguy
+author_email: iguy@ionsphere.org
+wordpress_id: 104
+wordpress_url: http://itsjustanotherlayer.com/?p=104
+date: !binary |-
+  MjAwOS0wMi0xMCAwNDoyMjozOSAtMDYwMA==
+date_gmt: !binary |-
+  MjAwOS0wMi0xMCAwNDoyMjozOSAtMDYwMA==
+categories:
+- OpenSolaris
+tags:
+- ACL
+- CIFS
+- NFSv4
+- OpenSolaris
+comments:
+- id: 30
+  author: thomas
+  author_email: th@outnow.ch
+  author_url: http://outnow.ch/
+  date: !binary |-
+    MjAwOS0wMy0xMCAyMzoxMjoyMSAtMDUwMA==
+  date_gmt: !binary |-
+    MjAwOS0wMy0xMCAyMzoxMjoyMSAtMDUwMA==
+  content: ! 'i had the same problems. in addition to setting the ACL, i also had
+    to enable acl inheritance through:
+
+
+    zfs set aclinherit=passthrough usbpool&#47;storage
+
+
+    also i made bad experiences with casesensitivity=mixed: if there''s a file "File1.txt",
+    and an unix user creates a file "file1.txt", both filenames are "renamed" for
+    CIFS access. casesensitivity=insensitive works much better for me.'
+- id: 31
+  author: Tom
+  author_email: dont@wantot.com
+  author_url: ''
+  date: !binary |-
+    MjAxMi0wNi0yOSAxOTozMzowMCAtMDUwMA==
+  date_gmt: !binary |-
+    MjAxMi0wNi0zMCAwMDozMzowMCAtMDUwMA==
+  content: ! 'The functionality you list above is exactly what I''ve been looking
+    for.
+
+
+    Unfortunately the chmod command gave the following error:
+
+    zaphod@thebook:&#47;tank&#47;test$ chmod A=group@:rwxpdDaARWcCos:fd:allow .
+
+    chmod: invalid mode: `A=group@:rwxpdDaARWcCos:fd:allow''
+
+    Try `chmod --help'' for more information.
+
+
+    Any thoughts would be appreciated. I''m on snv_134b'
+- id: 723
+  author: thetruthisalie
+  author_email: iamjustapeon@gmail.com
+  author_url: ''
+  date: !binary |-
+    MjAxMi0xMi0yNSAxMTowNzo1NiAtMDYwMA==
+  date_gmt: !binary |-
+    MjAxMi0xMi0yNSAxNzowNzo1NiAtMDYwMA==
+  content: Try &#47;bin&#47;chmod instead of just chmod.
+---
+<p>One of the issues with running a file server in the home is the fact that you have multiple computers and accounts (the wife, the kids etc) accessing the same directory trees.   The default user&#47;group works pretty well as you have effectively a single group for family access.  Different groups are used for more computer based access needs such as server to server communication.   However I found that the kernel CIFS doesn't create files with proper access very well using the standard UNIX permissions. </p>
+<p>ACLs are the solution in this case.   </p>
+<p><code># zfs create -o casesensitivity=mixed -o sharesmb=name=storage -o quota=275G usbpool&#47;storage<br />
+# cd &#47;usbpool&#47;storage<br />
+# chgrp home .<br />
+# chmod A=group@:rwxpdDaARWcCos:fd:allow .<&#47;code></p>
+<p>Now when you create a new folder or files under this CIFS folder it creates them with the group permissions.   I leave everyone in the same group and can add the secondary group as necessary for different shares needing permissions.   </p>
+<p>When users create files they are created with:</p>
+<p><code>----rwx---+  1 me   home       7930 Feb  7  2008 test.txt<&#47;code></p>
+<p>And when they create directories they are:</p>
+<p><code>d---rwx---+  2 me   home            3 Feb  9 22:10 OpenSolaris<&#47;code></p>
+<p>Doable and functional.  I still wish there was better documentation that I could find around the ACL permissions and how they work.  I'm doing testing and I know I'm missing things.   </p>

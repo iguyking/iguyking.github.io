@@ -1,0 +1,59 @@
+---
+layout: post
+status: publish
+published: true
+title: fsck hfs+ filesystem on ubuntu
+author:
+  display_name: iguy
+  login: iguy
+  email: iguy@ionsphere.org
+  url: ''
+author_login: iguy
+author_email: iguy@ionsphere.org
+wordpress_id: 752
+wordpress_url: http://itsjustanotherlayer.com/?p=752
+date: !binary |-
+  MjAxNS0wOS0yNCAyMTowNDozNSAtMDUwMA==
+date_gmt: !binary |-
+  MjAxNS0wOS0yNSAwMjowNDozNSAtMDUwMA==
+categories:
+- VMware
+tags:
+- linux
+- hfs+
+comments: []
+---
+<p>My wife's laptop backup hard drive is starting to die. &nbsp;Now that hard drive is only about 5 years old, firewire external drive. &nbsp;So I think we've definitely gotten our use out of it. &nbsp;Needless to say she's a little concerned about loosing some of the data on it, so I told her to copy it over to the home file server that gets automatically backed up to the cloud. &nbsp;She proceeded to start copying the data over and since this hard drive is having a rough time, the GUI copy kept failing as some of the files are corrupted now.</p>
+<p>So I took the hard drive down and directly connected it to my Ubuntu system. &nbsp;My drive came up as &#47;dev&#47;sdg. &nbsp;First step is to get hfsprogs installed</p>
+<pre>apt-get install hpfsprogrs<&#47;pre><br />
+Once it is installed, to be safe I wanted to run fsck on the filesystem to give me the best chance possible to copy the data over. &nbsp;Next I ran</p>
+<pre>fdisk -l<&#47;pre></p>
+<pre>[...]<br />
+Disk &#47;dev&#47;sdg doesn't contain a valid partition table<&#47;pre><br />
+Now that doesn't surprise me since mac uses GPT by default and this drive is a little wonky. &nbsp;Instead I used GNU Parted</p>
+<pre>parted<&#47;pre></p>
+<pre>(parted) select &#47;dev&#47;sdg<br />
+Using &#47;dev&#47;sdg<br />
+(parted) print<br />
+Model: Ext Hard Disk (scsi)<br />
+Disk &#47;dev&#47;sdg: 500GB<br />
+Sector size (logical&#47;physical): 512B&#47;512B<br />
+Partition Table: mac<&#47;pre></p>
+<pre>Number Start End Size File system Name Flags<br />
+ 1 512B 32.8kB 32.3kB Apple<br />
+ 2 32.8kB 61.4kB 28.7kB Macintosh<br />
+ 3 61.4kB 90.1kB 28.7kB Macintosh<br />
+ 4 90.1kB 119kB 28.7kB Macintosh<br />
+ 5 119kB 147kB 28.7kB Macintosh<br />
+ 6 147kB 410kB 262kB Macintosh<br />
+ 7 410kB 672kB 262kB Macintosh<br />
+ 8 672kB 934kB 262kB Patch Partition<br />
+10 135MB 500GB 500GB hfs+ Untitled<&#47;pre><br />
+Now I know that I'm looking to run fsck on partition 10.</p>
+<pre>fsck.hfsplus -f &#47;dev&#47;sdg10<&#47;pre><br />
+Once that completed successfully, I mounted it with</p>
+<pre>mount -t hfsplus &#47;dev&#47;sdg &#47;media&#47;usbdrive<&#47;pre><br />
+Finally a way to allow this to run a couple times and not just stop on the first failure due to Read Errors or IO errors I used</p>
+<pre>rsync -avE &#47;media&#47;usbdrive &#47;media&#47;backupsystem<&#47;pre><br />
+Enjoy.. HFS+ support is very good in linux from my experience now. &nbsp; This copy took about 12 hours with many retries to get what I could off of it.</p>
+<p>&nbsp;</p>

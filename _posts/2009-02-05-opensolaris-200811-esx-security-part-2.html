@@ -1,0 +1,46 @@
+---
+layout: post
+status: publish
+published: true
+title: OpenSolaris 2008.11 & ESX (Security Part 2)
+author:
+  display_name: iguy
+  login: iguy
+  email: iguy@ionsphere.org
+  url: ''
+author_login: iguy
+author_email: iguy@ionsphere.org
+wordpress_id: 103
+wordpress_url: http://itsjustanotherlayer.com/?p=103
+date: !binary |-
+  MjAwOS0wMi0wNSAwNTowMToyNCAtMDYwMA==
+date_gmt: !binary |-
+  MjAwOS0wMi0wNSAwNTowMToyNCAtMDYwMA==
+categories:
+- Uncategorized
+tags:
+- ESX
+- nfs
+- OpenSolaris
+- VMware
+comments:
+- id: 29
+  author: thomas
+  author_email: th@outnow.ch
+  author_url: http://outnow.ch/
+  date: !binary |-
+    MjAwOS0wMy0xMCAyMzoxNDo0OCAtMDUwMA==
+  date_gmt: !binary |-
+    MjAwOS0wMy0xMCAyMzoxNDo0OCAtMDUwMA==
+  content: ! 'you might rather want to use:
+
+
+    zfs set sharenfs=rw=@192.168.1.0&#47;24,root=@192.168.1.0&#47;24 storage&#47;vms
+
+
+    which allows access for the entire subnet, or alternatively restrict access further
+    down to the esx server(s) ip.'
+---
+<p>If you are using OpenSolaris and NFS for your datastores and using ESX you need to share out your zfs filesystems with anon=0 since ESX wants to write to the NFS datastore as root.   </p>
+<p>zfs set sharenfs=anon=0 usbpool&#47;virtuals</p>
+<p>I wouldn't mind having stuff like this if I could figure out how to properly get logging of the issues&#47;connections in OpenSolaris.   Anybody know how to increasing logging for the NFS services in OpenSolaris?</p>

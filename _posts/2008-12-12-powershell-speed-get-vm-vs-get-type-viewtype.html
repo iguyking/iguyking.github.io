@@ -1,0 +1,83 @@
+---
+layout: post
+status: publish
+published: true
+title: ! 'Powershell speed - Get-VM vs. Get-Type -ViewType  '
+author:
+  display_name: iguy
+  login: iguy
+  email: iguy@ionsphere.org
+  url: ''
+author_login: iguy
+author_email: iguy@ionsphere.org
+wordpress_id: 47
+wordpress_url: http://itsjustanotherlayer.com/?p=47
+date: !binary |-
+  MjAwOC0xMi0xMiAxODowNjoxNSAtMDYwMA==
+date_gmt: !binary |-
+  MjAwOC0xMi0xMiAxODowNjoxNSAtMDYwMA==
+categories:
+- VMware
+tags:
+- Get-View
+- Get-VM
+- Powershell
+- VI Toolkit
+- VMware
+comments:
+- id: 19
+  author: Mike DiPetrillo
+  author_email: mikedatl@mac.com
+  author_url: http://www.mikedipetrillo.com
+  date: !binary |-
+    MjAwOC0xMi0xMyAwMToxNTozMSAtMDYwMA==
+  date_gmt: !binary |-
+    MjAwOC0xMi0xMyAwMToxNTozMSAtMDYwMA==
+  content: Great find. Back in college I was writing a program to play checkers against
+    a human. My professor looked at my program and saw all of these nested if statements
+    and laughed at me and showed me what the correct answer was for how to write the
+    program. Sure his was more advanced but mine ran 10 times faster. Just goes to
+    show there's always a better mouse trap and sometimes it's as simple as a sledgehammer.
+    :)
+- id: 20
+  author: Cody
+  author_email: bunchc@professionalvmware.com
+  author_url: http://professionalvmware.com
+  date: !binary |-
+    MjAwOC0xMi0yOCAwNDozNzoxMCAtMDYwMA==
+  date_gmt: !binary |-
+    MjAwOC0xMi0yOCAwNDozNzoxMCAtMDYwMA==
+  content: Indeed.  Does this also return the same object back to the pipeline that
+    a get-vm does?
+- id: 21
+  author: iguy
+  author_email: iguy@ionsphere.org
+  author_url: http://www.itsjustanotherlayer.com
+  date: !binary |-
+    MjAwOC0xMi0yOSAwMjowNToxNSAtMDYwMA==
+  date_gmt: !binary |-
+    MjAwOC0xMi0yOSAwMjowNToxNSAtMDYwMA==
+  content: ! "It returns a Get-View object.   Its not the same ton of associated properties
+    and objects.\n\nMy point in the post is that a significant number of scripts perform
+    the same exact action and that being \"Get-VM | Get-View | etc..\"  However Get-VM
+    is significantly slow if you are just going to go to Get-View immediately afterwards.
+    \ \n\nIf your script goes and says \"Get-VM | Get-View\" then you should do a
+    \"Get-View -ViewType VirtualMachine\".   If you have other things your going to
+    do with a Get-VM then this might not be the best solution for you."
+- id: 22
+  author: It&#8217;s Just Another Layer &raquo; Another mega slow VIToolkit call (Get-HardDisk)
+  author_email: ''
+  author_url: http://itsjustanotherlayer.com/?p=133
+  date: !binary |-
+    MjAwOS0wMy0yMSAxODo1MzozMSAtMDUwMA==
+  date_gmt: !binary |-
+    MjAwOS0wMy0yMSAxODo1MzozMSAtMDUwMA==
+  content: ! '[...] slow compared to pulling useful data from it. I&#8217;ve done
+    performance testing before of Get-VM against Get-View to get to the useful data
+    needed day to day.&nbsp;&nbsp; In that test using Get-View was [...]'
+---
+<p>I've been starting to look at using the VI Toolkit which uses Powershell.&nbsp;&nbsp; In doing this many of the command formats tend to be "<em>Get-VM | Get-View<&#47;em>" or "<em>Get-VMHost | Get-View<&#47;em>".&nbsp;&nbsp; So I'm off and figuring this out and I run a small script and say "Geez that took a long time to run".&nbsp;&nbsp; I'm talking to my co-worker (a pretty smart cookie) and he says "Why don't you just use "<em>Get-View -ViewType VirtualMachine<&#47;em>" and skip the middle man?"&nbsp;&nbsp; Good point.&nbsp; Didn't know about that command.&nbsp; Well this is just a tad bit faster.</p>
+<p style="padding-left: 30px;"><em>Get-VM | Get-View <&#47;em>timing in my script takes <strong>1 minute and 37 seconds<&#47;strong>.<&#47;p></p>
+<p style="padding-left: 30px;"><em>Get-View -ViewType VirtualMachine <&#47;em>takes an amazing <span style="text-decoration: underline;"><strong>5.12 seconds<&#47;strong><&#47;span>.<&#47;p></p>
+<p>The VI Toolkit developers have identified this as a serious issue are working on ways to speed this up and retain backwards compatibility.</p>
+<p>So the lesson today is if you need to do a Get-View immediately after doing some set collection look at using the <em>Get-View -ViewType <&#47;em>instead.&nbsp; It isn't as readable though it gets the job done well.</p>

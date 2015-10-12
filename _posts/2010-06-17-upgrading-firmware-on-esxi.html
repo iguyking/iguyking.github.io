@@ -1,0 +1,199 @@
+---
+layout: post
+status: publish
+published: true
+title: Upgrading Firmware on ESXi
+author:
+  display_name: iguy
+  login: iguy
+  email: iguy@ionsphere.org
+  url: ''
+author_login: iguy
+author_email: iguy@ionsphere.org
+wordpress_id: 436
+wordpress_url: http://itsjustanotherlayer.com/?p=436
+date: !binary |-
+  MjAxMC0wNi0xNyAxMzoxNToxNCAtMDUwMA==
+date_gmt: !binary |-
+  MjAxMC0wNi0xNyAxODoxNToxNCAtMDUwMA==
+categories:
+- VMware
+tags:
+- emulex
+- ESX
+- esxi
+- firmware
+comments:
+- id: 116
+  author: PiroNet
+  author_email: pironet@hotmail.com
+  author_url: http://deinoscloud.wordpress.com
+  date: !binary |-
+    MjAxMC0wNi0yMyAxMzo1MDo0NyAtMDUwMA==
+  date_gmt: !binary |-
+    MjAxMC0wNi0yMyAxODo1MDo0NyAtMDUwMA==
+  content: ! 'Nice trick!
+
+
+    Eventually if you have HP servers, you could boot up from the HP Firmware CD and
+    upgrade the HBAs but also any other firmware on that server...'
+- id: 117
+  author: Peter Van Geem
+  author_email: peter@piconsulting.net
+  author_url: ''
+  date: !binary |-
+    MjAxMC0wOC0wNSAwODo0NTozMCAtMDUwMA==
+  date_gmt: !binary |-
+    MjAxMC0wOC0wNSAxMzo0NTozMCAtMDUwMA==
+  content: You could still use HBAnywhere on ESXi, as the Emulex CIM providers are
+    included in ESXi &amp; the HBAnywhere client contains the CIM components to talk
+    to ESXi ...
+- id: 118
+  author: iguy
+  author_email: iguy@ionsphere.org
+  author_url: http://www.itsjustanotherlayer.com
+  date: !binary |-
+    MjAxMC0wOC0xMiAyMDo1MDo0MyAtMDUwMA==
+  date_gmt: !binary |-
+    MjAxMC0wOC0xMyAwMTo1MDo0MyAtMDUwMA==
+  content: This didn't work initially.   I will do this test again and see if it works
+    going forward.   The issue is now I need a secondary system to apply the updates
+    from when doing a build.   That complicates automation quite a bit.
+- id: 119
+  author: Eddie Green
+  author_email: greejame@us.ibm.com
+  author_url: ''
+  date: !binary |-
+    MjAxMC0xMi0xNSAxMDowNDozNCAtMDYwMA==
+  date_gmt: !binary |-
+    MjAxMC0xMi0xNSAxNjowNDozNCAtMDYwMA==
+  content: ! 'pironet, this only works with hardware that is native to the system...optional
+    hardware Fw update files cannot be added to the HP smart update because they are
+    the incorrect file types that the linux system looks for in the dir structure
+    on the DVD&#47;Cd. for instance the LPE12000 is NOT supported by HP under VMware...they
+    claim that ESX uses the driver that loads the FW and that a FW update is not required(this
+    is total BS). this came directly from the HP storage works website.
+
+
+    Permalink...this doesn''t work either ...because you need a console in order to
+    be able to create the dirs and other comands required to run HBanywhere. the console
+    is not robust enough in ESXi to do this...
+
+
+    I am working on a solution for this at the moment...However, the one presented
+    here thus far seem to be the best and along the same lines as mine which is installing
+    Windows 2003 server to a USB drive and installing hbanywhere to it..from there
+    I can take Fw files and utilities at will and add them to the USB install and
+    run them..the caveat so far..the usb image has to be the same as the hardware
+    you are updating..this solution can also be used on HP ILO''s as well, by creating
+    an ISO of the USB key and connecting to the ILO and mounting the ISO image and
+    booting the server from it..it is basically the same as this solution with an
+    added function of being able to install other utilities to it without having to
+    repackage the whole image. Franly, Vmware needs to build the console BACK into
+    ESXi, period. They really do not know, or seem to care, how limited systems administration&#47;maintenance
+    is without it..did we really need this added security?'
+- id: 120
+  author: iguy
+  author_email: iguy@ionsphere.org
+  author_url: http://www.itsjustanotherlayer.com
+  date: !binary |-
+    MjAxMC0xMi0xNSAxNTo0NTo1NSAtMDYwMA==
+  date_gmt: !binary |-
+    MjAxMC0xMi0xNSAyMTo0NTo1NSAtMDYwMA==
+  content: ! "@Eddie Green - One issue with your solution of Windows 2003 server is
+    the licensing issue.  WinPE is free for this style usage.   Your solution requires
+    a Server License and technically can only be used once every 90 days per license
+    you have due to the reassignment clause unless you assign a license to the physical
+    server which can not then be used in a VM instance.   \n\nThe process of creating
+    the WinPE image is fairly quick and automated.  I've updated the image with new
+    drivers&#47;firmware versions and rebuilt the entire ISO image in a matter of
+    10 mins.   I'm continuing to work on this and improve it to be more hands off
+    than it is today."
+- id: 121
+  author: Eddie Green
+  author_email: greejame@us.ibm.com
+  author_url: ''
+  date: !binary |-
+    MjAxMC0xMi0xNSAxNjoxNDo1NCAtMDYwMA==
+  date_gmt: !binary |-
+    MjAxMC0xMi0xNSAyMjoxNDo1NCAtMDYwMA==
+  content: ! 'What I want to know...is how did you get this to work with the AIK.
+    I have dl''d and reconfigured for my files...and three times now I have come up
+    with the setupElxAll-x86.exe not installing on the PE image. I have tried to install
+    it ma nually and it keeps coming back with a target version check of vista 0 requires
+    vista SP1 or better. Without this winLpconfg does not install.
+
+    so riddle me that one batman?
+
+    My next experiment with this is to try copying the winlpconfig file and running
+    it manually just to see if I can get it to work form the command line.'
+- id: 122
+  author: VMware ESXi + LPe12000 en Dell PE M610 &laquo; Los foros de virtualizaci&oacute;n
+    en espa&ntilde;ol
+  author_email: ''
+  author_url: http://www.josemariagonzalez.es/foros/topic/vmware-esxi-lpe12000-en-dell-pe-m610
+  date: !binary |-
+    MjAxMi0wNC0xMCAxNDoyMDoyNyAtMDUwMA==
+  date_gmt: !binary |-
+    MjAxMi0wNC0xMCAxOToyMDoyNyAtMDUwMA==
+  content: ! '[...] HBA, las HBA son LPe12000 (al parecer son hechas para Dell (M1000)).
+    Me encontr&eacute; con este enlace http:&#47;&#47;itsjustanotherlayer.com&#47;2010&#47;06&#47;upgrading-firmware-on-esxi&#47;
+    que parecer ser una soluci&oacute;n, alguien se ha topado con este tipo de casos?
+    Me refiero al caso [...]'
+- id: 745
+  author: Todd Major
+  author_email: todd.major@postproperties.com
+  author_url: ''
+  date: !binary |-
+    MjAxMi0xMi0yNyAxNzoxODozMiAtMDYwMA==
+  date_gmt: !binary |-
+    MjAxMi0xMi0yNyAyMzoxODozMiAtMDYwMA==
+  content: ! "I am having a hard time creating the ISO using the CustomEmulexWinPE.cmd.
+    \ Can you e-mail me the script?  I am having problems with the spacing and missing
+    backslashes.\r\n\r\nThanks a bunch !"
+---
+<p>A bane of any system administrator's existence is the constant stream of firmware updates to fix various bugs and issues that occur.   One of these HBA Firmware updates is a fairly common issue where a new LUN or Target is not being discovered without a reboot.  With <a href="http:&#47;&#47;www.emulex.com&#47;downloads&#47;emulex&#47;cnas-and-hbas&#47;drivers&#47;vmware.html">Emulex there is a set of tools<&#47;a> called the HBAanywhere that can be installed onto ESX Classic.  Then you can perform an Emulex HBA Firmware upgrade without having to reboot the ESX Host.   </p>
+<p>Example script:</p>
+<pre lang="bash" line="1">
+cd &#47;usr&#47;sbin&#47;hbanywhere<br />
+.&#47;hbacmd listhbas<br />
+.&#47;hbacmd download 00:00:01:02:03:04:05 zd282a4.all<br />
+.&#47;hbacmd hbaattributes 00:00:01:02:03:04:05<br />
+<&#47;pre></p>
+<p>With this you have just updated the firmware to 2.82a4 on an LPe11000-M4 card.</p>
+<p>With ESXi it isn't that easy since hbacmd isn't available.  The solution I came up with is to create a bootable WinPE CD with the Emulex Tools and firmware available on it.  Then all you have to do is boot off this CD and you will be able to update your 10G CNA or your Emulex LPe12000 HBAs.</p>
+<p>This script expects you to have the Windows AIK installed locally.  Just update this script to point at the appropriate locations of the listed files.</p>
+<p><strong>CustomEmulexWinPE.cmd<&#47;strong> - Run this to create a bootable ISO that will install the Emulex WinPE utilities & drivers and then attempt to upgrade the 10G CNA & LPe12000 cards in the system.   </p>
+<pre lang="cmd" line="1">
+call "C:Program FilesWindows AIKToolsPEToolspesetenv.cmd"</p>
+<p>call copype x86 EmulexWinPE</p>
+<p>imagex &#47;mountrw Winpe.wim 1 mount</p>
+<p>mkdir mountEmulex<br />
+xcopy "setupElxAll-x86.exe" mountEmulex<br />
+xcopy &#47;s "Firmware" mountEmulex<br />
+del mountWindowsSystem32startnet.cmd<br />
+xcopy "startnet.cmd" mountWindowsSystem32startnet.cmd</p>
+<p>peimg &#47;prep mountWindows<br />
+imagex &#47;unmount mount &#47;commit<br />
+copy winpe.wim ISOsourcesboot.wim</p>
+<p>oscdimg -n -betfsboot.com ISO EmulexWinPE.iso<br />
+<&#47;pre></p>
+<p><strong>startnet.cmd<&#47;strong> - This runs on boot and will attempt to update the 10G CNA & the Emulex LPe12000 cards in the system.  </p>
+<pre lang="cmd" line="1">
+wpeinit</p>
+<p>EmulexsetupElxAll-x86.exe &#47;q<br />
+cd "Program FilesEmulexUtilelxApp"</p>
+<p>winlpcfg download a=lpe12000-m8 i=emulexlpe12000ud111a5.all<br />
+winlpcfg download a=lpe12000-m8 i=emulexlpe12000ub202a2.prg</p>
+<p>winlpcfg download n=1 i=emulexoce10102s1462001.ufi<br />
+winlpcfg download n=2 i=emulexoce10102s1462001.ufi<br />
+winlpcfg download n=3 i=emulexoce10102s1462001.ufi<br />
+winlpcfg download n=4 i=emulexoce10102s1462001.ufi</p>
+<p>winlpcfg listhba<br />
+<&#47;pre></p>
+<p>Once this script is done running you'll have a EmulexWinPE.iso that you can mount and boot off of.   It will automatically run and upgrade the firmware of the Emulex devices.</p>
+<p>This basic setup should allow you to do anything scripting wise you need to do in a Windows environment to update the hardware configuration or run various diagnostics tests outside of ESXi.  </p>
+<p>Download Locations:<br />
+<a href="http:&#47;&#47;www.emulex.com&#47;downloads&#47;emulex&#47;cnas-and-hbas&#47;utilities&#47;offline-utilities&#47;winpe-offline-utility.html">setupElxAll-x86.exe<&#47;a><br />
+<a href="http:&#47;&#47;www.microsoft.com&#47;downloads&#47;details.aspx?FamilyID=c7d4bc6d-15f3-4284-9123-679830d629f2&displaylang=en">Windows AIK<&#47;a><br />
+<a href="http:&#47;&#47;www.emulex.com&#47;downloads&#47;emulex.html">Emulex Firmware<&#47;a> - Download as needed and update the location you copy it to your WinPE ISO file in the Startnet.cmd and in the CustomEmulexWinPE.cmd.</p>

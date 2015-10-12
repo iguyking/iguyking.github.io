@@ -1,0 +1,109 @@
+---
+layout: post
+status: publish
+published: true
+title: 100k vMotions in Production
+author:
+  display_name: iguy
+  login: iguy
+  email: iguy@ionsphere.org
+  url: ''
+author_login: iguy
+author_email: iguy@ionsphere.org
+wordpress_id: 570
+wordpress_url: http://itsjustanotherlayer.com/?p=570
+date: !binary |-
+  MjAxMS0wNy0xMSAwOToyNTo0NiAtMDUwMA==
+date_gmt: !binary |-
+  MjAxMS0wNy0xMSAxNDoyNTo0NiAtMDUwMA==
+categories:
+- VMware
+tags:
+- ESX
+- VMotion
+- VMware
+comments:
+- id: 134
+  author: Greg
+  author_email: gregcarriger@yahoo.com
+  author_url: http://gregcarriger.wordpress.com
+  date: !binary |-
+    MjAxMS0wNy0xMSAxMzo0NToxNyAtMDUwMA==
+  date_gmt: !binary |-
+    MjAxMS0wNy0xMSAxODo0NToxNyAtMDUwMA==
+  content: ! 'That''s impressive! Makes me think of the man who drove his Chevy Silverado
+    1 million miles.
+
+
+    My 5 host production cluster is at 572 vMotions. :)'
+- id: 135
+  author: NiTRo
+  author_email: admin@hypervisor.fr
+  author_url: http://www.hypervisor.fr
+  date: !binary |-
+    MjAxMS0wNy0xMSAxNzozODoyMyAtMDUwMA==
+  date_gmt: !binary |-
+    MjAxMS0wNy0xMSAyMjozODoyMyAtMDUwMA==
+  content: Awesome iguy, would you tell us how old is your cluster ?
+- id: 136
+  author: iguy
+  author_email: iguy@ionsphere.org
+  author_url: http://www.itsjustanotherlayer.com
+  date: !binary |-
+    MjAxMS0wNy0xMSAyMTozMTowNiAtMDUwMA==
+  date_gmt: !binary |-
+    MjAxMS0wNy0xMiAwMjozMTowNiAtMDUwMA==
+  content: This cluster is about 2 years old right now.
+- id: 697
+  author: Benedict
+  author_email: digby.sales@uct.ac.za
+  author_url: http://www.facebook.com/profile.php?id=100003407207548
+  date: !binary |-
+    MjAxMi0xMi0yMiAxNzoyODoxNiAtMDYwMA==
+  date_gmt: !binary |-
+    MjAxMi0xMi0yMiAyMzoyODoxNiAtMDYwMA==
+  content: Thank you for all your nice articles.Now I have a qusioetn about the performance
+    of vCenter Server.Will vCenter Server be the bottleneck?1) vCenter Server obtains
+    the realtime resource usage information of every VM. And the powered on VM can
+    reach 10000 in a vCenter Server.2) I have thought that for every DRS cluster there
+    will be a DRS module. The DRS module is responsible for the VM placement and load
+    balance. What's more, the DRS module and vCenter Server lie on different hosts.
+    But my thought might be wrong. the DRS modules of all the clusters and vCenter
+    Server lie on the same module.I could not imagine how could vCenter Server on
+    a single host could handle so many requests And will vCenter Server be the bottleneck?Thank
+    you.
+- id: 3506
+  author: softeclipse
+  author_email: naomihilliard@gmail.com
+  author_url: http://tent.scouting.my/link.php?url=https://www.smore.com/bh6c
+  date: !binary |-
+    MjAxNC0wOS0yMCAxMDoxNjowOCAtMDUwMA==
+  date_gmt: !binary |-
+    MjAxNC0wOS0yMCAxNToxNjowOCAtMDUwMA==
+  content: ! "I think what you said made a lot of sense. However, consider this, what
+    if you were to create a awesome headline?\r\nI ain't saying your information isn't
+    good., \r\nbut suppose you added a title that makes people want more?\r\nI mean
+    100k vMotions in Production | Its Just Another Layer \r\nis kinda boring. You
+    might look at Yahoo's home page and watch \r\nhow they create post titles to grab
+    viewers interested.\r\n\r\nYou might add a video or a related pic or two to grab
+    readers \r\nexcited about what you've written. Just my opinion, it could bring
+    your blog \r\na little bit more interesting."
+- id: 3818
+  author: ncaa
+  author_email: luciokavel@t-online.de
+  author_url: http://probettingadvices.tumblr.com/post/96879200353/4-surprises-that-can-happen-in-the-final-weeks-of-the
+  date: !binary |-
+    MjAxNC0xMC0xOCAwNzoyMzoxMCAtMDUwMA==
+  date_gmt: !binary |-
+    MjAxNC0xMC0xOCAxMjoyMzoxMCAtMDUwMA==
+  content: ! "I was curious if you ever considered changing the layout of your site?\r\n\r\nIts
+    very well written; I love what youve \r\ngot to say. But maybe you could a little
+    more in the way of content so \r\npeople could connect with it better. Youve got
+    an awful lot of text for \r\nonly having one or 2 pictures. Maybe you could space
+    it out \r\nbetter?"
+---
+<p>I logged into the environment and was checking some things out and we just recently broke a rather important milestone.</p>
+<p><a href="http:&#47;&#47;itsjustanotherlayer.com&#47;wp-content&#47;uploads&#47;2011&#47;07&#47;100k-vMotions.png"><img class="alignnone  wp-image-571" title="100k-vMotions" src="http:&#47;&#47;itsjustanotherlayer.com&#47;wp-content&#47;uploads&#47;2011&#47;07&#47;100k-vMotions.png" alt="" &#47;><&#47;a></p>
+<p>In our production environment one of our oldest clusters just broke 100,000 vMotions (or more accurately since they aren't at ESXi 4.1U1 yet, VMotions).</p>
+<p><a href="http:&#47;&#47;itsjustanotherlayer.com&#47;wp-content&#47;uploads&#47;2011&#47;07&#47;100k-vMotionSummary.png"><img class="alignnone  wp-image-572" title="100k-vMotionSummary" src="http:&#47;&#47;itsjustanotherlayer.com&#47;wp-content&#47;uploads&#47;2011&#47;07&#47;100k-vMotionSummary.png" alt="100k vMotion Summary" &#47;><&#47;a> This cluster has weathered the ups and downs of a functional vSphere cluster with hosts going into an out of Maintenance Mode, Hardware failures and general maintenance.&nbsp; This cluster we had over allocated on CPU for a couple months per our standard policy, though we got no real complaints about performance there.&nbsp; We have since updated that policy and I'm sure the number of vMotions has slowed down somewhat.</p>
+<p>Just proof that vMotions&#47;DRS &amp; the entire vSphere solution is valid and solid.&nbsp; Here's to another 100k vMotions.</p>

@@ -1,0 +1,77 @@
+---
+layout: post
+status: publish
+published: true
+title: Citrix vs VDI&#47;View - Round 1
+author:
+  display_name: iguy
+  login: iguy
+  email: iguy@ionsphere.org
+  url: ''
+author_login: iguy
+author_email: iguy@ionsphere.org
+wordpress_id: 43
+wordpress_url: http://itsjustanotherlayer.com/?p=43
+date: !binary |-
+  MjAwOC0xMi0wMyAxNzozMDozNyAtMDYwMA==
+date_gmt: !binary |-
+  MjAwOC0xMi0wMyAxNzozMDozNyAtMDYwMA==
+categories:
+- VMware
+tags:
+- citrix
+- vdi
+- VMware
+comments:
+- id: 17
+  author: Dan Shappir
+  author_email: dan@ericom.com
+  author_url: http://ericomguy.blogspot.com/
+  date: !binary |-
+    MjAwOC0xMi0wOSAwOTo1MzoyMSAtMDYwMA==
+  date_gmt: !binary |-
+    MjAwOC0xMi0wOSAwOTo1MzoyMSAtMDYwMA==
+  content: ! 'Very interesting - thanks for the post.
+
+
+    Disclaimer: I work for Ericom Software and we provide a combined VDI and TS solution
+    called PowerTerm WebConnect.
+
+
+    It may be worthwhile for you to check out our solution because:
+
+
+    1. We support TS, VDI and blades in the same product, with the same admin and
+    a single pool of licenses. This means you can put your applications wherever it
+    makes the most sense.
+
+
+    2. We support published applications (seamless windows) from VDI and blades.
+
+
+    3. We support 15 types of hypervisors including VMware (with our without VirtualCenter),
+    Hyper-V (with or without SCVMM), Xen and Parallels.'
+- id: 18
+  author: Vikash Kumar Roy
+  author_email: vikash.roy@gmail.com
+  author_url: http://vikashkumarroy.blogspot.com
+  date: !binary |-
+    MjAwOS0wMS0wNiAxMjo0Mjo1NSAtMDYwMA==
+  date_gmt: !binary |-
+    MjAwOS0wMS0wNiAxMjo0Mjo1NSAtMDYwMA==
+  content: ! "I had similar question from of the management team who is working on
+    providing solution with VDI. I offered him help and suggested him to with VDI
+    blindfolded. I shared the same experience which you have discussed. When I was
+    trying to do some research I came across nice solution from the company called
+    &ldquo;VISTORM&rdquo;. This company offer combine solution with VDI and Citrix.
+    I found it very interesting. www.vistorm.com&#47;uplds&#47;microsoft_desktop_and_application_delivery.pdf
+    . Then I came across another article about Microsoft VDI solution and licensing
+    http:&#47;&#47;www.mikedipetrillo.com&#47;mikedvirtualization&#47;2008&#47;12&#47;microsoft-lies-to-their-customers-again.html
+    \n\n\nVikash"
+---
+<p>Recently my company has gone through this huge architectural discussion&#47;debate around using Citrix versus using VDI.&nbsp;&nbsp; It has been rather entertaining to say the least.&nbsp;&nbsp; I've met with the architect that's attempting to put together a comparision document on a direction to go.</p>
+<p>Some background... We've worked to get Citrix to run our critical home grown apps 3 times now.&nbsp;&nbsp; All since Citrix is going to save us some untold amount of money in the long run.&nbsp; Each time trying to get our homegrown apps to Citrix-ize has been completely and horribly unsuccessful.&nbsp;&nbsp; So great.. We have Citrix running some 2 dozen applications (not the important ones still) and still have to maintain a separate application deployment system for applications outside of Citrix currently (lets talk about management, labor and support effort of maintaining two separate systems).&nbsp; The current Citrix environment gets at least a dozen new tickets</p>
+<p>When we attempted to get Citrix up and running the first time 4+ years ago we spent some 200 hours trying to get One homegrown business critical application up and running on Citrix.&nbsp;&nbsp; That failed horribly.&nbsp;&nbsp; We then looked at running this "Virtual Machine" concept with XP workstations which was completely new at the time.&nbsp; It was this or putting some 200 desktops into our datacenter.&nbsp; Ewwww.&nbsp;&nbsp; We went and tried the Virtual Workstations out and had the application, entire environment and all systems up and running in about 100 hours of effort.&nbsp;&nbsp; It worked.&nbsp; The environment then grew organically as more and more teams heard about it and found that it just kept working.&nbsp;&nbsp; We are up around 1200 VDI instances (we call it Virtual Workstations) now.</p>
+<p>Sooo.. Back to architectural discussion..</p>
+<p>Citrix has some 12 pages in this document around the things we'd have to fix and all the unknowns and estimated effort to Citrix-ize all these apps and possible, maybe cost savings if we are lucky and can get some of these business critical applications up and working and so forth.&nbsp;&nbsp;&nbsp; Virtual Workstations has 1&#47;2 a page that says basically.. "It works and will work for the forseeable future."</p>
+<p>What is upper management thinking about doing?&nbsp; Citrix.&nbsp;&nbsp; Why?&nbsp; Beats the tar out of me as the possible cost savings just don't appear to be there.&nbsp;&nbsp;&nbsp;&nbsp; *sigh*</p>

@@ -1,0 +1,40 @@
+---
+layout: post
+status: publish
+published: true
+title: Windows 10 GA VMware Template
+author:
+  display_name: iguy
+  login: iguy
+  email: iguy@ionsphere.org
+  url: ''
+author_login: iguy
+author_email: iguy@ionsphere.org
+wordpress_id: 750
+wordpress_url: http://itsjustanotherlayer.com/?p=750
+date: !binary |-
+  MjAxNS0wOS0xNiAyMTowMjo1MSAtMDUwMA==
+date_gmt: !binary |-
+  MjAxNS0wOS0xNyAwMjowMjo1MSAtMDUwMA==
+categories:
+- VMware
+tags:
+- templates
+- windows10
+comments: []
+---
+<p>An interesting change with App Store and Windows Update has made creating a VMware template a little more unique now. &nbsp;I attempted to create one doing the normal process of building&nbsp;from ISO, logging in, making the modifications we want to have done such as installing VMware Tools and then gracefully powering the system off. &nbsp;Then the&nbsp;<em>Deploy from Template<&#47;em> option and select a guest customization to Sysprep the system. &nbsp; That doesn't work as any Windows Store application such as the start menu or the Windows Store, simply doesn't start.</p>
+<p>VMware says Windows 10 guest customization works just fine per the Guest OS instruction page.</p>
+<p style="padding-left: 30px;"><a href="http:&#47;&#47;partnerweb.vmware.com&#47;GOSIG&#47;Windows_10.html">http:&#47;&#47;partnerweb.vmware.com&#47;GOSIG&#47;Windows_10.html<&#47;a><&#47;p><br />
+This is a tad misleading as this set of instructions does not allow you to actually get SysPrep with a Guest Customization option to run correctly. &nbsp; To make SysPrep work with Windows 10, the Windows 10 system needs to be put into Audit mode.</p>
+<p>The easiest way to enter audit mode when setting up a VMware template (at least a way it worked for my setup).</p>
+<ol>
+<li>Provision a blank system from DVD.<&#47;li>
+<li>When the system boots for the first time at the Welcome Screen&#47;Customize Privacy settings, press <Shift> + <Ctrl> + <F3>.<&#47;li><br />
+<&#47;ol><br />
+Make the legacy configuration settings and setups (such as creating a local ID you want on the system using Computer Management or other fun legacy non-Windows Store apps).</p>
+<ol start="3">
+<li>&nbsp;Do a graceful shutdown.<&#47;li>
+<li>Turn the system into a template<&#47;li><br />
+<&#47;ol><br />
+This worked very well for my setup. &nbsp; Any better&nbsp;ways to setup a clean Win10 template?</p>

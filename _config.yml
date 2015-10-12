@@ -1,0 +1,15 @@
+# Site settings
+title: It's just another layer
+email: ian@ionsphere.org
+description: > # this means to ignore newlines until "baseurl:"
+    A discussion on an IT's path from Virtualization, Automation to cloud computing.  What exactly does that mean to a 125 year old organization?
+
+baseurl: "" # the subpath of your site, e.g. /blog/
+url: "http://www.itsjustanotherlayer.com" # the base hostname & protocol for your site
+twitter_username: iankoenig
+github_username:  iguyking
+
+host: website.home.ionsphere.org
+
+# Build settings
+markdown: kramdown
