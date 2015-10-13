@@ -54,12 +54,12 @@ comments:
 
 
     If you are already sshing, into thousands of ESX servers to do maintenance, then
-    the benefit&#47;non-benefit of having this is moot, and your management&#47;design
+    the benefit/non-benefit of having this is moot, and your management/design
     should likely be revisited.
 
 
     That said, in this case, it''s just one of those things available to you.  Logging
-    into ESX and doing "sudo rm -rf &#47;" isn''t smart either, but it can be done.'
+    into ESX and doing "sudo rm -rf /" isn''t smart either, but it can be done.'
 - id: 26
   author: Vishnu Mohan
   author_email: vmohan@vmware.com
@@ -92,15 +92,15 @@ comments:
     do anything versus flexibility to get your job done.\n\n@Vishnu:  What privileges
     do you need?  I'll have to look into this again and try it."
 ---
-<p>I've been reading a <a href="http:&#47;&#47;professionalvmware.com&#47;2008&#47;12&#47;10&#47;those-roots-run-deep-create-a-second-root-account-on-esx&#47;" target="_blank">bunch<&#47;a> of <a href="http:&#47;&#47;lonesysadmin.net&#47;2008&#47;12&#47;23&#47;why-would-you-want-a-second-superuser&#47;" target="_blank">posts<&#47;a> that have been covering the idea of "making another root account".&nbsp;&nbsp; I read this <a href="http:&#47;&#47;kb.vmware.com&#47;kb&#47;1005278" target="_blank">KB article<&#47;a> from VMware when it first came out and said "how dumb, no thanks".&nbsp;&nbsp; I didn't realize it would cause such a stir.</p>
-<p>When I design new systems and deploy new applications and processes at my work, a large part of the discussion in my mind is how much support work will this new procedure cause.&nbsp;&nbsp; Initial deployment is typically all a project planner thinks about.&nbsp; That is a small cost in the overall picture from my experience.</p>
+<p>I've been reading a <a href="http://professionalvmware.com/2008/12/10/those-roots-run-deep-create-a-second-root-account-on-esx/" target="_blank">bunch</a> of <a href="http://lonesysadmin.net/2008/12/23/why-would-you-want-a-second-superuser/" target="_blank">posts</a> that have been covering the idea of "making another root account".   I read this <a href="http://kb.vmware.com/kb/1005278" target="_blank">KB article</a> from VMware when it first came out and said "how dumb, no thanks".   I didn't realize it would cause such a stir.</p>
+<p>When I design new systems and deploy new applications and processes at my work, a large part of the discussion in my mind is how much support work will this new procedure cause.   Initial deployment is typically all a project planner thinks about.  That is a small cost in the overall picture from my experience.</p>
 <p>Adding an additional root level account introduces the following support issues:</p>
 <ul>
-<li>An account that has to be audited<&#47;li>
-<li>An account that has to have a regular password update which means tracking that password<&#47;li>
-<li>An account that needs to have the password distributed to various individuals<&#47;li>
-<li>An attack vector that must be considered or contained<&#47;li><br />
-<&#47;ul><br />
-Anyone that immediately says these are trivial never has had to maintain this for thousands of accounts from the top down to the actual account.&nbsp; It might be simple to do though when you start adding this to every procedure you have, it adds up.</p>
-<p>Now why would you need another root account?&nbsp; I'm doing everything I can to get rid of all usage of it.&nbsp; sudo does 99.99% of everything I need to do with root level privileges in ESX.&nbsp;&nbsp; If I could add a host into VirtualCenter using a user account instead of root I'd be happy to disable logins using <em>root<&#47;em>.&nbsp; There is only one situation I can think of that I need root for and if the host is that screwed up, I'll most likely be rebooting it anyways.</p>
-<p>Not much use for root honestly.&nbsp; Fight the power.&nbsp;&nbsp; As a fellow blogger says so elegantly, "Just cause you can doesn't mean you should".</p>
+<li>An account that has to be audited</li>
+<li>An account that has to have a regular password update which means tracking that password</li>
+<li>An account that needs to have the password distributed to various individuals</li>
+<li>An attack vector that must be considered or contained</li><br />
+</ul><br />
+Anyone that immediately says these are trivial never has had to maintain this for thousands of accounts from the top down to the actual account.  It might be simple to do though when you start adding this to every procedure you have, it adds up.</p>
+<p>Now why would you need another root account?  I'm doing everything I can to get rid of all usage of it.  sudo does 99.99% of everything I need to do with root level privileges in ESX.   If I could add a host into VirtualCenter using a user account instead of root I'd be happy to disable logins using <em>root</em>.  There is only one situation I can think of that I need root for and if the host is that screwed up, I'll most likely be rebooting it anyways.</p>
+<p>Not much use for root honestly.  Fight the power.   As a fellow blogger says so elegantly, "Just cause you can doesn't mean you should".</p>

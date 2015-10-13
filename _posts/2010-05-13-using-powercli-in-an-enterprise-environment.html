@@ -23,15 +23,15 @@ tags:
 - Proxy
 comments: []
 ---
-<p>Most enterprises take security very seriously.&nbsp;&nbsp; As such it is extremely common to have a webproxy setup by default in your environment.&nbsp;&nbsp; PowerCLI&#47;Powershell are configured by default to Use System Proxy.&nbsp;&nbsp; This means that when you attempt to use some of the cmdlets they will end up being attempted to get routed through the proxy.</p>
-<p>Two cmdlets that do not work properly when this is happening are <em>Install-VMHostPatch<&#47;em> &amp; <em>Copy-DatastoreItem<&#47;em>.  A good indication of the proxy being involved is exceptions that have items like:<br />
-<code> Proxy Authentication Required<&#47;code></p>
-<p>To work around this wrap the code in a <em>Set-PowerCLIConfiguration<&#47;em> proxy avoidance.  </p>
+<p>Most enterprises take security very seriously.   As such it is extremely common to have a webproxy setup by default in your environment.   PowerCLI/Powershell are configured by default to Use System Proxy.   This means that when you attempt to use some of the cmdlets they will end up being attempted to get routed through the proxy.</p>
+<p>Two cmdlets that do not work properly when this is happening are <em>Install-VMHostPatch</em> & <em>Copy-DatastoreItem</em>.  A good indication of the proxy being involved is exceptions that have items like:<br />
+<code> Proxy Authentication Required</code></p>
+<p>To work around this wrap the code in a <em>Set-PowerCLIConfiguration</em> proxy avoidance.  </p>
 <pre lang="powershell" line="1">$CurrentProxyCfg = Get-PowerCLIConfiguration<br />
 Set-PowerCLIConfiguration -ProxyPolicy NoProxy<br />
 ...<br />
 Install-VMHostPatch [...]<br />
 ...<br />
 Set-PowerCLIConfiguration -ProxyPolicy $CurrentProxyCfg.ProxyPolicy<br />
-<&#47;pre></p>
+</pre></p>
 <p>Thanks to @cshanklin & @lucd for their assistance in aiming me down the right path.  </p>

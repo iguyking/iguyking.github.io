@@ -74,10 +74,10 @@ comments:
     MjAwOS0wMy0yMSAxODo1MzozMSAtMDUwMA==
   content: ! '[...] slow compared to pulling useful data from it. I&#8217;ve done
     performance testing before of Get-VM against Get-View to get to the useful data
-    needed day to day.&nbsp;&nbsp; In that test using Get-View was [...]'
+    needed day to day.   In that test using Get-View was [...]'
 ---
-<p>I've been starting to look at using the VI Toolkit which uses Powershell.&nbsp;&nbsp; In doing this many of the command formats tend to be "<em>Get-VM | Get-View<&#47;em>" or "<em>Get-VMHost | Get-View<&#47;em>".&nbsp;&nbsp; So I'm off and figuring this out and I run a small script and say "Geez that took a long time to run".&nbsp;&nbsp; I'm talking to my co-worker (a pretty smart cookie) and he says "Why don't you just use "<em>Get-View -ViewType VirtualMachine<&#47;em>" and skip the middle man?"&nbsp;&nbsp; Good point.&nbsp; Didn't know about that command.&nbsp; Well this is just a tad bit faster.</p>
-<p style="padding-left: 30px;"><em>Get-VM | Get-View <&#47;em>timing in my script takes <strong>1 minute and 37 seconds<&#47;strong>.<&#47;p></p>
-<p style="padding-left: 30px;"><em>Get-View -ViewType VirtualMachine <&#47;em>takes an amazing <span style="text-decoration: underline;"><strong>5.12 seconds<&#47;strong><&#47;span>.<&#47;p></p>
+<p>I've been starting to look at using the VI Toolkit which uses Powershell.   In doing this many of the command formats tend to be "<em>Get-VM | Get-View</em>" or "<em>Get-VMHost | Get-View</em>".   So I'm off and figuring this out and I run a small script and say "Geez that took a long time to run".   I'm talking to my co-worker (a pretty smart cookie) and he says "Why don't you just use "<em>Get-View -ViewType VirtualMachine</em>" and skip the middle man?"   Good point.  Didn't know about that command.  Well this is just a tad bit faster.</p>
+<p style="padding-left: 30px;"><em>Get-VM | Get-View </em>timing in my script takes <strong>1 minute and 37 seconds</strong>.</p></p>
+<p style="padding-left: 30px;"><em>Get-View -ViewType VirtualMachine </em>takes an amazing <span style="text-decoration: underline;"><strong>5.12 seconds</strong></span>.</p></p>
 <p>The VI Toolkit developers have identified this as a serious issue are working on ways to speed this up and retain backwards compatibility.</p>
-<p>So the lesson today is if you need to do a Get-View immediately after doing some set collection look at using the <em>Get-View -ViewType <&#47;em>instead.&nbsp; It isn't as readable though it gets the job done well.</p>
+<p>So the lesson today is if you need to do a Get-View immediately after doing some set collection look at using the <em>Get-View -ViewType </em>instead.  It isn't as readable though it gets the job done well.</p>

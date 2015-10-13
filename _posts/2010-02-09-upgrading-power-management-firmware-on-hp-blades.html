@@ -25,19 +25,19 @@ tags:
 - ilo
 comments: []
 ---
-<p>When you update your Onboard Administrator on HP c-Chassis to 2.5x, the OA will start to check if the Power Management version is new enough and if it is not it will give you a Major Error with details of : <a href="http:&#47;&#47;h20000.www2.hp.com&#47;bizsupport&#47;TechSupport&#47;Document.jsp?objectID=c01668472">C01668472<&#47;a></p>
+<p>When you update your Onboard Administrator on HP c-Chassis to 2.5x, the OA will start to check if the Power Management version is new enough and if it is not it will give you a Major Error with details of : <a href="http://h20000.www2.hp.com/bizsupport/TechSupport/Document.jsp?objectID=c01668472">C01668472</a></p>
 <p>To update this you need to either have a running OS or you can do the following steps using tools you have already downloaded most likely.</p>
-<p>bbFirmware <a href="http:&#47;&#47;h20000.www2.hp.com&#47;bizsupport&#47;TechSupport&#47;SoftwareDescription.jsp?lang=en&amp;cc=us&amp;prodTypeId=3709945&amp;prodSeriesId=3621769&amp;prodNameId=3621782&amp;swEnvOID=2025&amp;swLang=8&amp;mode=2&amp;taskId=135&amp;swItem=MTX-31278bd8be4f4f4c8bd6b66fef">CD 1.60<&#47;a><br />
-PowerManagement <a href="http:&#47;&#47;h20000.www2.hp.com&#47;bizsupport&#47;TechSupport&#47;SoftwareDescription.jsp?lang=en&amp;cc=us&amp;prodTypeId=3709945&amp;prodSeriesId=3621769&amp;prodNameId=3621782&amp;swEnvOID=2025&amp;swLang=8&amp;mode=2&amp;taskId=135&amp;swItem=MTX-3846964ef01b469cb48546229f">3.4D Linux<&#47;a> install</p>
+<p>bbFirmware <a href="http://h20000.www2.hp.com/bizsupport/TechSupport/SoftwareDescription.jsp?lang=en&cc=us&prodTypeId=3709945&prodSeriesId=3621769&prodNameId=3621782&swEnvOID=2025&swLang=8&mode=2&taskId=135&swItem=MTX-31278bd8be4f4f4c8bd6b66fef">CD 1.60</a><br />
+PowerManagement <a href="http://h20000.www2.hp.com/bizsupport/TechSupport/SoftwareDescription.jsp?lang=en&cc=us&prodTypeId=3709945&prodSeriesId=3621769&prodNameId=3621782&swEnvOID=2025&swLang=8&mode=2&taskId=135&swItem=MTX-3846964ef01b469cb48546229f">3.4D Linux</a> install</p>
 <ol>
-<li>Boot off bbFirmware CD via the iLO Virtual Media<&#47;li>
-<li>At the <em>boot:<&#47;em> prompt type in <em>console<&#47;em> and hit enter.&nbsp; Don't hit the default.<&#47;li>
-<li>Wait for a console shell prompt to come up.&nbsp; This may take a couple minutes.<&#47;li>
-<li>Mount a Folder (which will show up as a USB device to the OS) via the iLO to the directory you have put the PowerManagement update in.&nbsp;&nbsp; It is smart to minimize how many files are in that directory.<&#47;li>
-<li>Type in <em>mkdir &#47;mnt&#47;power<&#47;em><&#47;li>
-<li>Type in <em>mount &#47;dev&#47;sda &#47;mnt&#47;power<&#47;em><&#47;li>
-<li>Type in <em>cd &#47;mnt&#47;power<&#47;em><&#47;li>
-<li>Type in<em> .&#47;CP011627.scexe<&#47;em><&#47;li>
-<li>Once this is complete go ahead and reboot the box via the iLO.<&#47;li><br />
-<&#47;ol><br />
+<li>Boot off bbFirmware CD via the iLO Virtual Media</li>
+<li>At the <em>boot:</em> prompt type in <em>console</em> and hit enter.  Don't hit the default.</li>
+<li>Wait for a console shell prompt to come up.  This may take a couple minutes.</li>
+<li>Mount a Folder (which will show up as a USB device to the OS) via the iLO to the directory you have put the PowerManagement update in.   It is smart to minimize how many files are in that directory.</li>
+<li>Type in <em>mkdir /mnt/power</em></li>
+<li>Type in <em>mount /dev/sda /mnt/power</em></li>
+<li>Type in <em>cd /mnt/power</em></li>
+<li>Type in<em> ./CP011627.scexe</em></li>
+<li>Once this is complete go ahead and reboot the box via the iLO.</li><br />
+</ol><br />
 That should address this issue.</p>

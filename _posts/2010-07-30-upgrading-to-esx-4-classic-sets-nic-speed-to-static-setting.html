@@ -23,12 +23,12 @@ tags:
 comments: []
 ---
 <p>Recently I found that my environment of ESX 4 Classic has a lot of static NIC speed settings. This is a rather interesting discovery as I've been a strong proponent of using Auto Negotiation on all the NICs as that will help one find flaky or poorly connected cables along with a variety of other issues. If you have it force set to a speed, you won't get any notification that a given connection is working poorly until someone digs in pretty deeply.</p>
-<p>Ethermind goes into very well with some <a href="http:&#47;&#47;etherealmind.com&#47;ethernet-autonegotiation-works-why-how-standard-should-be-set&#47;">deep research into WHY<&#47;a> you should always use AutoNegotiation at Gig or faster speeds.</p>
-<p><a href="http:&#47;&#47;itsjustanotherlayer.com&#47;wp-content&#47;uploads&#47;2010&#47;07&#47;NICSpeeds11.png"><img class="alignleft size-medium wp-image-460" title="NIC Speeds" src="http:&#47;&#47;itsjustanotherlayer.com&#47;wp-content&#47;uploads&#47;2010&#47;07&#47;NICSpeeds1-300x165.png" alt="Nic Configured Speeds" width="300" height="165" &#47;><&#47;a></p>
+<p>Ethermind goes into very well with some <a href="http://etherealmind.com/ethernet-autonegotiation-works-why-how-standard-should-be-set/">deep research into WHY</a> you should always use AutoNegotiation at Gig or faster speeds.</p>
+<p><img class="alignleft size-medium wp-image-460" title="NIC Speeds" src="/public/img/NICSpeeds.png" alt="Nic Configured Speeds" width="300" height="165" /></p>
 <p>As such found that there are many 100meg static settings. This has a tendancy to cause problems with network performance when the other side thinks it is auto-negotiating.</p>
 <p>To fix this if you are properly redundant is a safe way to walk through your environment updating and giving each NIC a chance to negotiate before doing the next on each host.   </p>
 <pre lang="powershell" line="1">
 connect-viserver -server vCenter -cred (Get-Credential)<br />
 get-vmhostnetworkadapter -physical | where {$_.Name -eq "vmnic0"} | set-vmhostnetworkadapter -Autonegotiate<br />
-<&#47;pre></p>
-<p><strong>Update 30 July 2010 @ 11:38am<&#47;strong>:  Just found out that I'm not the first to blog post about this.   Here's an <a href="http:&#47;&#47;www.ivobeerens.nl&#47;?p=537">earlier post<&#47;a> on the subject.</p>
+</pre></p>
+<p><strong>Update 30 July 2010 @ 11:38am</strong>:  Just found out that I'm not the first to blog post about this.   Here's an <a href="http://www.ivobeerens.nl/?p=537">earlier post</a> on the subject.</p>

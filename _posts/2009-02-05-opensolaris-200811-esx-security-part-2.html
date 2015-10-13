@@ -35,12 +35,12 @@ comments:
   content: ! 'you might rather want to use:
 
 
-    zfs set sharenfs=rw=@192.168.1.0&#47;24,root=@192.168.1.0&#47;24 storage&#47;vms
+    zfs set sharenfs=rw=@192.168.1.0/24,root=@192.168.1.0/24 storage/vms
 
 
     which allows access for the entire subnet, or alternatively restrict access further
     down to the esx server(s) ip.'
 ---
 <p>If you are using OpenSolaris and NFS for your datastores and using ESX you need to share out your zfs filesystems with anon=0 since ESX wants to write to the NFS datastore as root.   </p>
-<p>zfs set sharenfs=anon=0 usbpool&#47;virtuals</p>
-<p>I wouldn't mind having stuff like this if I could figure out how to properly get logging of the issues&#47;connections in OpenSolaris.   Anybody know how to increasing logging for the NFS services in OpenSolaris?</p>
+<p>zfs set sharenfs=anon=0 usbpool/virtuals</p>
+<p>I wouldn't mind having stuff like this if I could figure out how to properly get logging of the issues/connections in OpenSolaris.   Anybody know how to increasing logging for the NFS services in OpenSolaris?</p>

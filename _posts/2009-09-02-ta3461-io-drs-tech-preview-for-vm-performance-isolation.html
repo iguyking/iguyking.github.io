@@ -66,7 +66,7 @@ comments:
     After a quick google I found this great post by Ian Koenig over on his blog from
     last [...]'
 - id: 71
-  author: ! 'VMware PEX 2010: Tech Preview of DRS I&#47;O Resource Shares | VM &#47;ETC'
+  author: ! 'VMware PEX 2010: Tech Preview of DRS I/O Resource Shares | VM /ETC'
   author_email: ''
   author_url: http://vmetc.com/2010/02/14/vmware-pex-2010-tech-preview-of-drs-io-resource-shares/
   date: !binary |-
@@ -83,7 +83,7 @@ comments:
     MjAxMC0wMi0xNSAwMzoyNTozMyAtMDYwMA==
   date_gmt: !binary |-
     MjAxMC0wMi0xNSAwOToyNTozMyAtMDYwMA==
-  content: ! '[...] More on IO DRS can be read on this blogpost at Yellow-Bricks.com&nbsp;and
+  content: ! '[...] More on IO DRS can be read on this blogpost at Yellow-Bricks.com and
     here another post on IO DRS [...]'
 - id: 73
   author: DRS to add IO Resource Management into the new vSphere &laquo; Jason Ruiz&#039;s
@@ -107,7 +107,7 @@ comments:
   date_gmt: !binary |-
     MjAxMC0wMy0xMCAxMjoyOTowMCAtMDYwMA==
   content: ! '[...] IO-Resource Manager (IO-RM) This will allow the Distributed Resource
-    Scheduler (DRS) to assign shares based on disk performance.&nbsp;The more shares
+    Scheduler (DRS) to assign shares based on disk performance. The more shares
     a virtual machine will have, the higher priority it will get in accessing a shared
     V.... [...]'
 - id: 75
@@ -172,21 +172,21 @@ comments:
     Here&#8217;s a wonderful blog post about it.     Categories: Uncategorized        Comments
     (0) Trackbacks (0) Leave a comment [...]'
 ---
-<p>This is a very new area of research at VMware.&nbsp; Only about 2 years ago.&nbsp; Since thm is is a Tech Preview it has no roadmap for when it will be available.</p>
+<p>This is a very new area of research at VMware.  Only about 2 years ago.  Since thm is is a Tech Preview it has no roadmap for when it will be available.</p>
 <p>The Problem:</p>
-<p>Many different workloads hit the same set of disks&#47;arrays&#47;spindles etc.&nbsp;&nbsp; Low priority processes that run ad-hoc or other times will cause higher priority systems to experience an impact.&nbsp; What you want to see is that the low priority VM gets less performance than the higher priority systems.&nbsp;&nbsp; The question is how you can do this?</p>
-<p>A&nbsp;solution:&nbsp; Resource Controls</p>
-<p>Assigning out shares based on disk performances.&nbsp;&nbsp; Just like CPU&#47;Memory shares of the original ESX days.&nbsp; Higher shares total for a host gets higher priority for that shared VMFS volume.</p>
-<p>To configure this you'd go into the VM and set the shares.&nbsp;&nbsp; Fairly straight forward.&nbsp;&nbsp; The setting is shares and then the limiting factor is IOPS.&nbsp;&nbsp; Interesting idea.&nbsp;</p>
-<p>First case study covers two separate hosts with the IO DRS turned on running the same workload levels and saw a pretty significant difference in terms of IOPS &amp; Latency measures.&nbsp;&nbsp; With it turned off both VMs ran at 20 ms &amp; 1500 IOPS.&nbsp; With it on the Latency changed to 16 ms and 31 ms and a similar spread for IOPS.&nbsp;&nbsp; Nice..</p>
-<p>Case study two is a a more serious one with SQL server running.&nbsp;&nbsp; The shares were 4:1 and the ratios were not that in terms of performance.&nbsp; The thing that they are seeing is that load time matters significantly.&nbsp; Overall thruput is working right and good though the loads make a big difference.&nbsp;&nbsp;</p>
-<p>The demo went and showed changing the shares on the fly and the Limit for IOPS and watched the IOMeter machines adjust immediately.&nbsp;&nbsp; When limiting the IOPS the other systems picked up the slack and got more performance.&nbsp;&nbsp;</p>
-<p>After showing the demo the presenters asked if anyone in the packed room (and I do mean PACKED) would find a value to this?&nbsp;&nbsp; Everyone immediately raised their hands.&nbsp;&nbsp;</p>
-<p>The tech approach is first to detect congestion.&nbsp;&nbsp; If latency is above a threshold and then trigger the IO DRS.&nbsp;&nbsp; If it isn't borked don't fix it.&nbsp;&nbsp; IO DRS works by controling the IOs issued per host.&nbsp; The sum of the vms on the host with IO DRS enabled is compared with other hosts to determine share priority.&nbsp;&nbsp; So first the host is picked and then the VMs shares on that host are prioritized and then back to the host discussion.&nbsp;&nbsp; The share control goes against all hosts using that same VMFS volume.&nbsp;</p>
-<p>IO slots are filled based on the shares on each host.&nbsp; There are so many IO slots per Host.&nbsp; This is how the IOs are controled for share congestion work.&nbsp;&nbsp;</p>
-<p>Two major performance metrics in storage industry.&nbsp;&nbsp; Bandwidth (MB&#47;s) and Throughput (IOPS).&nbsp;&nbsp; Each have their pros and cons.&nbsp;&nbsp; Bandwidth helps workloads with&nbsp;large IO sizes and IOPS is good for lots of sequential workloads.&nbsp;&nbsp; IO DRS controls the array queue among the VMs.&nbsp; Then if a VM has lots of small IOs they can continue to do things and have high IOPS.&nbsp; Conversely if it has large IOs it is doing then it will get high bandwidth and low IOPS using the same share control system.</p>
-<p>Case studies and test runs have shown that Device level latency stays the same as workloads change.&nbsp; Some tests have shown that with IO DRS IOPS can go up simply due to the workloads involved.&nbsp; Control of the IOs allows all to work though depending on the workload a VM can accomplish more.&nbsp;&nbsp;</p>
-<p>The key understanding is that IO DRS really helps when there is congestion.&nbsp;&nbsp; When things are good and latency is not high enough to trigger the system, the shares are not used.&nbsp;&nbsp; If a high IO share system is not using its slots, they are reassigned to other VMs in the cluster.&nbsp;</p>
+<p>Many different workloads hit the same set of disks/arrays/spindles etc.   Low priority processes that run ad-hoc or other times will cause higher priority systems to experience an impact.  What you want to see is that the low priority VM gets less performance than the higher priority systems.   The question is how you can do this?</p>
+<p>A solution:  Resource Controls</p>
+<p>Assigning out shares based on disk performances.   Just like CPU/Memory shares of the original ESX days.  Higher shares total for a host gets higher priority for that shared VMFS volume.</p>
+<p>To configure this you'd go into the VM and set the shares.   Fairly straight forward.   The setting is shares and then the limiting factor is IOPS.   Interesting idea. </p>
+<p>First case study covers two separate hosts with the IO DRS turned on running the same workload levels and saw a pretty significant difference in terms of IOPS & Latency measures.   With it turned off both VMs ran at 20 ms & 1500 IOPS.  With it on the Latency changed to 16 ms and 31 ms and a similar spread for IOPS.   Nice..</p>
+<p>Case study two is a a more serious one with SQL server running.   The shares were 4:1 and the ratios were not that in terms of performance.  The thing that they are seeing is that load time matters significantly.  Overall thruput is working right and good though the loads make a big difference.  </p>
+<p>The demo went and showed changing the shares on the fly and the Limit for IOPS and watched the IOMeter machines adjust immediately.   When limiting the IOPS the other systems picked up the slack and got more performance.  </p>
+<p>After showing the demo the presenters asked if anyone in the packed room (and I do mean PACKED) would find a value to this?   Everyone immediately raised their hands.  </p>
+<p>The tech approach is first to detect congestion.   If latency is above a threshold and then trigger the IO DRS.   If it isn't borked don't fix it.   IO DRS works by controling the IOs issued per host.  The sum of the vms on the host with IO DRS enabled is compared with other hosts to determine share priority.   So first the host is picked and then the VMs shares on that host are prioritized and then back to the host discussion.   The share control goes against all hosts using that same VMFS volume. </p>
+<p>IO slots are filled based on the shares on each host.  There are so many IO slots per Host.  This is how the IOs are controled for share congestion work.  </p>
+<p>Two major performance metrics in storage industry.   Bandwidth (MB/s) and Throughput (IOPS).   Each have their pros and cons.   Bandwidth helps workloads with large IO sizes and IOPS is good for lots of sequential workloads.   IO DRS controls the array queue among the VMs.  Then if a VM has lots of small IOs they can continue to do things and have high IOPS.  Conversely if it has large IOs it is doing then it will get high bandwidth and low IOPS using the same share control system.</p>
+<p>Case studies and test runs have shown that Device level latency stays the same as workloads change.  Some tests have shown that with IO DRS IOPS can go up simply due to the workloads involved.  Control of the IOs allows all to work though depending on the workload a VM can accomplish more.  </p>
+<p>The key understanding is that IO DRS really helps when there is congestion.   When things are good and latency is not high enough to trigger the system, the shares are not used.   If a high IO share system is not using its slots, they are reassigned to other VMs in the cluster. </p>
 <p>The gain overall is the ability to do performance isolation amoung VMs based on Disk IO.</p>
 <p>In the future they are looking to tie this into more vStorage APIs and VMotions and Storage VMotions, IOP reservation potentially etc.</p>
 <p>Rocking cool and can't wait for this to come out.</p>

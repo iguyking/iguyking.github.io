@@ -48,31 +48,31 @@ comments:
     pointed us to a solution quickly. This is one of the reasons why I recommend a
     monitoring tool. I really hope that the what-I-think-is-a-bug is fixed with vSphere.
 ---
-<p>I've been chewing on this <a title="Using limits instead of downscaling" href="http:&#47;&#47;www.yellow-bricks.com&#47;2009&#47;09&#47;25&#47;using-limits-instead-of-downscaling&#47;" target="_blank">post<&#47;a> by Duncan at Yellow Bricks for the past month and a half.&nbsp; It covers some complicated issues that one has to deal with in a enterprise size environment with many assumptions on what gets you into this mess in the first place.&nbsp;&nbsp; The best thing to do is downscale and upscale as needed based on good performance monitoring and bottleneck research.&nbsp; Thankfully I've managed to make good relationships with most teams where I work that this has become the standard operating procedure though sometimes we just can't. &nbsp; At the end of the day the issue boils down to the simple goal:</p>
-<p style="padding-left: 30px;">"As the VMware environment administrator, how can I make better use of what I have available to me?"<&#47;p></p>
+<p>I've been chewing on this <a title="Using limits instead of downscaling" href="http://www.yellow-bricks.com/2009/09/25/using-limits-instead-of-downscaling/" target="_blank">post</a> by Duncan at Yellow Bricks for the past month and a half.  It covers some complicated issues that one has to deal with in a enterprise size environment with many assumptions on what gets you into this mess in the first place.   The best thing to do is downscale and upscale as needed based on good performance monitoring and bottleneck research.  Thankfully I've managed to make good relationships with most teams where I work that this has become the standard operating procedure though sometimes we just can't.   At the end of the day the issue boils down to the simple goal:</p>
+<p style="padding-left: 30px;">"As the VMware environment administrator, how can I make better use of what I have available to me?"</p></p>
 <p>For my environment I run into a variety of political reasons going from..</p>
 <ul>
-<li>"I am going to need that extra 2 CPUs someday in the future so I can't give them up now."<&#47;li>
-<li>"The vendor docs say I really do need 8 CPUs and 128G of RAM for my 3 users even though 126G is unused."<&#47;li>
-<li>"Someone on your team said I really do need that 8G of RAM so I won't give it up"<&#47;li>
-<li>"Oh come on.. what's another 2G of RAM"<&#47;li>
-<li>"I gave up my budget for a physical to do this as a virtual even though I'm still spending less in the grand scheme.&nbsp; Gimme more resources."<&#47;li><br />
-<&#47;ul><br />
+<li>"I am going to need that extra 2 CPUs someday in the future so I can't give them up now."</li>
+<li>"The vendor docs say I really do need 8 CPUs and 128G of RAM for my 3 users even though 126G is unused."</li>
+<li>"Someone on your team said I really do need that 8G of RAM so I won't give it up"</li>
+<li>"Oh come on.. what's another 2G of RAM"</li>
+<li>"I gave up my budget for a physical to do this as a virtual even though I'm still spending less in the grand scheme.  Gimme more resources."</li><br />
+</ul><br />
 to the begging</p>
 <ul>
-<li>"Pleaseeee.&nbsp; I think it'll help my issues.&nbsp; It might even make me look better to my co-workers."<&#47;li><br />
-<&#47;ul><br />
+<li>"Pleaseeee.  I think it'll help my issues.  It might even make me look better to my co-workers."</li><br />
+</ul><br />
 I have two distinct use cases that really showcase that this kind of capability can be a hard item to use.</p>
-<p><strong><em>Case #1:&nbsp; The poorly written VBscript<br />
-<&#47;em><&#47;strong></p>
-<p>Back in the early Windows 3.1 days when VB was a novel concept, some developers made this ground breaking app that would pull data from a remote system, massage the data a bit and put it into a centralized Btrieve database.&nbsp;&nbsp; Well this script that they wrote goes to sleep for a minute after the remote system's queue it checks is empty.&nbsp; This script sleep function checks the clock to see if a minute has passed.&nbsp; It constantly checks the clock which consumes 100% of the CPU all the time.&nbsp;&nbsp; This wasn't much of an issue when each one of these systems was on its own old PC system.&nbsp; We virtualized them since 16 XP workstations in the datacenter is a management headache.&nbsp;&nbsp; Now that's 16 high power, multiple generation newer cores being used 100% all day long for no good reason.</p>
-<p>We, VMware Admins, have discovered that on the old PCs these systems would easily take 5-10 mins to work through their work queues.&nbsp;&nbsp; On the newest hardware we have with these as VMs, it takes under 15 seconds to do the same work.&nbsp;&nbsp; So for 60 seconds it is doing nothing except checking the hardware clock.</p>
-<p><em><strong>Solution #1:&nbsp; CPU limits good<br />
-<&#47;strong><&#47;em></p>
-<p>We implemented a CPU limiting resource pool for these VBscript VMs.&nbsp;&nbsp; They are still running mega fast in comparison to where they were a year ago.&nbsp;&nbsp; Now they are using no more than 8 cores worth at any given time.&nbsp; A big improvement until the app developers decide if they are going to replace all that code with <em>sleep 60<&#47;em> or recode the entire app.</p>
-<p><em><strong>Case #2:&nbsp; vCenter SQL Server Memory Limits<&#47;strong><&#47;em></p>
-<p>Due to a feature in vCenter 4.0U1 and ESX 3.5 Hosts, when I increased the RAM on my vCenter dedicated SQL Server from 4G to 8G, a Memory limit was set of 4G.&nbsp;&nbsp; When I would go onto the SQL instance, SQL Server.exe would only be using about 3600 Megs yet all 8G was consumed&#47;used.&nbsp;&nbsp; This screamed to me an issue with the OS instance.&nbsp;&nbsp; After close to 10 days of head beating and not understanding why my brand new vCenter 4.0U1 system was running so poorly, a co-worker with a fresh set of eyes noticed this setting on the SQL Server instance.</p>
-<p><em><strong>Solution #2:&nbsp; Memory limits bad<&#47;strong><&#47;em></p>
-<p>This is obvious.&nbsp; We disabled the limit and the SQL Server performance went through the roof instantly. We simply couldn't tell easily that the driver was using 4G of RAM as it wasn't a process.&nbsp; Nobody noticed the ballooning happening.</p>
-<p>At the end of the day there's pros and cons to having this level of capabilities.&nbsp; This is why I like ESX and the general approach of VMware.&nbsp;&nbsp; Give you everything we can in terms of options, configurations and rope to hang yourself and two of your friends.&nbsp;&nbsp; We will attempt to automate this and hide this as much as we can.&nbsp;&nbsp; The Vendor will never know all the situations we, people in the field, are going to run into so let's give us all the options they can.&nbsp; Use that rope with caution.</p>
-<div id="_mcePaste" style="overflow: hidden; position: absolute; left: -10000px; top: 755px; width: 1px; height: 1px;">http:&#47;&#47;www.amazon.com&#47;gp&#47;feature.html&#47;ref=amb_link_86250151_1?ie=UTF8&amp;docId=1000453281&amp;pf_rd_m=ATVPDKIKX0DER&amp;pf_rd_s=right-1&amp;pf_rd_r=1RRCWNZDTV8MFM1WDEGE&amp;pf_rd_t=101&amp;pf_rd_p=503481191&amp;pf_rd_i=163856011<&#47;div></p>
+<p><strong><em>Case #1:  The poorly written VBscript<br />
+</em></strong></p>
+<p>Back in the early Windows 3.1 days when VB was a novel concept, some developers made this ground breaking app that would pull data from a remote system, massage the data a bit and put it into a centralized Btrieve database.   Well this script that they wrote goes to sleep for a minute after the remote system's queue it checks is empty.  This script sleep function checks the clock to see if a minute has passed.  It constantly checks the clock which consumes 100% of the CPU all the time.   This wasn't much of an issue when each one of these systems was on its own old PC system.  We virtualized them since 16 XP workstations in the datacenter is a management headache.   Now that's 16 high power, multiple generation newer cores being used 100% all day long for no good reason.</p>
+<p>We, VMware Admins, have discovered that on the old PCs these systems would easily take 5-10 mins to work through their work queues.   On the newest hardware we have with these as VMs, it takes under 15 seconds to do the same work.   So for 60 seconds it is doing nothing except checking the hardware clock.</p>
+<p><em><strong>Solution #1:  CPU limits good<br />
+</strong></em></p>
+<p>We implemented a CPU limiting resource pool for these VBscript VMs.   They are still running mega fast in comparison to where they were a year ago.   Now they are using no more than 8 cores worth at any given time.  A big improvement until the app developers decide if they are going to replace all that code with <em>sleep 60</em> or recode the entire app.</p>
+<p><em><strong>Case #2:  vCenter SQL Server Memory Limits</strong></em></p>
+<p>Due to a feature in vCenter 4.0U1 and ESX 3.5 Hosts, when I increased the RAM on my vCenter dedicated SQL Server from 4G to 8G, a Memory limit was set of 4G.   When I would go onto the SQL instance, SQL Server.exe would only be using about 3600 Megs yet all 8G was consumed/used.   This screamed to me an issue with the OS instance.   After close to 10 days of head beating and not understanding why my brand new vCenter 4.0U1 system was running so poorly, a co-worker with a fresh set of eyes noticed this setting on the SQL Server instance.</p>
+<p><em><strong>Solution #2:  Memory limits bad</strong></em></p>
+<p>This is obvious.  We disabled the limit and the SQL Server performance went through the roof instantly. We simply couldn't tell easily that the driver was using 4G of RAM as it wasn't a process.  Nobody noticed the ballooning happening.</p>
+<p>At the end of the day there's pros and cons to having this level of capabilities.  This is why I like ESX and the general approach of VMware.   Give you everything we can in terms of options, configurations and rope to hang yourself and two of your friends.   We will attempt to automate this and hide this as much as we can.   The Vendor will never know all the situations we, people in the field, are going to run into so let's give us all the options they can.  Use that rope with caution.</p>
+<div id="_mcePaste" style="overflow: hidden; position: absolute; left: -10000px; top: 755px; width: 1px; height: 1px;">http://www.amazon.com/gp/feature.html/ref=amb_link_86250151_1?ie=UTF8&docId=1000453281&pf_rd_m=ATVPDKIKX0DER&pf_rd_s=right-1&pf_rd_r=1RRCWNZDTV8MFM1WDEGE&pf_rd_t=101&pf_rd_p=503481191&pf_rd_i=163856011</div></p>

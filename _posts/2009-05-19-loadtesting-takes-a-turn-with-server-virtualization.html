@@ -57,7 +57,7 @@ comments:
   content: Most of the satiation which I came across is when you run single threaded
     application run on vSMP and performance degrade. It becomes very hard to make
     customer understand that &ldquo;Please reduce CPU and performance will improve&rdquo;.
-    Their general mind set is that if we add more CPU&#47;RAM performance increases.  I
+    Their general mind set is that if we add more CPU/RAM performance increases.  I
     usually play the same mind game to convince business or application owner to reduce
     CPU. Usually I approach them with intention to prove that application is not multithreaded
     . For that if I have to approach even software vendor I do it.
@@ -77,18 +77,18 @@ comments:
     What is your methodology for determining over-allocated memory? Memory size versus
     Guest Memory % used?'
 ---
-<p>Just recently I had an interesting conversation with one of my clients.&nbsp; In this internal consult with her, she comes to me and says of our VMware Solutions that there is a</p>
-<p style="padding-left: 30px;">"potential issue with 4 vCPUs and scheduling"<&#47;p></p>
-<p>I looked at her and was a bit confused.&nbsp;&nbsp; I told her</p>
-<p style="padding-left: 30px;">"No.. there isn't a scheduling issue for 4 vCPUs in our environment."<&#47;p></p>
+<p>Just recently I had an interesting conversation with one of my clients.  In this internal consult with her, she comes to me and says of our VMware Solutions that there is a</p>
+<p style="padding-left: 30px;">"potential issue with 4 vCPUs and scheduling"</p></p>
+<p>I looked at her and was a bit confused.   I told her</p>
+<p style="padding-left: 30px;">"No.. there isn't a scheduling issue for 4 vCPUs in our environment."</p></p>
 <p>The response was</p>
-<p style="padding-left: 30px;">"Well in our last consult effort, the solution was changing the system down to 2 vCPUs instead of using 4 vCPUs."<&#47;p></p>
-<p>Ah ha.&nbsp;&nbsp; I understand now.&nbsp; The light bulb suddenly came on.</p>
-<p>One of the big benefits in Server Virtualization is the idea that we can make some rather "drastic" (by legacy mentality) changes to a Machine&#47;OS instance that you couldn't or didn't want to do in a physical system.</p>
+<p style="padding-left: 30px;">"Well in our last consult effort, the solution was changing the system down to 2 vCPUs instead of using 4 vCPUs."</p></p>
+<p>Ah ha.   I understand now.  The light bulb suddenly came on.</p>
+<p>One of the big benefits in Server Virtualization is the idea that we can make some rather "drastic" (by legacy mentality) changes to a Machine/OS instance that you couldn't or didn't want to do in a physical system.</p>
 <ol>
-<li>Ask yourself, When was the last time I went and pulled out Processors from a physical system in load testing?&nbsp;&nbsp; I'll bet you a beer at VMworld that you haven't done that in years if ever.<&#47;li>
-<li>Now when's the last time you changed a Virtual Machine from a 4 vCPU to a 2 vCPU system to try to improve performance of a given OS instance.&nbsp;&nbsp; I'll bet a beer again that you have done this in the last 60 days.<&#47;li><br />
-<&#47;ol><br />
-It is so easy for us to make those changes we don't think of the appearance of how it looks to our end clients.&nbsp;&nbsp; As in my recent discussion, they assumed that this was due to VMware ESX not being able to schedule multiple CPUs well.&nbsp; This may have been due to poor wording on my part or a leap of logic by my internal clients. &nbsp; In reality it is more likely, after I've gone back and started digging into some of the metrics collected at that time, that the application itself doesn't work as efficiently with 4 vCPUs as it does with 2 vCPUs.</p>
-<p>Also it is very easy and a lazy &#47; simple approach for us as IT folks to just assume that since I've got two sockets quad core in a physical that the load testing that we've done is going to be the fastest application performance we can get.&nbsp;&nbsp; The reality of the situation is that unless we do some tests covering changing the hardware around we really have no idea that if I got a single core, single socket my application may run (WAY) faster.&nbsp;&nbsp; We just don't know.</p>
-<p>If your serious about IT and doing things <strong>R<&#47;strong>ight and <strong>C<&#47;strong>orrect for your company and yourself, you have to be honest with what your looking at (metrics and performance) and what it really means to yourself (flexibility) and to your clients (appearance).&nbsp;&nbsp; I know I've had a fantastic ephinany and that will help me be a better IT person now.</p>
+<li>Ask yourself, When was the last time I went and pulled out Processors from a physical system in load testing?   I'll bet you a beer at VMworld that you haven't done that in years if ever.</li>
+<li>Now when's the last time you changed a Virtual Machine from a 4 vCPU to a 2 vCPU system to try to improve performance of a given OS instance.   I'll bet a beer again that you have done this in the last 60 days.</li><br />
+</ol><br />
+It is so easy for us to make those changes we don't think of the appearance of how it looks to our end clients.   As in my recent discussion, they assumed that this was due to VMware ESX not being able to schedule multiple CPUs well.  This may have been due to poor wording on my part or a leap of logic by my internal clients.   In reality it is more likely, after I've gone back and started digging into some of the metrics collected at that time, that the application itself doesn't work as efficiently with 4 vCPUs as it does with 2 vCPUs.</p>
+<p>Also it is very easy and a lazy / simple approach for us as IT folks to just assume that since I've got two sockets quad core in a physical that the load testing that we've done is going to be the fastest application performance we can get.   The reality of the situation is that unless we do some tests covering changing the hardware around we really have no idea that if I got a single core, single socket my application may run (WAY) faster.   We just don't know.</p>
+<p>If your serious about IT and doing things <strong>R</strong>ight and <strong>C</strong>orrect for your company and yourself, you have to be honest with what your looking at (metrics and performance) and what it really means to yourself (flexibility) and to your clients (appearance).   I know I've had a fantastic ephinany and that will help me be a better IT person now.</p>

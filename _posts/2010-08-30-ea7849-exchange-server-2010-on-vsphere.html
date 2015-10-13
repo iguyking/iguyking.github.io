@@ -42,25 +42,25 @@ comments:
     MjAxMC0xMC0yNCAwODoxNDozOCAtMDUwMA==
   date_gmt: !binary |-
     MjAxMC0xMC0yNCAxMzoxNDozOCAtMDUwMA==
-  content: ! '[...] http:&#47;&#47;itsjustanotherlayer.com&#47;2010&#47;08&#47;ea7849-exchange-server-2010-on-vsphere&#47;
+  content: ! '[...] http://itsjustanotherlayer.com/2010/08/ea7849-exchange-server-2010-on-vsphere/
     [...]'
 ---
-<p>Hanging out checking out some information on Exchange and decided to hit this session.&nbsp;&nbsp; My company is looking at upgrading and since we are going to Exchange 2010, I'd like to get us virtual on vSphere if we can make it happen.&nbsp;&nbsp; Alex Fontana, our presenter, is a Microsoft Technical Specialist for VMware.</p>
-<p>The trend has been clients have been pushing to virtualize Tier-1 apps such Exchange.&nbsp;&nbsp; At VMworld 2007, Dell had a Exchange 2003 performance study.&nbsp;&nbsp; VMworld 2008 introduced the SVVP program along with Exchange 2007 performance white papers.&nbsp; Along with the early adopters pushing the envelope, Exchange has improved its approach to disk access every release.&nbsp;&nbsp; It requires less and less IOPS in each release and still provide acceptable performance.</p>
-<p>Over the years ESX has been improving and offering less overhead versus native performance in every release.&nbsp;&nbsp; Starting with ESX 2 which had anywhere from a possible 30-60% overhead costs to now ESX 4 which is <7% . This along with better hardware generations every 18 months has given even more performance.</p>
-<p>This is backed by some performance tests done.&nbsp;&nbsp; In general the virtual has been within 5% of the the physical in a scale up test.&nbsp;&nbsp; In a private vSphere Cloud spread across the US, when using DRS, have seen about an overall 18% improvement in system performance versus not enabling DRS on the cluster with Exchange in it.</p>
+<p>Hanging out checking out some information on Exchange and decided to hit this session.   My company is looking at upgrading and since we are going to Exchange 2010, I'd like to get us virtual on vSphere if we can make it happen.   Alex Fontana, our presenter, is a Microsoft Technical Specialist for VMware.</p>
+<p>The trend has been clients have been pushing to virtualize Tier-1 apps such Exchange.   At VMworld 2007, Dell had a Exchange 2003 performance study.   VMworld 2008 introduced the SVVP program along with Exchange 2007 performance white papers.  Along with the early adopters pushing the envelope, Exchange has improved its approach to disk access every release.   It requires less and less IOPS in each release and still provide acceptable performance.</p>
+<p>Over the years ESX has been improving and offering less overhead versus native performance in every release.   Starting with ESX 2 which had anywhere from a possible 30-60% overhead costs to now ESX 4 which is <7% . This along with better hardware generations every 18 months has given even more performance.</p>
+<p>This is backed by some performance tests done.   In general the virtual has been within 5% of the the physical in a scale up test.   In a private vSphere Cloud spread across the US, when using DRS, have seen about an overall 18% improvement in system performance versus not enabling DRS on the cluster with Exchange in it.</p>
 <p>Some of the best practices mentioned:</p>
 <ul>
-<li>Go with a basic 1-1 ratio of vCPUs to pCPUs to start with.&nbsp; Scale out after monitoring to make sure performance is acceptable.&nbsp; Basically don't go with over subscription if possible.<&#47;li>
-<li>Don't over&nbsp; commit memory until steady state is stable and available RAM<&#47;li>
-<li>Spread the heavy I&#47;O systems across several LUNs<&#47;li>
-<li>Use eagerthickzero VMDK files (Option at time of creation, select enable for FT in vSphere 4.x GUI)<&#47;li>
-<li>RDMs are not any better than VMFS.&nbsp;&nbsp; VMFS can't do quorums though.&nbsp; Performance of VMFS is typically a little bit faster.<&#47;li>
-<li>Use VMXnet3 driver - highly optimized performance in both lower CPU and TOE<&#47;li>
-<li>Note:&nbsp; VMware does support VMotion&#47;DRS for Microsoft Cluster Nodes.&nbsp;&nbsp; Cold migration does work fine though.<&#47;li><br />
-<&#47;ul><br />
-Exchange has a variety of requirements matrixes for which Exchange 2010 server role is needed.&nbsp; As long as the requriements matrix is followed for each role, the VMs should be scaled properly.&nbsp;&nbsp; In that requirements is a discussion around Megacycles.&nbsp;&nbsp; Need to generate that to scale properly.&nbsp; Some key notes is that Mailbox roles shouldnt' go above 70% utilization.&nbsp;&nbsp; The recommendation is to use the Exchange 2010 Mailbox Server Role Requirements Calculator.&nbsp;&nbsp; Especially around the database availability groups (DAG) going on.</p>
-<p>As you design your Exchange 2010 need to keep in account the limitations of vSphere Configuration Maximums.&nbsp;&nbsp; One additional one is keep the DAG under 1TB a piece to say under the 2TB limits of each VMFS volume.&nbsp; Along with that be sure to take into account passive databases in DAG setups.</p>
-<p>There is a large set of good slides to cover various VMware products and how they work with Microsoft clustering and DAGs.&nbsp;&nbsp; Things like SRM functionality and vMotion and HA.&nbsp;&nbsp; Definitely more details in the slides than I will cover here.</p>
-<p>Exchange 2010 is nicely VSS friendly and as such can take array based backups quickly and painlessly offline.&nbsp;&nbsp; It can easily have a 10 second backup window where we have impact on the Exchange systems.</p>
-<p>At the end of the day we need to define what level of availability do we need?&nbsp;&nbsp; What are the SLAs?&nbsp;&nbsp; What level of corruption do we need to be concerned about?&nbsp;&nbsp; Can recovery be manual or does this need to be automated and why?&nbsp;&nbsp; Can we use VMware features or do we need to use the Exchange features?</p>
+<li>Go with a basic 1-1 ratio of vCPUs to pCPUs to start with.  Scale out after monitoring to make sure performance is acceptable.  Basically don't go with over subscription if possible.</li>
+<li>Don't over  commit memory until steady state is stable and available RAM</li>
+<li>Spread the heavy I/O systems across several LUNs</li>
+<li>Use eagerthickzero VMDK files (Option at time of creation, select enable for FT in vSphere 4.x GUI)</li>
+<li>RDMs are not any better than VMFS.   VMFS can't do quorums though.  Performance of VMFS is typically a little bit faster.</li>
+<li>Use VMXnet3 driver - highly optimized performance in both lower CPU and TOE</li>
+<li>Note:  VMware does support VMotion/DRS for Microsoft Cluster Nodes.   Cold migration does work fine though.</li><br />
+</ul><br />
+Exchange has a variety of requirements matrixes for which Exchange 2010 server role is needed.  As long as the requriements matrix is followed for each role, the VMs should be scaled properly.   In that requirements is a discussion around Megacycles.   Need to generate that to scale properly.  Some key notes is that Mailbox roles shouldnt' go above 70% utilization.   The recommendation is to use the Exchange 2010 Mailbox Server Role Requirements Calculator.   Especially around the database availability groups (DAG) going on.</p>
+<p>As you design your Exchange 2010 need to keep in account the limitations of vSphere Configuration Maximums.   One additional one is keep the DAG under 1TB a piece to say under the 2TB limits of each VMFS volume.  Along with that be sure to take into account passive databases in DAG setups.</p>
+<p>There is a large set of good slides to cover various VMware products and how they work with Microsoft clustering and DAGs.   Things like SRM functionality and vMotion and HA.   Definitely more details in the slides than I will cover here.</p>
+<p>Exchange 2010 is nicely VSS friendly and as such can take array based backups quickly and painlessly offline.   It can easily have a 10 second backup window where we have impact on the Exchange systems.</p>
+<p>At the end of the day we need to define what level of availability do we need?   What are the SLAs?   What level of corruption do we need to be concerned about?   Can recovery be manual or does this need to be automated and why?   Can we use VMware features or do we need to use the Exchange features?</p>

@@ -34,7 +34,7 @@ comments:
   content: ! 'Hi Ian,
 
     I''m not sure that magic formula is right.  Look at the table on the current View
-    Architecture Guide (http:&#47;&#47;www.vmware.com&#47;pdf&#47;view401_architecture_planning.pdf)
+    Architecture Guide (http://www.vmware.com/pdf/view401_architecture_planning.pdf)
     at the top of page 28.  I tried a couple in your formula and they didn''t match.  Any
     ideas? Or am I looking at the wrong table?
 
@@ -59,7 +59,7 @@ comments:
   content: ! 'OK, here''s an example.  Say you have 2 monitors at 1920x1080.  The
     formula you give above would make this:
 
-    ((2 x 1920) x (2 x 1080) x 4)&#47;1024 = 32400
+    ((2 x 1920) x (2 x 1080) x 4)/1024 = 32400
 
     The table in the VMware PDF states that 2 monitors at 1920x1080 will need another
     124.92MB (which is rounded up to 128MB) of RAM.'
@@ -83,14 +83,14 @@ comments:
 
     2 Monitors at 1920x1080 max resolution
 
-    ie.  ((2 x 1920) x (2 x 1080) x 4)&#47;1024 = 32400  Then 32400&#47;64 = 506.25.  Which
+    ie.  ((2 x 1920) x (2 x 1080) x 4)/1024 = 32400  Then 32400/64 = 506.25.  Which
     is not a divisor of 64. You would still be in a situation where this bug could
     be happening.
 
 
     Instead if you go and set the pool''s maximum desktop setting of 4 monitors at
-    1920x1080 max resolution you would end up with ((4 x 1920) x (4 x 1080) x 4)&#47;1024
-    = 129,600.  129,600&#47;64 = 2,025.  This is a divisor of 64.  Therefore this
+    1920x1080 max resolution you would end up with ((4 x 1920) x (4 x 1080) x 4)/1024
+    = 129,600.  129,600/64 = 2,025.  This is a divisor of 64.  Therefore this
     would prevent the VRAM bug from triggering.'
 - id: 103
   author: Forbes Guthrie
@@ -136,14 +136,14 @@ comments:
     MjAxNS0wOS0yNCAxMjowNjowNSAtMDUwMA==
   date_gmt: !binary |-
     MjAxNS0wOS0yNCAxNzowNjowNSAtMDUwMA==
-  content: ! "http:&#47;&#47;wingatehughes.com&#47;prostomag&#47;2757e-80158-hamilton77.html&#12495;&#12511;&#12523;&#12488;&#12531;
+  content: ! "http://wingatehughes.com/prostomag/2757e-80158-hamilton77.html&#12495;&#12511;&#12523;&#12488;&#12531;
     &#33109;&#26178;&#35336; &#12472;&#12515;&#12474;&#12510;&#12473;&#12479;&#12540;
     &#12524;&#12487;&#12451;&#12540;&#12473;,&#12495;&#12511;&#12523;&#12488;&#12531;
     &#12459;&#12540;&#12461; &#12463;&#12458;&#12540;&#12484;,&#12491;&#12490;&#12522;&#12483;&#12481;
     &#36001;&#24067; &#24180;&#40802;&#23652;\r\n&#12495;&#12511;&#12523;&#12488;&#12531;
     &#12459;&#12540;&#12461; &#26367;&#12360;&#12505;&#12523;&#12488;,&#12495;&#12511;&#12523;&#12488;&#12531;
     &#33109;&#26178;&#35336; &#12513;&#12531;&#12474; &#12459;&#12540;&#12461;,&#12491;&#12490;&#12522;&#12483;&#12481;
-    &#39321;&#27700; &#12488;&#12510;&#12488; http:&#47;&#47;unique-element.com&#47;prostomag&#47;2004c-50156-hamilton61.html"
+    &#39321;&#27700; &#12488;&#12510;&#12488; http://unique-element.com/prostomag/2004c-50156-hamilton61.html"
 - id: 12477
   author: ! '&#12495;&#12511;&#12523;&#12488;&#12531; &#33109;&#26178;&#35336; &#12513;&#12531;&#12474;
     &#20154;&#27671;,&#12495;&#12511;&#12523;&#12488;&#12531; &#12524;&#12487;&#12451;&#12540;&#12473;
@@ -154,13 +154,13 @@ comments:
     MjAxNS0wOS0yNSAwNTowOTozMyAtMDUwMA==
   date_gmt: !binary |-
     MjAxNS0wOS0yNSAxMDowOTozMyAtMDUwMA==
-  content: ! "http:&#47;&#47;www.eseki.com&#47;prostomag&#47;13cf9-00153-hamilton28.html&#12495;&#12511;&#12523;&#12488;&#12531;
+  content: ! "http://www.eseki.com/prostomag/13cf9-00153-hamilton28.html&#12495;&#12511;&#12523;&#12488;&#12531;
     &#12524;&#12487;&#12451;&#12540;&#12473; &#12532;&#12451;&#12531;&#12486;&#12540;&#12472;,&#12495;&#12511;&#12523;&#12488;&#12531;
     &#12459;&#12540;&#12461; &#26367;&#12360;&#12505;&#12523;&#12488;,&#12491;&#12490;&#12522;&#12483;&#12481;
     &#26178;&#35336; &#12522;&#12508;&#12531;\r\n&#12495;&#12511;&#12523;&#12488;&#12531;
     &#33109;&#26178;&#35336; &#12513;&#12531;&#12474; &#20154;&#27671;,&#12495;&#12511;&#12523;&#12488;&#12531;
     &#12524;&#12487;&#12451;&#12540;&#12473; &#33258;&#21205;&#24059;&#12365;,&#12491;&#12490;&#12522;&#12483;&#12481;
-    &#39321;&#27700; &#12450;&#12540;&#12514;&#12531;&#12489; http:&#47;&#47;rabthemes.com&#47;prostomag&#47;29c8f-90159-hamilton81.html"
+    &#39321;&#27700; &#12450;&#12540;&#12514;&#12531;&#12489; http://rabthemes.com/prostomag/29c8f-90159-hamilton81.html"
 - id: 12516
   author: ! '&#12495;&#12511;&#12523;&#12488;&#12531; &#33109;&#26178;&#35336; &#12513;&#12531;&#12474;
     &#12463;&#12458;&#12540;&#12484;,&#12495;&#12511;&#12523;&#12488;&#12531; &#33109;&#26178;&#35336;
@@ -171,14 +171,14 @@ comments:
     MjAxNS0wOS0zMCAwMzowMDoyMCAtMDUwMA==
   date_gmt: !binary |-
     MjAxNS0wOS0zMCAwODowMDoyMCAtMDUwMA==
-  content: ! "http:&#47;&#47;www.bluemoonlavender.com&#47;prostomag&#47;29c8f-90159-hamilton81.html&#12495;&#12511;&#12523;&#12488;&#12531;
+  content: ! "http://www.bluemoonlavender.com/prostomag/29c8f-90159-hamilton81.html&#12495;&#12511;&#12523;&#12488;&#12531;
     &#33109;&#26178;&#35336; &#12513;&#12531;&#12474; &#20154;&#27671;,&#12495;&#12511;&#12523;&#12488;&#12531;
     &#12524;&#12487;&#12451;&#12540;&#12473; &#33258;&#21205;&#24059;&#12365;,&#12491;&#12490;&#12522;&#12483;&#12481;
     &#39321;&#27700; &#12450;&#12540;&#12514;&#12531;&#12489;\r\n&#12495;&#12511;&#12523;&#12488;&#12531;
     &#33109;&#26178;&#35336; &#12513;&#12531;&#12474; &#12463;&#12458;&#12540;&#12484;,&#12495;&#12511;&#12523;&#12488;&#12531;
     &#33109;&#26178;&#35336; &#12472;&#12515;&#12474;&#12510;&#12473;&#12479;&#12540;
     &#12458;&#12540;&#12488;&#12463;&#12525;&#12494;,&#12491;&#12490;&#12522;&#12483;&#12481;
-    &#39321;&#27700; &#24259;&#30436; http:&#47;&#47;thisjewelrybox.com&#47;prostomag&#47;2c39f-00159-hamilton90.html"
+    &#39321;&#27700; &#24259;&#30436; http://thisjewelrybox.com/prostomag/2c39f-00159-hamilton90.html"
 - id: 12542
   author: ! '&#12495;&#12511;&#12523;&#12488;&#12531; &#12459;&#12540;&#12461; &#12501;&#12451;&#12540;&#12523;&#12489;,&#12495;&#12511;&#12523;&#12488;&#12531;
     &#33109;&#26178;&#35336; &#12513;&#12531;&#12474; &#12459;&#12540;&#12461;,&#12491;&#12490;&#12522;&#12483;'
@@ -188,13 +188,13 @@ comments:
     MjAxNS0xMC0wNCAxNjozNTo0NiAtMDUwMA==
   date_gmt: !binary |-
     MjAxNS0xMC0wNCAyMTozNTo0NiAtMDUwMA==
-  content: ! "http:&#47;&#47;beaconwoodsgolf.com&#47;prostomag&#47;2004c-50156-hamilton61.html&#12495;&#12511;&#12523;&#12488;&#12531;
+  content: ! "http://beaconwoodsgolf.com/prostomag/2004c-50156-hamilton61.html&#12495;&#12511;&#12523;&#12488;&#12531;
     &#12459;&#12540;&#12461; &#26367;&#12360;&#12505;&#12523;&#12488;,&#12495;&#12511;&#12523;&#12488;&#12531;
     &#33109;&#26178;&#35336; &#12513;&#12531;&#12474; &#12459;&#12540;&#12461;,&#12491;&#12490;&#12522;&#12483;&#12481;
     &#39321;&#27700; &#12488;&#12510;&#12488;\r\n&#12495;&#12511;&#12523;&#12488;&#12531;
     &#12459;&#12540;&#12461; &#12501;&#12451;&#12540;&#12523;&#12489;,&#12495;&#12511;&#12523;&#12488;&#12531;
     &#33109;&#26178;&#35336; &#12513;&#12531;&#12474; &#12459;&#12540;&#12461;,&#12491;&#12490;&#12522;&#12483;&#12481;
-    &#39321;&#27700; &#12488;&#12510;&#12488; http:&#47;&#47;www.poolwaterproducts.com.au&#47;prostomag&#47;2004c-50156-hamilton58.html"
+    &#39321;&#27700; &#12488;&#12510;&#12488; http://www.poolwaterproducts.com.au/prostomag/2004c-50156-hamilton58.html"
 - id: 12599
   author: ! '&#12512;&#12469;&#12471;&#12304;&#23627;&#22806;&#29992;&#12305;&#12467;&#12531;&#12475;&#12531;&#12488;&#24335;&#12475;&#12531;&#12469;&#12540;&#12521;&#12452;&#12488;
     PZ-820 (PZ820)&#65306;&#12477;&#12501;&#12510;&#12483;&#12503;&#27005;&#22825;&#24066;'
@@ -206,18 +206,18 @@ comments:
     MjAxNS0xMC0xMCAwMToxNTozMCAtMDUwMA==
   content: ! '&#12290;&#31169;&#12399;&#26368;&#24460;&#12398;&#25968;&#26178;&#38291;&#12395;&#12388;&#12356;&#12390;&#12399;&#12289;&#12371;&#12398;&#12488;&#12500;&#12483;&#12463;&#12398;&#24773;&#22577;&#12434;&#25506;&#12375;&#12390;&#12356;&#12414;&#12377;&#12290;&#12354;&#12394;&#12383;&#12398;&#12469;&#12452;&#12488;&#12399;&#38750;&#24120;&#12395;&#29645;&#37325;&#12373;&#12428;&#12390;&#12356;&#12414;&#12377;&#12290;&#12371;&#12398;'
 ---
-<p>Finally got PCoIP with View 4.0.1 up and running.&nbsp;&nbsp; All excited and thrilled to compare it to RDP.&nbsp; It was looking good until I fired up IE 8 and went to a couple websites.&nbsp; Some had issues.. Some didn't.</p>
-<p>[caption id="attachment_399" align="alignnone" width="300" caption="IE8 based Painting Issues"]<a href="http:&#47;&#47;itsjustanotherlayer.com&#47;wp-content&#47;uploads&#47;2010&#47;03&#47;PaintingIssues211.jpg"><img class="size-medium wp-image-399" title="Painting Issues 2" src="http:&#47;&#47;itsjustanotherlayer.com&#47;wp-content&#47;uploads&#47;2010&#47;03&#47;PaintingIssues21-300x173.jpg" alt="IE8 based Painting Issues" width="300" height="173" &#47;><&#47;a>[&#47;caption]</p>
+<p>Finally got PCoIP with View 4.0.1 up and running.   All excited and thrilled to compare it to RDP.  It was looking good until I fired up IE 8 and went to a couple websites.  Some had issues.. Some didn't.</p>
+<p><img class="size-medium wp-image-399" title="Painting Issues 2" src="/public/img/PaintingIssues2.jpg" alt="IE8 based Painting Issues" width="300" height="173" /></p>
 <p>I then launched vSphere client only to be unable to see any of the objects in the left hand window in the client.</p>
-<p>[caption id="attachment_400" align="alignnone" width="300" caption="vSphere Painting Issues"]<a href="http:&#47;&#47;itsjustanotherlayer.com&#47;wp-content&#47;uploads&#47;2010&#47;03&#47;PaintingIssues111.png"><img class="size-medium wp-image-400" title="Painting Issues 1" src="http:&#47;&#47;itsjustanotherlayer.com&#47;wp-content&#47;uploads&#47;2010&#47;03&#47;PaintingIssues11-300x240.png" alt="vSphere Painting Issues" width="300" height="240" &#47;><&#47;a>[&#47;caption]</p>
-<p>This VM is running on ESX 3.5U4 on VM Hardware 4.&nbsp;&nbsp; The quick fix is to upgrade to VM Hardware 7 which entails all the updates to vSphere 4 &amp; VM tools updates.</p>
+<p><img class="size-medium wp-image-400" title="Painting Issues 1" src="/public/img/PaintingIssues1.png" alt="vSphere Painting Issues" width="300" height="240" /></p>
+<p>This VM is running on ESX 3.5U4 on VM Hardware 4.   The quick fix is to upgrade to VM Hardware 7 which entails all the updates to vSphere 4 & VM tools updates.</p>
 <p>The other fix is due to the following two bugs in Hardware version 4.</p>
 <ol>
-<li>Completely uninstall the View Agent<&#47;li>
-<li>Reboot<&#47;li>
-<li>Reinstall the View Agent (Make sure that the Video Driver version is [...].0032)<&#47;li><br />
-<&#47;ol><br />
-If this doesn't do it then you are probably having an issue with VRAM.&nbsp;&nbsp; The fix is to adjust the pool inside of View for this machine and set the resolution and # of monitors so they come out to a number divisible by 64.&nbsp; (Kudos to my Support Wizard for finding this one.)</p>
+<li>Completely uninstall the View Agent</li>
+<li>Reboot</li>
+<li>Reinstall the View Agent (Make sure that the Video Driver version is [...].0032)</li><br />
+</ol><br />
+If this doesn't do it then you are probably having an issue with VRAM.   The fix is to adjust the pool inside of View for this machine and set the resolution and # of monitors so they come out to a number divisible by 64.  (Kudos to my Support Wizard for finding this one.)</p>
 <p>The magic formula is</p>
-<p style="padding-left: 30px;">((#of monitors * Width of Resolution) * (# of monitors * Height of Resolution) * 4 )&#47;1024 == Multiple of 64<&#47;p><br />
+<p style="padding-left: 30px;">((#of monitors * Width of Resolution) * (# of monitors * Height of Resolution) * 4 )/1024 == Multiple of 64</p><br />
 Keep in mind if you have less monitors than you set the pool to, PCoIP handles this gracefully and it doesn't cause issues.</p>

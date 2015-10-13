@@ -93,7 +93,7 @@ comments:
     that design?   So to do a serious VMware cluster you want to spread a given cluster
     across multiple chassis at a bare minimum.   That's not exactly cheap at the end
     of the day unless your buying 16 BL495s at the get go and don't mind having the
-    risk of 1&#47;2 of an 8 host cluster going down at any given time.   This would
+    risk of 1/2 of an 8 host cluster going down at any given time.   This would
     address the single point of failure discussion.   \n\nThe \"Eggs in a Basket\"
     is not blurred.  It is still very clear.  Virtualization does not suddenly add
     more capabilities to the guest OSes.   Just because it is virtual doesn't mean
@@ -104,7 +104,7 @@ comments:
     outage event.   It does cost more though in the grand scheme if you don't calculate
     in the outage impact to your business or clients.   That can often even the cost
     discussion pretty quickly when a given VM is down for more than 15 mins cause
-    it takes 30 mins to come or something and that runs the business $200k&#47;hour
+    it takes 30 mins to come or something and that runs the business $200k/hour
     in lost sales.   Then well.. having 2 more hosts out there instead of 1 big host,
     sure can make that discussion moot quickly."
 - id: 107
@@ -132,7 +132,7 @@ comments:
     30 a little easier.   Especially when you talk about the fact that I saved $500k
     by sticking all these critical apps into VMware.   We can do the numbers and compare
     outage costs for these applications versus the capital and operational costs of
-    the Infrastructure.    If an app costs the company $100k&#47;hour in lost sales
+    the Infrastructure.    If an app costs the company $100k/hour in lost sales
     and we only saved $20k per year.... Not a really good trade off if it goes down.
     \  We have to balance the impact."
 - id: 108
@@ -179,7 +179,7 @@ comments:
   date_gmt: !binary |-
     MjAxMC0wNC0xNiAxMTo0Mjo0MCAtMDUwMA==
   content: ! '[...] scaling up due to the release of the new Intel 5600 series that
-    has six cores. Which set off a blog posting by Ian Koenig at http:&#47;&#47;itsjustanotherlayer.com&#47;
+    has six cores. Which set off a blog posting by Ian Koenig at http://itsjustanotherlayer.com/
     titled scale up or scale out in which he brings up [...]'
 - id: 112
   author: this scale up versus scale out business? &laquo; vmwareukseteam
@@ -189,109 +189,109 @@ comments:
     MjAxMC0xMi0xNCAxMjowNDozNiAtMDYwMA==
   date_gmt: !binary |-
     MjAxMC0xMi0xNCAxODowNDozNiAtMDYwMA==
-  content: ! '[...] http:&#47;&#47;itsjustanotherlayer.com&#47;2010&#47;03&#47;scale-up-or-scale-out%E2%84%A2&#47;
+  content: ! '[...] http://itsjustanotherlayer.com/2010/03/scale-up-or-scale-out%E2%84%A2/
     [...]'
 ---
-<p>Duncan over at <a title="Scale Up" href="http:&#47;&#47;www.yellow-bricks.com&#47;2010&#47;03&#47;17&#47;scale-up&#47;" target="_blank">Yellow-Bricks.com<&#47;a> brings up the great discussion once again.&nbsp;&nbsp; Every time&nbsp; a brand new piece of hardware comes out with more RAM possible or better, faster CPUs I have the "<em><strong>Scale Up or Scale Out&trade;<&#47;strong><&#47;em>" Discussion with many people.&nbsp; I have this discussion every 9-12 months on average.&nbsp; We end up covering all sorts of criteria on what to compare and what is acceptable and what is not.</p>
+<p>Duncan over at <a title="Scale Up" href="http://www.yellow-bricks.com/2010/03/17/scale-up/" target="_blank">Yellow-Bricks.com</a> brings up the great discussion once again.   Every time  a brand new piece of hardware comes out with more RAM possible or better, faster CPUs I have the "<em><strong>Scale Up or Scale Out&trade;</strong></em>" Discussion with many people.  I have this discussion every 9-12 months on average.  We end up covering all sorts of criteria on what to compare and what is acceptable and what is not.</p>
 <p>Our conversation usually goes something like this:</p>
 <blockquote><p>The hot new badness just came out and we need to order more hardware.</p>
-<p>Awesome.&nbsp;&nbsp; So how much does this puppy have in it?&nbsp; RAM?&nbsp; CPUs?&nbsp;&nbsp; Slots for HBAs &amp; NICs?</p>
+<p>Awesome.   So how much does this puppy have in it?  RAM?  CPUs?   Slots for HBAs & NICs?</p>
 <p>Did you know the new motherboard comes with 4 NICs now so our standard config can go from 4U to 2U and gobs of RAM with 6 core CPUs now.</p>
-<p>Awesome!&nbsp;&nbsp; *pause*&nbsp; You know with that much RAM I can put 100 Win7 VDI systems on there.&nbsp;&nbsp; Umm.. What about when it goes down?</p>
-<p>Oh.. Hrm.&nbsp;&nbsp; That wouldn't be so good.&nbsp;&nbsp; ....<&#47;blockquote><br />
+<p>Awesome!   *pause*  You know with that much RAM I can put 100 Win7 VDI systems on there.   Umm.. What about when it goes down?</p>
+<p>Oh.. Hrm.   That wouldn't be so good.   ....</blockquote><br />
 That being said we generally end up breaking it down to a couple of factors.</p>
 <ol>
-<li>What is the current capacity configuration we run with today?<&#47;li>
-<li>What is our current pain points in CPU, Memory, Network or Storage?<&#47;li>
-<li>Is there any new architecture changes coming that will impact this design?&nbsp;&nbsp; Is there a new switch fabric that needs to be plugged into?&nbsp;&nbsp; Is there changes to storage that need to be addressed?<&#47;li>
-<li>How much does this new hardware configuration cost?<&#47;li>
-<li>How will this change affect DRS's Chaos Theory?&nbsp; The more hosts, the more DRS can do for you due to Chaos theory.<&#47;li>
-<li>What is our Risk level for number of eggs in a single basket?<&#47;li><br />
-<&#47;ol><br />
-The point is most corporation's environments aren't starting from scratch.&nbsp; In my case we have a known configuration today to use as a baseline and adjust the environment and design every hardware order to make it better.</p>
-<p>In our most recent order we had this discussion all over again.&nbsp; This time we had some architectural changes needed to prevent some false positive HA events from happening in a 2 time a year strange events.&nbsp;&nbsp; So we are going to a 3 switch connectivity solution to enable network beacon for NIC teamed connections.&nbsp; We started with the following information:</p>
+<li>What is the current capacity configuration we run with today?</li>
+<li>What is our current pain points in CPU, Memory, Network or Storage?</li>
+<li>Is there any new architecture changes coming that will impact this design?   Is there a new switch fabric that needs to be plugged into?   Is there changes to storage that need to be addressed?</li>
+<li>How much does this new hardware configuration cost?</li>
+<li>How will this change affect DRS's Chaos Theory?  The more hosts, the more DRS can do for you due to Chaos theory.</li>
+<li>What is our Risk level for number of eggs in a single basket?</li><br />
+</ol><br />
+The point is most corporation's environments aren't starting from scratch.  In my case we have a known configuration today to use as a baseline and adjust the environment and design every hardware order to make it better.</p>
+<p>In our most recent order we had this discussion all over again.  This time we had some architectural changes needed to prevent some false positive HA events from happening in a 2 time a year strange events.   So we are going to a 3 switch connectivity solution to enable network beacon for NIC teamed connections.  We started with the following information:</p>
 <ul>
-<li>Baseline:&nbsp; HP DL585 G5, 4 sockets w&#47; quad cores, 128G of RAM, 3 Dual 1G NICs, 2 Emulex LPe11000 HBAs<&#47;li>
-<li>Cluster: 10 Host Clusters with ~30 per Host in Servers and ~65 Workstations per Host in View<&#47;li>
-<li>Pain Points:&nbsp; CPU starvation, Licensing Issues with 10 Host sized clusters<&#47;li>
-<li>Risk Level:&nbsp; Politically we are getting pretty touchy about more than 30 Servers going down in a single blow even if HA works on bringing them up in under 15 mins automatically.<&#47;li><br />
-<&#47;ul><br />
-We compared 3 different models of newer, faster, badder and more wicked hardware from HP since the DL585 G5s are not really on the manufacturing line anymore.&nbsp;&nbsp; So we looked at the BL495cG6, DL585 G6, DL385 G6 and DL580 G6.</p>
+<li>Baseline:  HP DL585 G5, 4 sockets w/ quad cores, 128G of RAM, 3 Dual 1G NICs, 2 Emulex LPe11000 HBAs</li>
+<li>Cluster: 10 Host Clusters with ~30 per Host in Servers and ~65 Workstations per Host in View</li>
+<li>Pain Points:  CPU starvation, Licensing Issues with 10 Host sized clusters</li>
+<li>Risk Level:  Politically we are getting pretty touchy about more than 30 Servers going down in a single blow even if HA works on bringing them up in under 15 mins automatically.</li><br />
+</ul><br />
+We compared 3 different models of newer, faster, badder and more wicked hardware from HP since the DL585 G5s are not really on the manufacturing line anymore.   So we looked at the BL495cG6, DL585 G6, DL385 G6 and DL580 G6.</p>
 <p>DL585 G6:</p>
 <ul>
 <li>Pros
 <ul>
-<li>Proven and comfortable AMD based stable platform with a good price&#47;performance cost.<&#47;li>
-<li>Gain more CPU resources with the additional 2 cores per socket.&nbsp; 6 core systems.<&#47;li>
-<li>Can build 5 Host clusters to address licensing issues.&nbsp;&nbsp; Issues with HA  support for the density involved.<&#47;li><br />
-<&#47;ul><br />
-<&#47;li></p>
+<li>Proven and comfortable AMD based stable platform with a good price/performance cost.</li>
+<li>Gain more CPU resources with the additional 2 cores per socket.  6 core systems.</li>
+<li>Can build 5 Host clusters to address licensing issues.   Issues with HA  support for the density involved.</li><br />
+</ul><br />
+</li></p>
 <li>Cons
 <ul>
-<li>Same Risk Level as before.<&#47;li><br />
-<&#47;ul><br />
+<li>Same Risk Level as before.</li><br />
+</ul><br />
 Push</p>
 <ul>
-<li>Same architectural solution today with maybe another NIC card to enable   the NIC Beaconing<&#47;li><br />
-<&#47;ul><br />
-<&#47;li><br />
-<&#47;ul><br />
+<li>Same architectural solution today with maybe another NIC card to enable   the NIC Beaconing</li><br />
+</ul><br />
+</li><br />
+</ul><br />
 DL580 G5:</p>
 <ul>
 <li>Pros
 <ul>
-<li>Fastest individual cores out there.&nbsp;&nbsp; Lots of good press about the Intel.<&#47;li>
-<li>Should get better CPU resources with higher performing CPUs.<&#47;li>
-<li>Can build 5 Host clusters to address licensing issues.&nbsp;&nbsp; Issues with HA support for the density involved.<&#47;li><br />
-<&#47;ul><br />
-<&#47;li></p>
+<li>Fastest individual cores out there.   Lots of good press about the Intel.</li>
+<li>Should get better CPU resources with higher performing CPUs.</li>
+<li>Can build 5 Host clusters to address licensing issues.   Issues with HA support for the density involved.</li><br />
+</ul><br />
+</li></p>
 <li>Cons
 <ul>
-<li>Significant premium in cost for speed.&nbsp;&nbsp; See easily a 25% premium for a 10% faster performance.<&#47;li>
-<li>Same Risk Level as before.<&#47;li><br />
-<&#47;ul><br />
-<&#47;li></p>
+<li>Significant premium in cost for speed.   See easily a 25% premium for a 10% faster performance.</li>
+<li>Same Risk Level as before.</li><br />
+</ul><br />
+</li></p>
 <li>Push
 <ul>
-<li>Same architectural solution today with maybe another NIC card to enable    the NIC Beaconing.<&#47;li><br />
-<&#47;ul><br />
-<&#47;li><br />
-<&#47;ul><br />
+<li>Same architectural solution today with maybe another NIC card to enable    the NIC Beaconing.</li><br />
+</ul><br />
+</li><br />
+</ul><br />
 DL385 G6:</p>
 <ul>
 <li>Pros
 <ul>
-<li>Lowers the risk level without lowering performance<&#47;li>
-<li>Best price&#47;performance cost for 6 core systems<&#47;li>
-<li>Has enough slots to move to the newer network layout to enable NIC Beaconing<&#47;li>
-<li>Gain more CPU resources with the additional 2 cores per socket.&nbsp; 6 core  systems.<&#47;li>
-<li>Put 64G of RAM into them and build 5 host clusters for licensing problematic applications.<&#47;li><br />
-<&#47;ul><br />
-<&#47;li></p>
+<li>Lowers the risk level without lowering performance</li>
+<li>Best price/performance cost for 6 core systems</li>
+<li>Has enough slots to move to the newer network layout to enable NIC Beaconing</li>
+<li>Gain more CPU resources with the additional 2 cores per socket.  6 core  systems.</li>
+<li>Put 64G of RAM into them and build 5 host clusters for licensing problematic applications.</li><br />
+</ul><br />
+</li></p>
 <li>Cons
 <ul>
-<li>More physical hosts to deal with (cabling, power, rack space, cooling, management)<&#47;li><br />
-<&#47;ul><br />
-<&#47;li><br />
-<&#47;ul><br />
+<li>More physical hosts to deal with (cabling, power, rack space, cooling, management)</li><br />
+</ul><br />
+</li><br />
+</ul><br />
 BL495c G6:</p>
 <ul>
 <li>Pros
 <ul>
-<li>Blades reduce the amount of cabling<&#47;li><br />
-<&#47;ul></p>
+<li>Blades reduce the amount of cabling</li><br />
+</ul></p>
 <ul>
-<li>Gain more CPU resources with the additional 2 cores per socket.&nbsp; 6  core  systems<&#47;li><br />
-<&#47;ul><br />
-<&#47;li></p>
+<li>Gain more CPU resources with the additional 2 cores per socket.  6  core  systems</li><br />
+</ul><br />
+</li></p>
 <li>Cons
 <ul>
-<li>Firmware Management is an issue<&#47;li>
-<li>Increases our Risk Level with more eggs in the same basket unless we get multiple chassis to spread the blades across<&#47;li>
-<li>New solution from the ground up running ESX on blades<&#47;li>
-<li>Not ready to support Flex10 and because of this we have limited NIC capabilities to fit our requirements<&#47;li><br />
-<&#47;ul><br />
-<&#47;li><br />
-<&#47;ul><br />
-We decided to go with the DL385 G6s based on these criteria.&nbsp; We will dedicate a specific 5 Host cluster for problem children applications with licensing issues.&nbsp;&nbsp; The RAM size of the hosts will limit the number of VMs we can end up putting in a cluster which addresses the Risk Level of number of VMs per Host.&nbsp; We are still <strong>way<&#47;strong> ahead of the game using VMware so having to have a couple more physicals for all these improvements is not an issue.</p>
-<p>In your  company or solution something else may be more appropriate.&nbsp; The key in an ongoing improvement mentality is have things you can measure and then criteria on what to change along with why. &nbsp; There is no  one size fits all answer which is why VMware works so well for so many  different folks.&nbsp;&nbsp; We don't have to change how we do things to gain a  lot of flexibility in the Datacenter while not changing how we ultimately end up managing these systems.</p>
+<li>Firmware Management is an issue</li>
+<li>Increases our Risk Level with more eggs in the same basket unless we get multiple chassis to spread the blades across</li>
+<li>New solution from the ground up running ESX on blades</li>
+<li>Not ready to support Flex10 and because of this we have limited NIC capabilities to fit our requirements</li><br />
+</ul><br />
+</li><br />
+</ul><br />
+We decided to go with the DL385 G6s based on these criteria.  We will dedicate a specific 5 Host cluster for problem children applications with licensing issues.   The RAM size of the hosts will limit the number of VMs we can end up putting in a cluster which addresses the Risk Level of number of VMs per Host.  We are still <strong>way</strong> ahead of the game using VMware so having to have a couple more physicals for all these improvements is not an issue.</p>
+<p>In your  company or solution something else may be more appropriate.  The key in an ongoing improvement mentality is have things you can measure and then criteria on what to change along with why.   There is no  one size fits all answer which is why VMware works so well for so many  different folks.   We don't have to change how we do things to gain a  lot of flexibility in the Datacenter while not changing how we ultimately end up managing these systems.</p>

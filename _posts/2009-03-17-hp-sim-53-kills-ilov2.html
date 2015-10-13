@@ -99,31 +99,31 @@ comments:
   date_gmt: !binary |-
     MjAwOS0wOS0xMSAwNjoxNzo0NyAtMDUwMA==
   content: ! '[...] sure what that&#8217;s all about, but there&#8217;s a blog here
-    that points towards&nbsp;installing a hotfix for SIM and advises a firmware update
+    that points towards installing a hotfix for SIM and advises a firmware update
     for iLO, but [...]'
 ---
-<p>Recently at the request of our vendor (HP), I went and had HP Systems Insight Manager updated to 5.3 about 3 weeks.&nbsp; Now this isn't "bleeding edge" and so I didn't feel it was a big deal to jump up to it already.&nbsp;&nbsp; Well over the past 3 weeks I've been getting this new alert coming from our SIM system and I just figured "Oh.. something new" and didn't fret about it too much.</p>
+<p>Recently at the request of our vendor (HP), I went and had HP Systems Insight Manager updated to 5.3 about 3 weeks.  Now this isn't "bleeding edge" and so I didn't feel it was a big deal to jump up to it already.   Well over the past 3 weeks I've been getting this new alert coming from our SIM system and I just figured "Oh.. something new" and didn't fret about it too much.</p>
 <blockquote>
-<p >Event Name: (SNMP) Remote Insight&#47; Integrated LightsOut Interface Error (9006)<&#47;p></p>
-<p >URL: https:&#47;&#47;HPSIM:2381&#47;<&#47;p></p>
-<p >Event originator: HPSIM<&#47;p></p>
-<p >Event Severity: Major<&#47;p></p>
-<p >Event received: 12-Mar-2009, 17:31:02<&#47;p></p>
-<p >Event description: Remote Insight&#47; Integrated Lights-Out Interface Error.<span> <&#47;span>The host OS has detected an error in the Remote Insight&#47; Integrated Lights-Out interface.<span> <&#47;span>The firmware is not responding.<&#47;p><br />
-<&#47;blockquote></p>
-<p class="MsoPlainText">As you can tell from my lazy comments, this became a pretty big deal as iLO was completely toasty on these boxes where SIM was generating this alert.&nbsp; I contacted HP and it was a pretty entertaining exchange.<&#47;p></p>
+<p >Event Name: (SNMP) Remote Insight/ Integrated LightsOut Interface Error (9006)</p></p>
+<p >URL: https://HPSIM:2381/</p></p>
+<p >Event originator: HPSIM</p></p>
+<p >Event Severity: Major</p></p>
+<p >Event received: 12-Mar-2009, 17:31:02</p></p>
+<p >Event description: Remote Insight/ Integrated Lights-Out Interface Error.<span> </span>The host OS has detected an error in the Remote Insight/ Integrated Lights-Out interface.<span> </span>The firmware is not responding.</p><br />
+</blockquote></p>
+<p class="MsoPlainText">As you can tell from my lazy comments, this became a pretty big deal as iLO was completely toasty on these boxes where SIM was generating this alert.  I contacted HP and it was a pretty entertaining exchange.</p></p>
 <blockquote>
-<p class="MsoPlainText"><&#47;p></p>
-<p class="MsoPlainText"><em>HP Support: <&#47;em> Are you running HP SIM 5.3?<&#47;p></p>
-<p class="MsoPlainText"><em>Me: <&#47;em>Yes<&#47;p></p>
-<p class="MsoPlainText"><em>HP Support: <&#47;em>Do you have iLO version 1.60 or 1.61?<&#47;p></p>
-<p class="MsoPlainText"><em>Me: <&#47;em>Beats me.&nbsp; The iLOs are not responding so I have zero way to tell.<&#47;p></p>
-<p class="MsoPlainText"><em>HP Support: <&#47;em>I think I know your problem.<&#47;p></p>
-<p class="MsoPlainText"><em>Me: <&#47;em> <Silence for a minute.>&nbsp; Well don't leave me hanging here.<&#47;p></p>
-<p class="MsoPlainText"><em>HP Support:<&#47;em> I'm reading an email alert that came through while we were talking.&nbsp;&nbsp; There's a <a title="HP SIM 5.3 HotFix" href="http:&#47;&#47;h18013.www1.hp.com&#47;products&#47;servers&#47;management&#47;hpsim&#47;dl_windows.html" target="_blank">hotfix for HP SIM 5.3<&#47;a> and a recommendation to go up to firmware 1.70 for the iLO.<&#47;p></p>
-<p class="MsoPlainText"><em>Me: <&#47;em> Oh great.&nbsp; *sigh*<&#47;p><br />
-<&#47;blockquote></p>
-<p class="MsoPlainText"><&#47;p></p>
-<p class="MsoPlainText">So now I get to physically pull power cords to fix iLOs everywhere.&nbsp; (Yes this means an OS reboot too.)<&#47;p></p>
-<p class="MsoPlainText"><&#47;p></p>
-<p class="MsoPlainText">* Hey HP.&nbsp; Put a button onto the servers to "reboot the iLO".<&#47;p></p>
+<p class="MsoPlainText"></p></p>
+<p class="MsoPlainText"><em>HP Support: </em> Are you running HP SIM 5.3?</p></p>
+<p class="MsoPlainText"><em>Me: </em>Yes</p></p>
+<p class="MsoPlainText"><em>HP Support: </em>Do you have iLO version 1.60 or 1.61?</p></p>
+<p class="MsoPlainText"><em>Me: </em>Beats me.  The iLOs are not responding so I have zero way to tell.</p></p>
+<p class="MsoPlainText"><em>HP Support: </em>I think I know your problem.</p></p>
+<p class="MsoPlainText"><em>Me: </em> <Silence for a minute.>  Well don't leave me hanging here.</p></p>
+<p class="MsoPlainText"><em>HP Support:</em> I'm reading an email alert that came through while we were talking.   There's a <a title="HP SIM 5.3 HotFix" href="http://h18013.www1.hp.com/products/servers/management/hpsim/dl_windows.html" target="_blank">hotfix for HP SIM 5.3</a> and a recommendation to go up to firmware 1.70 for the iLO.</p></p>
+<p class="MsoPlainText"><em>Me: </em> Oh great.  *sigh*</p><br />
+</blockquote></p>
+<p class="MsoPlainText"></p></p>
+<p class="MsoPlainText">So now I get to physically pull power cords to fix iLOs everywhere.  (Yes this means an OS reboot too.)</p></p>
+<p class="MsoPlainText"></p></p>
+<p class="MsoPlainText">* Hey HP.  Put a button onto the servers to "reboot the iLO".</p></p>

@@ -25,9 +25,9 @@ tags:
 - monsterVM
 comments: []
 ---
-<p>Jason Boche posted an <a title="ESXi Heap Size" href="http:&#47;&#47;www.boche.net&#47;blog&#47;index.php&#47;2012&#47;09&#47;12&#47;monster-vms-esxi-heap-size-trouble-in-storage-paradise&#47;">interesting discovery<&#47;a> with regards to Monster VMs and the amount of storage one would be sticking to them. &nbsp;One of the large projects being designed today &nbsp;has the likely reason to hit this limit with just a single VM. &nbsp;This is pretty easy for that project to hit that as a single VM will have about 75TB assigned to it. &nbsp; Since this design has 4 or 5 VMs of this size, which then means our standard ESXi Host will have around 300+ TB assigned to it. &nbsp;Thankfully RDM isn't impacted by this limit in theory, so there is a workaround available. &nbsp;Not ideal and yet doable.</p>
-<p>Instead one of the questions that came out of this news is "Does this issue impact the rest of our environment?" &nbsp; Will this explain some random&nbsp;stability&nbsp;issues we have seen?</p>
-<p>This script will return what every single host has in terms of VMDK files. &nbsp;To use this script look at each host and see if the host itself is under the limits. &nbsp;Then look at the cluster level based on the HA rules and see what the VMDK limits would be if a host failed. &nbsp;That should give an idea of how close your clusters might be to hitting this limit.</p>
+<p>Jason Boche posted an <a title="ESXi Heap Size" href="http://www.boche.net/blog/index.php/2012/09/12/monster-vms-esxi-heap-size-trouble-in-storage-paradise/">interesting discovery</a> with regards to Monster VMs and the amount of storage one would be sticking to them.  One of the large projects being designed today  has the likely reason to hit this limit with just a single VM.  This is pretty easy for that project to hit that as a single VM will have about 75TB assigned to it.   Since this design has 4 or 5 VMs of this size, which then means our standard ESXi Host will have around 300+ TB assigned to it.  Thankfully RDM isn't impacted by this limit in theory, so there is a workaround available.  Not ideal and yet doable.</p>
+<p>Instead one of the questions that came out of this news is "Does this issue impact the rest of our environment?"   Will this explain some random stability issues we have seen?</p>
+<p>This script will return what every single host has in terms of VMDK files.  To use this script look at each host and see if the host itself is under the limits.  Then look at the cluster level based on the HA rules and see what the VMDK limits would be if a host failed.  That should give an idea of how close your clusters might be to hitting this limit.</p>
 <pre lang="Powershell" line="1">
 if ( -not (Get-PSSnapIn | where {$_.Name -eq "VMware.VimAutomation.Core"}) )<br />
 {<br />
@@ -47,7 +47,7 @@ foreach ($cluster in $clusters) {<br />
         foreach ($vm in $vmlist) {<br />
             $view = $vm | get-View<br />
             foreach ($disk in $view.Guest.Disk) {<br />
-                $disksize = ([math]::Round($disk.Capacity&#47;1MB))<br />
+                $disksize = ([math]::Round($disk.Capacity/1MB))<br />
                 $totaldisk += $disksize<br />
             }<br />
          }<br />
@@ -60,9 +60,9 @@ foreach ($cluster in $clusters) {<br />
          $diskuse += $obj<br />
     }<br />
 }</p>
-<p>$diskuse | export-csv "OpenFileDiskUse.csv" -NoTypeInformation<&#47;pre></p>
+<p>$diskuse | export-csv "OpenFileDiskUse.csv" -NoTypeInformation</pre></p>
 <p>With Default settings the magic numbers to look for:</p>
 <ul>
-<li>ESXi 4.x - 4TB<&#47;li>
-<li>ESXi 5.1 - 8TB<&#47;li><br />
-<&#47;ul></p>
+<li>ESXi 4.x - 4TB</li>
+<li>ESXi 5.1 - 8TB</li><br />
+</ul></p>
