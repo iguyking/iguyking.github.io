@@ -28,7 +28,7 @@ Instead one of the questions that came out of this news is "Does this issue impa
 
 This script will return what every single host has in terms of VMDK files.  To use this script look at each host and see if the host itself is under the limits.  Then look at the cluster level based on the HA rules and see what the VMDK limits would be if a host failed.  That should give an idea of how close your clusters might be to hitting this limit.
 
-{% highlight powershell linenos %}
+```powershell
 if ( -not (Get-PSSnapIn | where {$_.Name -eq "VMware.VimAutomation.Core"}) )
 {
     Add-PSSnapin -Name "VMware.VimAutomation.Core"
@@ -61,7 +61,7 @@ foreach ($cluster in $clusters) {
     }
 }
 $diskuse | export-csv "OpenFileDiskUse.csv" -NoTypeInformation
-{% endhighlight %}
+```
 
 With Default settings the magic numbers to look for:
 <ul>
