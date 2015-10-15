@@ -70,4 +70,4 @@ With Default settings the magic numbers to look for:
 <ul>
 <li>ESXi 4.x - 4TB</li>
 <li>ESXi 5.1 - 8TB</li><br />
-</ul></p>
+</ul>
