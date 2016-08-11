@@ -4,7 +4,7 @@ tagline: how deep does the abstraction go?
 email: ian@ionsphere.org
 description: > # this means to ignore newlines until "baseurl:"
     A discussion on an IT's path from Virtualization, Automation to Cloud Computing.  What exactly does that mean to a 125 year old organization?
-baseurl: "/" # the subpath of your site, e.g. /blog/
+baseurl: "" # the subpath of your site, e.g. /blog/
 url: "http://itsjustanotherlayer.com" # the base hostname & protocol for your site
 logourl: /assets/images/logo.png # Site logo
 author: "Ian Koenig"
@@ -26,7 +26,7 @@ theme:
   show_share_buttons: true
 
   # Show author picure, name and social links on post footer
-  show_author_info: true
+  show_author_info: false
 
   # Disqus comments manager - shortname
   # disqus_shortname: gaya-webcreate
