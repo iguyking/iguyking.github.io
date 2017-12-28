@@ -1,6 +1,6 @@
 ---
 layout: post
-status: preview
+status: publish
 published: true
 title: Ansible tagging - why?
 author:
